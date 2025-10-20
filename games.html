@@ -11,7 +11,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
-</head>
+
+    </head>
 <body>
 
     <nav class="navbar">
@@ -27,36 +28,15 @@
     </nav>
 
     <main class="container">
-        <h1>Chọn Game Nào! 🎮</h1>
-<p>Nhấp vào game bạn muốn chơi.</p>
+        <h1>Xả Stress Nào! 🎮</h1>
+        <p>Thử sức với bàn cờ Caro 15x15!</p>
 
-<div class="game-selection quick-links"> 
-    <button class="game-select-button link-box" data-game="caro">
-        <span style="font-size: 40px;">🏁</span> <span>Caro 15x15</span>
-    </button>
-    <button class="game-select-button link-box" data-game="flappy">
-        <span style="font-size: 40px;">🐦</span> <span>Flappy Bird</span>
-    </button>
-</div>
-
-<div id="caro-game-wrapper" class="game-wrapper" style="display: none;">
-    <hr> 
-    <div class="game-container">
-        <h2 id="game-status">Lượt của X</h2>
-        <div id="caro-board" class="caro-board"></div>
-        <button class="game-restart-button" id="restartButton">Chơi lại</button>
-    </div>
-</div>
-
-<div id="flappy-game-wrapper" class="game-wrapper" style="display: none;">
-    <hr>
-    <div class="flappy-bird-container">
-        <h2>Flappy Bird! 🐦</h2>
-        <p>Nhấn phím cách (Space) hoặc nhấp chuột để bay.</p>
-        <canvas id="flappyBirdCanvas" width="320" height="480" style="border: 1px solid var(--text-color); background-color: #70c5ce;"></canvas>
-        <p id="flappy-score">Điểm: 0</p>
-    </div>
-</div>
+        <div class="game-container">
+            <h2 id="game-status">Lượt của X</h2>
+            <div id="caro-board" class="caro-board">
+                </div>
+            <button class="game-restart-button" id="restartButton">Chơi lại</button>
+        </div>
         </main>
 
     <footer class="footer">
@@ -64,10 +44,5 @@
     </footer>
 
     <script src="js/main.js"></script> <script src="//code.tidio.co/wjsaedeuupbhm3mfljz5y1pwni7hcjso.js" async></script>
-    <script src="js/theme.js"></script> <script src="js/flappy-bird.js"></script> 
-    <script src="js/games-page.js"></script>
-
-</body>
-</html>
-</body>
+    <script src="js/theme.js"></script> </body>
 </html>
