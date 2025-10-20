@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         playPauseButton.classList.remove('play'); // Có thể dùng để đổi style nút sau này
         playPauseIcon.classList.remove('fa-play'); // Đổi icon thành Pause
         playPauseIcon.classList.add('fa-pause');
+        console.log("Đang cố phát:", audio.src);
         audio.play(); // Lệnh phát nhạc
     }
 
