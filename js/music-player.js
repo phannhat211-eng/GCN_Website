@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             title: 'Kho Báu (with Rhymastic)',
             artist: 'Trọng Hiếu',
-            src: 'Kho Báu (with Rhymastic)', // Đường dẫn đến file MP3 của bạn
+            src: 'music\Kho Báu (with Rhymastic).mp3', // Đường dẫn đến file MP3 của bạn
             cover: 'cover-placeholder-2' // Đường dẫn đến ảnh bìa của bạn
         },
         {
