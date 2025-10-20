@@ -3,13 +3,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 1. DÁN "CHÌA KHÓA" CỦA BẠN VÀO ĐÂY ---
     const firebaseConfig = {
-      apiKey: "AIzaSyC-QRSW72xkgib98QThqCfA5sS_ilAbvUE",
-      authDomain: "gcn-website.firebaseapp.com",
-      projectId: "gcn-website",
-      storageBucket: "gcn-website.firebasestorage.app",
-      messagingSenderId: "289554109673",
-      appId: "1:289554109673:web:c351328dc4d4062a4c8c78"
-    };
+  apiKey: "AIzaSyC-QRSW72xkgib98QThqCfA5sS_ilAbvUE",
+  authDomain: "gcn-website.firebaseapp.com",
+  projectId: "gcn-website",
+  storageBucket: "gcn-website.firebasestorage.app",
+  messagingSenderId: "289554109673",
+  appId: "1:289554109673:web:c351328dc4d4062a4c8c78"
+};
 
     // --- 2. KHỞI TẠO FIREBASE ---
     firebase.initializeApp(firebaseConfig);
