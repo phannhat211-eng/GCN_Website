@@ -24,7 +24,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--navbar-bg); /* ĐÃ SỬA */
+    background-color: var(--navbar-bg);
     padding: 15px 30px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
@@ -32,7 +32,7 @@ body {
     font-size: 24px;
     font-weight: 700;
     text-decoration: none;
-    color: var(--primary-color); /* ĐÃ SỬA */
+    color: var(--primary-color);
 }
 .nav-menu {
     list-style: none;
@@ -45,12 +45,12 @@ body {
 }
 .nav-menu a {
     text-decoration: none;
-    color: var(--text-color); /* ĐÃ SỬA */
+    color: var(--text-color);
     font-weight: 700;
     transition: color 0.3s;
 }
 .nav-menu a:hover {
-    color: var(--bg-color); /* ĐÃ SỬA (thành màu xanh pastel) */
+    color: var(--bg-color);
 }
 
 /* --- 3. Khung nội dung chính --- */
@@ -58,7 +58,7 @@ body {
     max-width: 900px;
     margin: 40px auto;
     padding: 30px;
-    background-color: var(--container-bg); /* ĐÃ SỬA */
+    background-color: var(--container-bg);
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     
@@ -66,7 +66,7 @@ body {
     transition: background-color 0.3s;
 }
 h1 {
-    color: var(--primary-color); /* ĐÃ SỬA */
+    color: var(--primary-color);
     text-align: center;
 }
 p {
@@ -88,10 +88,10 @@ p {
     
     width: 200px;
     height: 150px;
-    background-color: var(--navbar-bg); /* ĐÃ SỬA */
+    background-color: var(--navbar-bg);
     border-radius: 10px;
     text-decoration: none;
-    color: var(--text-color); /* ĐÃ SỬA */
+    color: var(--text-color);
     font-size: 24px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     
@@ -111,7 +111,7 @@ p {
 .footer {
     text-align: center;
     margin-top: 40px;
-    color: var(--container-bg); /* ĐÃ SỬA */
+    color: var(--container-bg);
     font-weight: 700;
 }
 
@@ -134,39 +134,64 @@ p {
     height: 100%;
 }
 
-/* --- CSS CHO GAME XO --- */
+/* --- CSS CHO GAME CARO 15x15 (CODE MỚI) --- */
 .game-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* Thêm vào để bảng cờ cuộn được trên điện thoại */
+    width: 100%;
+    overflow-x: auto; /* Cho phép cuộn ngang nếu bảng quá to */
 }
-.game-board {
+
+.caro-board {
     display: grid;
-    grid-template-columns: repeat(3, 100px);
-    margin-top: 15px;
+    /* Định nghĩa bảng 15 cột, mỗi cột 30px */
+    grid-template-columns: repeat(15, 30px);
+    
+    /* Tạo viền ngoài cho bảng cờ */
+    border: 2px solid var(--text-color);
+    margin-top: 20px;
+    background-color: var(--navbar-bg); /* Nền cho bảng cờ */
 }
-.cell {
-    width: 100px;
-    height: 100px;
-    border: 2px solid var(--text-color); /* ĐÃ SỬA */
+
+.caro-cell {
+    width: 30px;
+    height: 30px;
+    /* Tạo đường lưới mỏng bên trong */
+    border: 1px solid #ccc; 
+    
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 60px;
+    font-size: 20px; /* Cỡ chữ X, O */
     font-weight: bold;
     cursor: pointer;
+    
+    /* Xóa viền ngoài trùng lặp (để viền 2px bên ngoài) */
+    box-sizing: border-box; /* Quan trọng */
 }
-.cell:nth-child(1), .cell:nth-child(2), .cell:nth-child(3) { border-top: none; }
-.cell:nth-child(1), .cell:nth-child(4), .cell:nth-child(7) { border-left: none; }
-.cell:nth-child(3), .cell:nth-child(6), .cell:nth-child(9) { border-right: none; }
-.cell:nth-child(7), .cell:nth-child(8), .cell:nth-child(9) { border-bottom: none; }
 
-.cell.x {
-    color: var(--primary-color); /* ĐÃ SỬA */
+.caro-cell:hover {
+    background-color: var(--bg-color); /* Tô màu ô khi rê chuột */
 }
-.cell.o {
-    color: #d9534f; /* Giữ màu đỏ riêng */
+
+/* Định dạng cho X */
+.caro-cell.x {
+    color: var(--primary-color);
 }
+
+/* Định dạng cho O */
+.caro-cell.o {
+    color: #d9534f; /* Giữ màu đỏ cam */
+}
+
+/* Ô chiến thắng (sẽ dùng ở bước sau) */
+.caro-cell.win {
+    background-color: #ffc107; /* Tô màu vàng cho 5 ô thắng */
+}
+
+/* Nút Chơi Lại (không đổi nhiều) */
 .game-restart-button {
     margin-top: 20px;
     padding: 10px 20px;
@@ -175,18 +200,20 @@ p {
     font-family: 'Nunito', sans-serif;
     border: none;
     border-radius: 5px;
-    background-color: var(--primary-color); /* ĐÃ SỬA */
-    color: var(--navbar-bg); /* ĐÃ SỬA */
+    background-color: var(--primary-color);
+    color: var(--navbar-bg);
     cursor: pointer;
     transition: background-color 0.3s;
 }
 .game-restart-button:hover {
-    background-color: #003d82; /* Giữ nguyên màu hover đậm */
+    background-color: #003d82;
 }
+/* --- KẾT THÚC CSS GAME CARO --- */
+
 
 /* --- CSS CHO TRANG ĐĂNG NHẬP (AUTH) --- */
 .auth-form-container {
-    background-color: var(--navbar-bg); /* ĐÃ SỬA */
+    background-color: var(--navbar-bg);
     padding: 25px;
     border-radius: 8px;
     margin-top: 20px;
@@ -213,29 +240,28 @@ p {
     font-family: 'Nunito', sans-serif;
     border: none;
     border-radius: 5px;
-    background-color: var(--primary-color); /* ĐÃ SỬA */
-    color: var(--navbar-bg); /* ĐÃ SỬA */
+    background-color: var(--primary-color);
+    color: var(--navbar-bg);
     cursor: pointer;
     transition: background-color 0.3s;
 }
 .auth-form-container button:hover {
-    background-color: #003d82; /* Giữ nguyên màu hover đậm */
+    background-color: #003d82;
 }
 #register-button {
-    background-color: #28a745; /* Giữ màu xanh lá */
+    background-color: #28a745;
 }
 #register-button:hover {
     background-color: #218838;
 }
 #logout-button {
-    background-color: #dc3545; /* Giữ màu đỏ */
+    background-color: #dc3545;
     margin-top: 15px;
 }
 #logout-button:hover {
     background-color: #c82333;
 }
 .diary-link-button {
-    /* ... (Giữ nguyên màu vàng) ... */
     display: block;
     width: calc(100% - 24px);
     padding: 12px;
@@ -254,7 +280,7 @@ p {
     background-color: #e0a800;
 }
 #auth-error {
-    color: #dc3545; /* Giữ màu đỏ */
+    color: #dc3545;
     font-weight: bold;
     text-align: center;
     margin-top: 15px;
@@ -262,7 +288,7 @@ p {
 
 /* --- CSS CHO TRANG NHẬT KÝ (DIARY) --- */
 .diary-editor {
-    background-color: var(--navbar-bg); /* ĐÃ SỬA */
+    background-color: var(--navbar-bg);
     padding: 25px;
     border-radius: 8px;
     margin-top: 20px;
@@ -283,7 +309,6 @@ p {
     resize: vertical;
 }
 .diary-editor button {
-    /* ... (Giữ nguyên màu xanh lá) ... */
     width: 100%;
     padding: 12px;
     margin-top: 15px;
@@ -301,7 +326,7 @@ p {
 }
 #diary-status {
     font-weight: bold;
-    color: var(--primary-color); /* ĐÃ SỬA */
+    color: var(--primary-color);
     margin-top: 10px;
     text-align: center;
 }
@@ -312,7 +337,7 @@ p {
     text-align: left;
 }
 #entries-container .entry {
-    background-color: var(--navbar-bg); /* ĐÃ SỬA */
+    background-color: var(--navbar-bg);
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 15px;
@@ -321,7 +346,7 @@ p {
 #entries-container .entry-date {
     font-size: 14px;
     font-weight: 700;
-    color: #555; /* Giữ màu xám này cũng ổn */
+    color: #555;
     margin-bottom: 10px;
 }
 #entries-container .entry-content {
@@ -330,7 +355,6 @@ p {
     white-space: pre-wrap;
 }
 .entry .delete-button {
-    /* ... (Giữ nguyên màu đỏ) ... */
     background-color: #dc3545;
     color: white;
     border: none;
@@ -351,14 +375,14 @@ p {
 }
 
 /* --- BẮT ĐẦU PHẦN NÂNG CẤP RESPONSIVE --- */
-/* (Đã sửa lỗi cú pháp ở cuối) */
+/* (Đã sửa lỗi cú pháp và xóa code game 3x3) */
 @media (max-width: 600px) {
 
     /* 1. Sửa Menu (Navbar) */
     .navbar {
         flex-direction: column;
         padding: 15px;
-        position: relative; /* Thêm vào để nút dark mode nằm đúng */
+        position: relative;
     }
     .nav-logo {
         margin-bottom: 10px;
@@ -395,15 +419,8 @@ p {
         margin-bottom: 0;
     }
 
-    /* 4. Sửa trang Game (XO) */
-    .game-board {
-        grid-template-columns: repeat(3, 80px); 
-    }
-    .cell {
-        width: 80px;
-        height: 80px;
-        font-size: 40px;
-    }
+    /* 4. (ĐÃ XÓA CODE GAME 3x3 CŨ) */
+    /* Code .game-container mới đã tự xử lý cuộn ngang */
 
     /* 5. Sửa trang Nhật ký */
     .entry .delete-button {
@@ -416,40 +433,32 @@ p {
 } /* --- KẾT THÚC PHẦN NÂNG CẤP RESPONSIVE --- */
 
 
-/* --- BẮT ĐẦU NÂNG CẤP DARK MODE (CODE MỚI) --- */
-
-/* 1. Định nghĩa màu cho Chế độ Tối */
+/* --- BẮT ĐẦU NÂNG CẤP DARK MODE --- */
 body.dark-mode {
-    --bg-color: #2c3e50;            /* Nền xanh đậm */
-    --container-bg: #34495e;        /* Nền khung xám */
-    --navbar-bg: #415a75;           /* Nền menu xám đậm hơn */
-    --text-color: #ecf0f1;          /* Màu chữ (trắng xám) */
-    --primary-color: #A7C7E7;       /* Màu logo, tiêu đề (xanh pastel) */
+    --bg-color: #2c3e50;
+    --container-bg: #34495e;
+    --navbar-bg: #415a75;
+    --text-color: #ecf0f1;
+    --primary-color: #A7C7E7;
 }
-
-/* 2. Tạo kiểu cho nút bấm */
 .theme-toggle {
     background-color: var(--container-bg);
     color: var(--primary-color);
     border: 2px solid var(--primary-color);
-    border-radius: 50%; /* Bo tròn */
+    border-radius: 50%;
     width: 40px;
     height: 40px;
     font-size: 20px;
     cursor: pointer;
-    margin-left: 20px; /* Khoảng cách với menu */
+    margin-left: 20px;
     transition: background-color 0.3s, color 0.3s;
 }
-
 .theme-toggle:hover {
     background-color: var(--primary-color);
     color: var(--container-bg);
 }
-
-/* 3. Sửa cho responsive (cho nút nằm đúng chỗ) */
 @media (max-width: 600px) {
     .theme-toggle {
-        /* Đặt nút ở góc trên bên phải */
         position: absolute; 
         top: 15px;
         right: 15px;
@@ -457,43 +466,37 @@ body.dark-mode {
     }
 }
 /* --- KẾT THÚC NÂNG CẤP DARK MODE --- */
-/* --- BẮT ĐẦU NÂNG CẤP EDIT MODAL (NHẬT KÝ) --- */
 
-/* Lớp phủ mờ toàn màn hình */
+/* --- BẮT ĐẦU NÂNG CẤP EDIT MODAL (NHẬT KÝ) --- */
 .modal-overlay {
-    position: fixed; /* Nằm cố định trên màn hình */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Nền đen mờ 60% */
-    display: flex; /* Dùng flex để căn giữa */
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Nằm trên mọi thứ khác */
+    z-index: 1000;
 }
-
-/* Hộp thoại nội dung */
 .modal-content {
-    background-color: var(--navbar-bg); /* Dùng biến màu nền menu */
-    color: var(--text-color); /* Dùng biến màu chữ */
+    background-color: var(--navbar-bg);
+    color: var(--text-color);
     padding: 25px;
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    width: 90%; /* Rộng 90% màn hình */
-    max-width: 500px; /* Nhưng không quá 500px */
+    width: 90%;
+    max-width: 500px;
 }
-
 .modal-content h2 {
     text-align: left;
     margin-top: 0;
     color: var(--primary-color);
 }
-
-/* Ô text area để chỉnh sửa */
 .modal-content textarea {
-    width: calc(100% - 22px); /* 100% trừ padding */
-    height: 200px; /* Cho cao hơn ô viết mới */
+    width: calc(100% - 22px);
+    height: 200px;
     padding: 11px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -501,14 +504,11 @@ body.dark-mode {
     font-size: 16px;
     resize: vertical;
 }
-
-/* Khu vực chứa 2 nút Lưu / Hủy */
 .modal-buttons {
     display: flex;
-    justify-content: flex-end; /* Đẩy 2 nút về bên phải */
+    justify-content: flex-end;
     margin-top: 20px;
 }
-
 .modal-buttons button {
     padding: 10px 20px;
     font-size: 16px;
@@ -518,8 +518,6 @@ body.dark-mode {
     cursor: pointer;
     margin-left: 10px;
 }
-
-/* Nút Lưu (màu xanh lá) */
 #save-edit-button {
     background-color: #28a745;
     color: white;
@@ -527,8 +525,6 @@ body.dark-mode {
 #save-edit-button:hover {
     background-color: #218838;
 }
-
-/* Nút Hủy (màu xám) */
 #cancel-edit-button {
     background-color: #6c757d;
     color: white;
@@ -536,5 +532,4 @@ body.dark-mode {
 #cancel-edit-button:hover {
     background-color: #5a6268;
 }
-
 /* --- KẾT THÚC NÂNG CẤP EDIT MODAL --- */
