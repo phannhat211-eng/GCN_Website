@@ -364,3 +364,61 @@ p {
 .entry {
     overflow: auto; /* Dọn dẹp float */
 }
+/* --- BẮT ĐẦU PHẦN NÂNG CẤP RESPONSIVE --- */
+
+/* * Đây là Media Query: 
+ * "Áp dụng code bên trong khối này NẾU chiều rộng màn hình 
+ * từ 600px trở xuống (max-width: 600px)"
+ */
+@media (max-width: 600px) {
+
+    /* 1. Sửa Menu (Navbar) */
+    .navbar {
+        flex-direction: column; /* Cho logo và menu xếp dọc */
+        padding: 15px;
+    }
+    
+    .nav-logo {
+        margin-bottom: 10px; /* Thêm khoảng cách dưới logo */
+    }
+    
+    .nav-menu {
+        /* Căn giữa các mục menu */
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .nav-menu li {
+        margin-left: 8px; /* Giảm khoảng cách giữa các mục */
+        margin-right: 8px;
+    }
+
+    /* 2. Sửa Khung nội dung chính */
+    .container {
+        /* Giảm lề 2 bên để khung to hơn trên điện thoại */
+        margin: 20px 10px; 
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 28px; /* Giảm cỡ chữ tiêu đề 1 chút */
+    }
+
+    /* 3. Sửa 3 Nút "Góc" (Quan trọng nhất) */
+    .quick-links {
+        flex-direction: column; /* Xếp 3 nút theo chiều dọc */
+        align-items: center; /* Căn giữa chúng theo chiều dọc */
+    }
+    
+    .link-box {
+        width: 90%; /* Cho mỗi nút rộng 90% màn hình */
+        margin-bottom: 15px; /* Thêm khoảng cách giữa các nút */
+        height: 120px; /* Giảm chiều cao 1 chút */
+    }
+    
+    /* Làm cho nút cuối cùng không bị dư khoảng cách */
+    .link-box:last-child {
+        margin-bottom: 0;
+    }
+    
+} /* --- KẾT THÚC PHẦN NÂNG CẤP RESPONSIVE --- */
