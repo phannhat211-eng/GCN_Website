@@ -1,0 +1,366 @@
+/* --- 1. Cài đặt chung cho toàn bộ trang --- */
+body {
+    background-color: #A7C7E7; /* !! MÀU XANH PASTEL CHỦ ĐẠO CỦA BẠN !! */
+    font-family: 'Nunito', sans-serif; /* Font chữ mềm mại đã import ở HTML */
+    margin: 0; /* Xóa mọi khoảng cách lề mặc định của trình duyệt */
+    padding: 0;
+    color: #333; /* Màu chữ chính (xám đậm) */
+}
+
+/* --- 2. Thanh điều hướng (Menu) --- */
+.navbar {
+    display: flex; /* Xếp các mục (logo và menu) nằm ngang */
+    justify-content: space-between; /* Đẩy logo và menu ra 2 bên */
+    align-items: center; /* Căn giữa các mục theo chiều dọc */
+    background-color: #ffffff; /* Nền trắng cho menu */
+    padding: 15px 30px; /* Đệm lề (trên-dưới 15px, trái-phải 30px) */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Đổ bóng nhẹ nhàng */
+}
+.nav-logo {
+    font-size: 24px;
+    font-weight: 700; /* In đậm */
+    text-decoration: none; /* Bỏ gạch chân */
+    color: #0056b3; /* Màu xanh đậm hơn cho logo */
+}
+.nav-menu {
+    list-style: none; /* Bỏ dấu chấm đầu dòng */
+    display: flex; /* Xếp các mục menu con nằm ngang */
+    margin: 0;
+    padding: 0;
+}
+.nav-menu li {
+    margin-left: 20px; /* Khoảng cách giữa các mục menu */
+}
+.nav-menu a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 700;
+    transition: color 0.3s; /* Hiệu ứng chuyển màu mượt 0.3 giây */
+}
+.nav-menu a:hover {
+    color: #A7C7E7; /* Đổi màu chữ khi rê chuột vào */
+}
+
+/* --- 3. Khung nội dung chính --- */
+.container {
+    max-width: 900px; /* Chiều rộng tối đa của khung */
+    margin: 40px auto; /* Tự động căn giữa (trên-dưới 40px, trái-phải auto) */
+    padding: 30px;
+    background-color: #F5F5F5; /* Màu trắng kem cho khung nội dung */
+    border-radius: 15px; /* !! Bo góc mềm mại !! */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+h1 {
+    color: #0056b3;
+    text-align: center; /* Căn giữa tiêu đề */
+}
+p {
+    text-align: center;
+    font-size: 18px;
+}
+
+/* --- 4. Các nút truy cập nhanh --- */
+.quick-links {
+    display: flex;
+    justify-content: space-around; /* Phân bổ đều 3 nút */
+    margin-top: 30px;
+}
+.link-box {
+    display: flex;
+    flex-direction: column; /* Xếp icon và chữ theo chiều dọc */
+    align-items: center; /* Căn giữa theo chiều ngang */
+    justify-content: center; /* Căn giữa theo chiều dọc */
+    
+    width: 200px;
+    height: 150px;
+    background-color: #ffffff;
+    border-radius: 10px; /* Bo góc cho các nút */
+    text-decoration: none;
+    color: #333;
+    font-size: 24px; /* Kích thước của icon emoji */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    
+    /* Hiệu ứng mượt mà */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.link-box:hover {
+    transform: translateY(-5px); /* Hiệu ứng nhấc lên khi rê chuột */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15); /* Đổ bóng đậm hơn */
+}
+.link-box span {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 10px; /* Khoảng cách giữa icon và chữ */
+}
+
+/* --- 5. Chân trang (Footer) --- */
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    color: #f5f5f5; /* Màu chữ trắng kem (nổi trên nền xanh) */
+    font-weight: 700;
+}
+/* --- CSS để làm đẹp và cân đối Video/Playlist nhúng --- */
+.video-container {
+    position: relative; /* Quan trọng để video con tự co giãn */
+    padding-bottom: 56.25%; /* Tỷ lệ 16:9 (9 / 16 * 100%) */
+    height: 0;
+    overflow: hidden; /* Ẩn đi phần thừa nếu có */
+    max-width: 100%; /* Đảm bảo không bao giờ tràn ra ngoài */
+    background: #000; /* Nền đen khi video chưa load hoặc có khoảng trống */
+    border-radius: 10px; /* Bo góc cho vùng chứa video */
+    margin-top: 20px; /* Thêm khoảng cách với tiêu đề bên trên */
+}
+
+.video-container iframe,
+.video-container object,
+.video-container embed {
+    position: absolute; /* Quan trọng: video con tự thích ứng */
+    top: 0;
+    left: 0;
+    width: 100%; /* Chiều rộng 100% của vùng chứa */
+    height: 100%; /* Chiều cao 100% của vùng chứa */
+}
+/* --- CSS CHO GAME XO --- */
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game-board {
+    display: grid;
+    /* Tạo bảng 3 cột, mỗi cột rộng 100px */
+    grid-template-columns: repeat(3, 100px);
+    margin-top: 15px;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    border: 2px solid #555;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Xóa viền thừa để bảng đẹp hơn */
+.cell:nth-child(1), .cell:nth-child(2), .cell:nth-child(3) { border-top: none; }
+.cell:nth-child(1), .cell:nth-child(4), .cell:nth-child(7) { border-left: none; }
+.cell:nth-child(3), .cell:nth-child(6), .cell:nth-child(9) { border-right: none; }
+.cell:nth-child(7), .cell:nth-child(8), .cell:nth-child(9) { border-bottom: none; }
+
+/* Định dạng cho X */
+.cell.x {
+    color: #0056b3; /* Màu xanh */
+}
+
+/* Định dạng cho O */
+.cell.o {
+    color: #d9534f; /* Màu đỏ cam */
+}
+
+.game-restart-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Nunito', sans-serif;
+    border: none;
+    border-radius: 5px;
+    background-color: #0056b3;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.game-restart-button:hover {
+    background-color: #003d82;
+}
+/* --- CSS CHO TRANG ĐĂNG NHẬP (AUTH) --- */
+.auth-form-container {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.auth-form-container h2 {
+    text-align: left;
+    margin-top: 0;
+}
+.auth-form-container input {
+    /* 100% trừ đi 20px padding trái/phải */
+    width: calc(100% - 22px); 
+    padding: 11px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+}
+.auth-form-container button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Nunito', sans-serif;
+    border: none;
+    border-radius: 5px;
+    background-color: #0056b3; /* Xanh dương */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.auth-form-container button:hover {
+    background-color: #003d82;
+}
+
+/* Màu riêng cho nút Đăng ký */
+#register-button {
+    background-color: #28a745; /* Xanh lá */
+}
+#register-button:hover {
+    background-color: #218838;
+}
+
+/* Màu riêng cho nút Đăng xuất */
+#logout-button {
+    background-color: #dc3545; /* Đỏ */
+    margin-top: 15px;
+}
+#logout-button:hover {
+    background-color: #c82333;
+}
+
+/* Nút đi đến nhật ký */
+.diary-link-button {
+    display: block;
+    width: calc(100% - 24px); /* 100% trừ padding */
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Nunito', sans-serif;
+    border-radius: 5px;
+    background-color: #ffc107; /* Vàng */
+    color: #333;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 15px;
+    transition: background-color 0.3s;
+}
+.diary-link-button:hover {
+    background-color: #e0a800;
+}
+
+/* Thông báo lỗi */
+#auth-error {
+    color: #dc3545; /* Đỏ */
+    font-weight: bold;
+    text-align: center;
+    margin-top: 15px;
+}
+/* --- CSS CHO TRANG NHẬT KÝ (DIARY) --- */
+.diary-editor {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.diary-editor h1, .diary-editor p {
+    text-align: left;
+    margin-top: 0;
+}
+
+.diary-editor textarea {
+    width: calc(100% - 22px); /* 100% trừ padding */
+    height: 150px;
+    padding: 11px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    resize: vertical; /* Cho phép kéo dãn chiều dọc */
+}
+
+.diary-editor button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745; /* Xanh lá */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.diary-editor button:hover {
+    background-color: #218838;
+}
+
+#diary-status {
+    font-weight: bold;
+    color: #0056b3;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Khu vực nhật ký cũ */
+.diary-archive {
+    margin-top: 30px;
+}
+
+.diary-archive h2 {
+    text-align: left;
+}
+
+#entries-container .entry {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+#entries-container .entry-date {
+    font-size: 14px;
+    font-weight: 700;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+#entries-container .entry-content {
+    font-size: 16px;
+    line-height: 1.6;
+    white-space: pre-wrap; /* Giữ nguyên xuống dòng của người dùng */
+}
+/* --- CSS CHO NÚT XÓA NHẬT KÝ --- */
+.entry .delete-button {
+    background-color: #dc3545; /* Màu đỏ */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 15px;
+    float: right; /* Đẩy nút sang bên phải */
+    transition: background-color 0.3s;
+}
+
+.entry .delete-button:hover {
+    background-color: #c82333;
+}
+
+/* Thêm 1 chút CSS để dọn dẹp float */
+.entry {
+    overflow: auto; /* Dọn dẹp float */
+}

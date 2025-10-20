@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Góc Của Nhật (GCN)</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="nav-logo">Góc Của Nhật (GCN)</a>
+        
+        <ul class="nav-menu">
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="music.html">Âm nhạc</a></li>
+            <li><a href="games.html">Giải trí</a></li>
+            <li><a href="login.html">Nhật ký</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <h1>Truy Cập Nhật Ký 📓</h1>
+<p>Đây là khu vực riêng tư. Vui lòng đăng nhập hoặc đăng ký.</p>
+
+<div class="auth-form-container" id="login-form">
+    <h2>Đăng Nhập</h2>
+    <input type="email" id="login-email" placeholder="Email của bạn" required>
+    <input type="password" id="login-password" placeholder="Mật khẩu" required>
+    <button id="login-button">Đăng Nhập</button>
+</div>
+
+<div class="auth-form-container" id="register-form">
+    <h2>Chưa có tài khoản? Đăng ký ngay!</h2>
+    <input type="email" id="register-email" placeholder="Email của bạn" required>
+    <input type="password" id="register-password" placeholder="Tạo mật khẩu (ít nhất 6 ký tự)" required>
+    <button id="register-button">Đăng Ký</button>
+</div>
+
+<div class="auth-form-container" id="logout-container" style="display: none;">
+    <h2 id="user-email">Bạn đã đăng nhập.</h2>
+    <p>Giờ bạn có thể truy cập trang nhật ký.</p>
+    <a href="diary.html" class="diary-link-button">ĐI ĐẾN NHẬT KÝ</a>
+    <button id="logout-button">Đăng Xuất</button>
+</div>
+
+<p id="auth-error"></p>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 - Làm bằng cả trái tim bởi Nhật.</p>
+    </footer>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+<script src="js/auth.js"></script>
+<script src="//code.tidio.co/wjsaedeuupbhm3mfljz5y1pwni7hcjso.js" async></script>
+</body>
+</html>
+</body>
+</html>
+</body>
+</html>

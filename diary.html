@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Góc Của Nhật (GCN)</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="nav-logo">Góc Của Nhật (GCN)</a>
+        
+        <ul class="nav-menu">
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="music.html">Âm nhạc</a></li>
+            <li><a href="games.html">Giải trí</a></li>
+            <li><a href="login.html">Nhật ký</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+    <p id="diary-loading-status">Đang kiểm tra đăng nhập, vui lòng chờ...</p>
+
+<div id="diary-wrapper" style="display: none;">
+
+    <div class="diary-editor">
+        <h1>Nhật Ký Của Tôi 📓</h1>
+        <p>Hôm nay bạn cảm thấy thế nào?</p>
+        <textarea id="diary-entry" placeholder="Viết suy nghĩ của bạn ở đây..."></textarea>
+        <button id="save-entry-button">Lưu lại</button>
+        <p id="diary-status"></p>
+    </div>
+
+    <div class="diary-archive">
+        <h2>Những ngày đã qua:</h2>
+        <div id="entries-container">
+            <p>Đang tải nhật ký cũ...</p>
+        </div>
+    </div>
+    
+</div>
+
+<div class="diary-archive">
+    <h2>Những ngày đã qua:</h2>
+    <div id="entries-container">
+        <p>Đang tải nhật ký cũ...</p>
+    </div>
+</div>
+</main>
+
+    <footer class="footer">
+        <p>© 2025 - Làm bằng cả trái tim bởi Nhật.</p>
+    </footer>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+
+<script src="js/diary.js"></script>
+<script src="//code.tidio.co/wjsaedeuupbhm3mfljz5y1pwni7hcjso.js" async></script>
+</body>
+</html>
+</body>
+</html>
