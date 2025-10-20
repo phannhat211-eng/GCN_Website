@@ -6,6 +6,8 @@ body {
     --navbar-bg: #ffffff;           /* Nền menu trắng */
     --text-color: #333;             /* Màu chữ chính (xám đậm) */
     --primary-color: #0056b3;        /* Màu logo, tiêu đề */
+    --secondary-text-color: #555;   /* Màu chữ phụ (xám) */
+    --accent-color: #e55039;        /* Màu nhấn (đỏ cam - mồi rắn) */
 
     /* Gán biến vào thuộc tính */
     background-color: var(--bg-color);
@@ -346,9 +348,8 @@ p {
 .entry .delete-button:hover {
     background-color: #c82333;
 }
-/* Thêm nút Sửa */
 .entry .edit-button {
-    background-color: #6c757d; /* Màu xám */
+    background-color: #6c757d;
     color: white;
     border: none;
     padding: 5px 10px;
@@ -358,13 +359,12 @@ p {
     font-weight: 700;
     margin-top: 15px;
     float: right;
-    margin-left: 5px; /* Khoảng cách với nút Xóa */
+    margin-left: 5px;
     transition: background-color 0.3s;
 }
 .entry .edit-button:hover {
     background-color: #5a6268;
 }
-
 
 /* --- BẮT ĐẦU PHẦN NÂNG CẤP RESPONSIVE --- */
 @media (max-width: 600px) {
@@ -393,12 +393,12 @@ p {
     h1 {
         font-size: 28px;
     }
-    /* 3. Sửa 3 Nút "Góc" */
-    .quick-links {
+    /* 3. Sửa 3 Nút "Góc" (và nút chọn game) */
+    .quick-links { /* Áp dụng cho cả game-selection */
         flex-direction: column;
         align-items: center;
     }
-    .link-box {
+    .link-box { /* Áp dụng cho cả game-select-button */
         width: 90%;
         margin-bottom: 15px;
         height: 120px;
@@ -412,13 +412,24 @@ p {
         float: none;
         width: 100%;
         margin-top: 10px;
-        margin-left: 0; /* Xóa margin trái của nút Sửa */
+        margin-left: 0;
         text-align: center;
     }
-    /* Đảo thứ tự nút trên mobile nếu muốn (Sửa trước, Xóa sau) */
     .entry .edit-button {
-        margin-top: 15px; /* Giữ lại margin top cho nút đầu */
+        margin-top: 15px;
     }
+
+    /* 6. Sửa trang Game Rắn (Snake) - Canvas (ĐÃ THÊM) */
+    .snake-game-container {
+        padding: 0 10px; /* Thêm padding 2 bên */
+    }
+    #snakeCanvas {
+        width: 90vw; /* Rộng 90% */
+        height: 90vw; /* Cao bằng chiều rộng */
+        max-width: 400px; /* Giới hạn max */
+        max-height: 400px; /* Giới hạn max */
+    }
+
 } /* --- KẾT THÚC PHẦN NÂNG CẤP RESPONSIVE --- */
 
 
@@ -429,6 +440,8 @@ body.dark-mode {
     --navbar-bg: #415a75;
     --text-color: #ecf0f1;
     --primary-color: #A7C7E7;
+    --secondary-text-color: #bdc3c7; /* Thêm màu chữ phụ cho dark mode */
+    --accent-color: #e55039;
 }
 .theme-toggle {
     background-color: var(--container-bg);
@@ -542,7 +555,7 @@ body.dark-mode {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 10px; /* Đổi thành 50% nếu muốn tròn hẳn */
+    border-radius: 50%; /* Đã sửa thành tròn */
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 .music-info {
@@ -640,37 +653,85 @@ body.dark-mode {
 }
 .music-cover.rotating img {
     animation: rotate 10s linear infinite;
-    border-radius: 50%; /* Bắt buộc tròn để quay đẹp */
+    /* border-radius đã được set ở .music-cover img */
 }
-/* Thêm bo tròn cả khi không quay */
+/* Đảm bảo ảnh bìa luôn tròn */
 .music-cover img {
     border-radius: 50%;
 }
 /* --- KẾT THÚC NÂNG CẤP ĐĨA NHẠC QUAY --- */
-/* --- BẮT ĐẦU NÂNG CẤP GAME RẮN SĂN MỒI --- */
 
+/* --- BẮT ĐẦU NÂNG CẤP GAME RẮN SĂN MỒI (Giao diện 2.0) --- */
 .snake-game-container {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Căn giữa game */
-    margin-top: 30px; /* Khoảng cách với đường kẻ */
+    align-items: center;
+    margin-top: 30px;
     width: 100%;
 }
-
 .snake-game-container h2 {
     text-align: center;
-}
-
-#snake-score {
-    font-size: 1.2em;
-    font-weight: bold;
     color: var(--primary-color);
-    text-align: center;
+    margin-bottom: 10px;
 }
-
+/* Sửa lỗi biến màu không tồn tại, dùng màu phụ */
+.snake-game-container p:nth-of-type(1) {
+    color: var(--secondary-text-color); /* Màu chữ xám nhẹ */
+    font-size: 0.9em;
+    margin-bottom: 20px;
+}
+#snakeCanvas {
+    display: block;
+    margin: 15px auto;
+    /* Sửa lỗi biến màu không tồn tại, dùng màu chính nhạt hơn */
+    border: 2px solid var(--primary-color); /* Dùng màu chính đậm */
+    border-radius: 15px;
+    background-color: var(--bg-color); /* Nền canvas giống nền body */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+#snake-score {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: var(--accent-color); /* Dùng màu nhấn (màu mồi) */
+    text-align: center;
+    margin-top: 20px;
+}
 /* --- KẾT THÚC NÂNG CẤP GAME RẮN SĂN MỒI --- */
 
-/* --- CSS CHO GIAO DIỆN CHỌN GAME (Làm lại nếu bạn đã xóa) --- */
+/* --- BẮT ĐẦU CSS NÚT ĐIỀU KHIỂN RẮN (MOBILE) (ĐÃ THÊM) --- */
+.snake-controls-mobile {
+    display: none; /* Ẩn trên desktop */
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+.snake-controls-mobile button {
+    background-color: var(--primary-color);
+    color: var(--navbar-bg);
+    border: none;
+    border-radius: 8px;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 5px;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+.snake-controls-mobile div {
+    display: flex;
+    justify-content: center;
+}
+@media (max-width: 600px) {
+    .snake-controls-mobile {
+        display: flex; /* Hiện trên mobile */
+    }
+    /* Đã thêm code responsive canvas rắn ở trong khối @media chính */
+}
+/* --- KẾT THÚC CSS NÚT ĐIỀU KHIỂN RẮN (MOBILE) --- */
+
+/* --- CSS CHO GIAO DIỆN CHỌN GAME (ĐÃ THÊM) --- */
 .game-selection {
     margin-bottom: 30px;
 }
