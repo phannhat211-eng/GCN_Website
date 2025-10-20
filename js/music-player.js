@@ -15,8 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             title: 'Kho Báu (with Rhymastic)',
             artist: 'Trọng Hiếu',
-            src: 'C:\Users\phann\OneDrive\Desktop\GCN_Website\music\Kho Báu (with Rhymastic)', // Đường dẫn đến file MP3 của bạn
-            cover: 'C:\Users\phann\OneDrive\Desktop\GCN_Website\images\cover-placeholder-2' // Đường dẫn đến ảnh bìa của bạn
+            src: 'Kho Báu (with Rhymastic)', // Đường dẫn đến file MP3 của bạn
+            cover: 'cover-placeholder-2' // Đường dẫn đến ảnh bìa của bạn
         },
         {
             title: 'Kỵ Sĩ Và Ánh Sao',
