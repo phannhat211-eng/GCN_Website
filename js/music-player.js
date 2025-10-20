@@ -97,6 +97,6 @@ document.addEventListener('DOMContentLoaded', () => {
     audio.addEventListener('ended', nextSong);
 
     // --- 7. Tải Bài hát Đầu tiên khi Mở trang ---
-    loadSong(songs[currentSongIndex]);
+    //loadSong(songs[currentSongIndex]);
 
 });
