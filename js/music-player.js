@@ -15,21 +15,21 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             title: 'Kho Báu (with Rhymastic)',
             artist: 'Trọng Hiếu',
-            src: 'music\Kho Báu (with Rhymastic).mp3', // Đường dẫn đến file MP3 của bạn
-            cover: 'images\cover-placeholder-2.png' // Đường dẫn đến ảnh bìa của bạn
+            src: 'music/kho_bau.mp3', // Đường dẫn đến file MP3 của bạn
+            cover: 'images/cover-placeholder-2.png' // Đường dẫn đến ảnh bìa của bạn
         },
         {
             title: 'Kỵ Sĩ Và Ánh Sao',
             artist: 'Đông Nhi',
-            src: 'music\Kỵ Sĩ Và Ánh Sao.mp3',
-            cover: 'images\cover-placeholder-4.png'
+            src: 'music/ky_si_va_anh_sao.mp3',
+            cover: 'images/cover-placeholder-4.png'
         },
         // Thêm các bài hát khác ở đây theo cấu trúc tương tự
         {
             title: 'Phép Màu',
             artist: 'MAYDAY ft Minh Tốc',
-            src: 'music\Phép Màu.mp3',
-            cover: 'images\cover-placeholder-3.png' // Dùng ảnh placeholder nếu không có bìa riêng
+            src: 'music/phep_mau.mp3',
+            cover: 'images/cover-placeholder-3.png' // Dùng ảnh placeholder nếu không có bìa riêng
         }
     ];
 
