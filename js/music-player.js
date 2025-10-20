@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextButton = document.getElementById('next-button');
     const playPauseIcon = playPauseButton.querySelector('i'); // Lấy icon bên trong nút
     const playlistItemsContainer = document.getElementById('playlist-items'); // Lấy container playlist
+    const musicCoverContainer = document.querySelector('.music-cover'); // Lấy container ảnh bìa (ĐÃ THÊM)
 
     // --- 2. Định nghĩa Danh sách Bài hát ---
     const songs = [
@@ -25,10 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
             cover: 'images/cover-placeholder-4.png'
         },
         {
-            title: 'Lộc Hải Vi Đường', // Tên bài thứ 3 (Sửa nếu cần)
-            artist: 'Đồng Nhân', // Tên ca sĩ thứ 3 (Sửa nếu cần)
-            src: 'music/loc_hai_2.mp3', // File nhạc thứ 3
-            cover: 'images/cover-placeholder-5.png' // Ảnh bìa thứ 3 (Sửa nếu có ảnh riêng)
+            title: 'Lộc Hải Vi Đường',
+            artist: 'Đồng Nhân',
+            src: 'music/loc_hai_2.mp3',
+            cover: 'images/cover-placeholder-5.png' // Sửa lại placeholder đúng
         },
         {
             title: 'Phép Màu',
@@ -38,22 +39,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
 
-    let currentSongIndex = 0; // Bắt đầu với bài hát đầu tiên
-    let isPlaying = false; // Trạng thái đang phát hay không
+    let currentSongIndex = 0;
+    let isPlaying = false;
 
     // --- HÀM: Vẽ danh sách nhạc ra HTML ---
     function renderPlaylist() {
-        playlistItemsContainer.innerHTML = ''; // Xóa list cũ
+        playlistItemsContainer.innerHTML = '';
         songs.forEach((song, index) => {
             const listItem = document.createElement('li');
             listItem.textContent = `${index + 1}. ${song.title} - ${song.artist}`;
-            listItem.dataset.index = index; // Lưu vị trí bài hát
+            listItem.dataset.index = index;
 
-            // Thêm sự kiện click cho từng bài
             listItem.addEventListener('click', () => {
                 currentSongIndex = index;
                 loadSong(songs[currentSongIndex]);
-                playSong(); // Phát nhạc luôn khi click
+                playSong();
             });
 
             playlistItemsContainer.appendChild(listItem);
@@ -72,8 +72,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- HÀM: Tải một Bài hát (ĐÃ GỘP) ---
+    // --- HÀM: Tải một Bài hát ---
     function loadSong(song) {
+        // THÊM 3 DÒNG NÀY VÀO ĐẦU HÀM (Đĩa quay):
+        musicCoverContainer.style.animation = 'none'; // Tắt animation tạm thời
+        musicCoverContainer.offsetHeight; // Ép trình duyệt vẽ lại để reset
+        musicCoverContainer.style.animation = null; // Bật lại animation
+
         songTitle.textContent = song.title;
         songArtist.textContent = song.artist;
         audio.src = song.src;
@@ -87,8 +92,9 @@ document.addEventListener('DOMContentLoaded', () => {
         playPauseButton.classList.remove('play');
         playPauseIcon.classList.remove('fa-play');
         playPauseIcon.classList.add('fa-pause');
-        console.log("Đang cố phát:", audio.src); // Giữ lại dòng debug nếu cần
-        audio.play().catch(error => console.error("Lỗi khi phát nhạc:", error)); // Thêm .catch để bắt lỗi rõ hơn
+        console.log("Đang cố phát:", audio.src);
+        audio.play().catch(error => console.error("Lỗi khi phát nhạc:", error));
+        musicCoverContainer.classList.add('rotating'); // <-- THÊM DÒNG NÀY (Đĩa quay)
     }
 
     // --- HÀM: Tạm dừng nhạc ---
@@ -98,6 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
         playPauseIcon.classList.remove('fa-pause');
         playPauseIcon.classList.add('fa-play');
         audio.pause();
+        musicCoverContainer.classList.remove('rotating'); // <-- THÊM DÒNG NÀY (Đĩa quay)
     }
 
     // --- HÀM: Chuyển bài trước ---
