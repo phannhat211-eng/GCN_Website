@@ -24,6 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
             src: 'music/ky_si_va_anh_sao.mp3',
             cover: 'images/cover-placeholder-4.png'
         },
+        {
+            title: 'Lộc Hải Vi Đường',
+            artist: 'Đồng Nhân',
+            src: 'music/loc_hai_2.mp3',
+            cover: 'images/cover-placeholder-5.png'
+        },
         // Thêm các bài hát khác ở đây theo cấu trúc tương tự
         {
             title: 'Phép Màu',
@@ -97,6 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
     audio.addEventListener('ended', nextSong);
 
     // --- 7. Tải Bài hát Đầu tiên khi Mở trang ---
-    //loadSong(songs[currentSongIndex]);
+    loadSong(songs[currentSongIndex]);
 
 });
