@@ -681,3 +681,24 @@ hr {
 }
 
 /* --- KẾT THÚC NÂNG CẤP FLAPPY BIRD --- */
+/* --- BẮT ĐẦU NÂNG CẤP GIAO DIỆN CHỌN GAME --- */
+
+/* Dùng lại style của quick-links và link-box cho nút chọn game */
+.game-selection {
+    margin-bottom: 30px; /* Thêm khoảng cách dưới nút chọn */
+}
+
+.game-select-button {
+    /* Reset vài style mặc định của button */
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    /* Kế thừa các style khác từ .link-box */
+}
+
+.game-wrapper {
+    width: 100%; /* Đảm bảo game container chiếm đủ rộng */
+}
+
+/* --- KẾT THÚC NÂNG CẤP GIAO DIỆN CHỌN GAME --- */
