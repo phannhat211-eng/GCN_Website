@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>Góc Của Nhật (GCN)</title>
-    
+
     <link rel="stylesheet" href="css/style.css">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
@@ -16,13 +16,13 @@
 
     <nav class="navbar">
         <a href="index.html" class="nav-logo">Góc Của Nhật (GCN)</a>
-        
+
         <ul class="nav-menu">
             <li><a href="index.html">Trang chủ</a></li>
             <li><a href="music.html">Âm nhạc</a></li>
             <li><a href="games.html">Giải trí</a></li>
             <li><a href="login.html">Nhật ký</a></li>
-        </ul>
+            </ul>
         <button id="theme-toggle-button" class="theme-toggle">🌙</button>
     </nav>
 
@@ -32,11 +32,14 @@
 
         <div class="game-container">
             <h2 id="game-status">Lượt của X</h2>
-    
             <div id="caro-board" class="caro-board">
                 </div>
-            
             <button class="game-restart-button" id="restartButton">Chơi lại</button>
+        </div> <hr> <div class="flappy-bird-container">
+            <h2>Flappy Bird! 🐦</h2>
+            <p>Nhấn phím cách (Space) hoặc nhấp chuột để bay.</p>
+            <canvas id="flappyBirdCanvas" width="320" height="480" style="border: 1px solid var(--text-color); background-color: #70c5ce;"></canvas>
+            <p id="flappy-score">Điểm: 0</p>
         </div>
         </main>
 
@@ -44,9 +47,6 @@
         <p>© 2025 - Làm bằng cả trái tim bởi Nhật.</p>
     </footer>
 
-    <script src="js/main.js"></script>
-    <script src="//code.tidio.co/wjsaedeuupbhm3mfljz5y1pwni7hcjso.js" async></script>
-    <script src="js/theme.js"></script>
-
-</body>
+    <script src="js/main.js"></script> <script src="//code.tidio.co/wjsaedeuupbhm3mfljz5y1pwni7hcjso.js" async></script>
+    <script src="js/theme.js"></script> <script src="js/flappy-bird.js"></script> </body>
 </html>
