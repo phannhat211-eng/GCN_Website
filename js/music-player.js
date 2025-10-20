@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Lộc Hải Vi Đường', // Tên bài thứ 3 (Sửa nếu cần)
             artist: 'Đồng Nhân', // Tên ca sĩ thứ 3 (Sửa nếu cần)
             src: 'music/loc_hai_2.mp3', // File nhạc thứ 3
-            cover: 'images/cover-placeholder.png' // Ảnh bìa thứ 3 (Sửa nếu có ảnh riêng)
+            cover: 'images/cover-placeholder-5.png' // Ảnh bìa thứ 3 (Sửa nếu có ảnh riêng)
         },
         {
             title: 'Phép Màu',
