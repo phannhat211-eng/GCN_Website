@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 1. DÁN "CHÌA KHÓA" CỦA BẠN VÀO ĐÂY ---
     const firebaseConfig = {
-  apiKey: "AIzaSyC-QRSW72xkgib98QThqCfA5sS_ilAbvUE",
+  apiKey: "AIzaSyC-QrSW72xKgib98QThqCfA5sS_i1abvUE",
   authDomain: "gcn-website.firebaseapp.com",
   projectId: "gcn-website",
   storageBucket: "gcn-website.firebasestorage.app",
