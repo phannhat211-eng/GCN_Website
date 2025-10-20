@@ -3,13 +3,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 1. DÁN "CHÌA KHÓA" CỦA BẠN VÀO ĐÂY ---
     const firebaseConfig = {
-  apiKey: "AIzaSyC-QrSW72xKgib98QThqCfA5sS_i1abvUE",
-  authDomain: "gcn-website.firebaseapp.com",
-  projectId: "gcn-website",
-  storageBucket: "gcn-website.firebasestorage.app",
-  messagingSenderId: "289554109673",
-  appId: "1:289554109673:web:c351328dc4d4062a4c8c78"
-};
+      apiKey: "AIzaSyC-QRSW72xkgib98QThqCfA5sS_ilAbvUE",
+      authDomain: "gcn-website.firebaseapp.com",
+      projectId: "gcn-website",
+      storageBucket: "gcn-website.firebasestorage.app",
+      messagingSenderId: "289554109673",
+      appId: "1:289554109673:web:c351328dc4d4062a4c8c78"
+    };
 
     // --- 2. KHỞI TẠO FIREBASE ---
     firebase.initializeApp(firebaseConfig);
@@ -24,19 +24,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const diaryWrapper = document.getElementById('diary-wrapper');
     const diaryLoadingStatus = document.getElementById('diary-loading-status');
 
-    let currentUserId = null;
+    // **LẤY CÁC THÀNH PHẦN MODAL MỚI**
+    const editModal = document.getElementById('edit-modal');
+    const editEntryTextarea = document.getElementById('edit-entry-textarea');
+    const saveEditButton = document.getElementById('save-edit-button');
+    const cancelEditButton = document.getElementById('cancel-edit-button');
 
-    // --- 4. HÀM CHÍNH: KIỂM TRA AN NINH (SỬA LỖI DỨT ĐIỂM) ---
-    // auth.onAuthStateChanged trả về một hàm "unsubscribe"
-    // Chúng ta gọi nó là "unsubscribe"
+    let currentUserId = null;
+    let currentEditingDocId = null; // Biến lưu ID của entry đang sửa
+
+    // --- 4. HÀM CHÍNH: KIỂM TRA AN NINH ---
     const unsubscribe = auth.onAuthStateChanged(user => {
-        
-        // Ngay khi nhận được câu trả lời ĐẦU TIÊN từ Firebase,
-        // chúng ta "hủy đăng ký" (unsubscribe) để nó không chạy 2 lần.
-        unsubscribe(); 
+        unsubscribe(); // Chạy 1 lần duy nhất
 
         if (user) {
-            // --- NGƯỜI DÙNG ĐÃ ĐĂNG NHẬP (Chắc chắn) ---
+            // Đã đăng nhập
             console.log("Xác nhận đã đăng nhập:", user.uid);
             currentUserId = user.uid;
             
@@ -46,31 +48,19 @@ document.addEventListener('DOMContentLoaded', () => {
             loadDiaryEntries(currentUserId);
             
         } else {
-            // --- NGƯỜI DÙNG CHƯA ĐĂNG NHẬP (Chắc chắn) ---
+            // Chưa đăng nhập
             console.log("Xác nhận chưa đăng nhập. Đang chuyển về login...");
-            
             diaryLoadingStatus.textContent = "Chưa đăng nhập. Đang chuyển về trang đăng nhập...";
-            
-            // Không cần chờ nữa, chuyển hướng ngay lập tức
             window.location.href = 'login.html'; 
         }
     });
 
-    // --- 5. LẮNG NGHE SỰ KIỆN NÚT "LƯU LẠI" ---
+    // --- 5. LẮNG NGHE SỰ KIỆN NÚT "LƯU LẠI" (VIẾT MỚI) ---
     saveEntryButton.addEventListener('click', e => {
         e.preventDefault();
-        
         const entryContent = diaryEntryText.value;
-
-        if (entryContent.trim() === "") {
-            diaryStatus.textContent = "Bạn chưa viết gì cả!";
-            return;
-        }
-        if (!currentUserId) {
-            diaryStatus.textContent = "Lỗi! Vui lòng đăng nhập lại.";
-            return;
-        }
-
+        if (entryContent.trim() === "") return;
+        if (!currentUserId) return;
         diaryStatus.textContent = "Đang lưu...";
 
         db.collection('diaryEntries').add({
@@ -78,8 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
             content: entryContent,
             createdAt: firebase.firestore.FieldValue.serverTimestamp()
         })
-        .then(docRef => {
-            console.log("Đã lưu nhật ký với ID:", docRef.id);
+        .then(() => {
             diaryStatus.textContent = "Đã lưu thành công!";
             diaryEntryText.value = "";
             loadDiaryEntries(currentUserId); 
@@ -93,7 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 6. HÀM TẢI CÁC NHẬT KÝ CŨ ---
     function loadDiaryEntries(userId) {
         if (!userId) return;
-
         entriesContainer.innerHTML = "<p>Đang tải nhật ký cũ...</p>";
 
         db.collection('diaryEntries')
@@ -105,7 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     entriesContainer.innerHTML = "<p>Bạn chưa có nhật ký nào cả. Hãy viết gì đó đi!</p>";
                     return;
                 }
-
                 entriesContainer.innerHTML = "";
                 
                 querySnapshot.forEach(doc => {
@@ -114,13 +101,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     const entryElement = document.createElement('div');
                     entryElement.className = 'entry';
-                    
+                    // **THÊM NÚT "SỬA" VÀO ĐÂY**
                     entryElement.innerHTML = `
                         <div class="entry-date">${date}</div>
                         <div class="entry-content">${entry.content}</div>
+                        <button class="edit-button" data-id="${doc.id}" data-content="${escape(entry.content)}">Sửa</button>
                         <button class="delete-button" data-id="${doc.id}">Xóa</button>
                     `;
-                    
                     entriesContainer.appendChild(entryElement);
                 });
             })
@@ -130,15 +117,15 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
 
-    // --- 7. BỘ NÃO LẮNG NGHE SỰ KIỆN NÚT "XÓA" ---
+    // --- 7. BỘ NÃO LẮNG NGHE SỰ KIỆN NÚT "XÓA" VÀ "SỬA" ---
     entriesContainer.addEventListener('click', e => {
+        
+        // --- CHỨC NĂNG XÓA (code cũ) ---
         if (e.target.classList.contains('delete-button')) {
             const docId = e.target.dataset.id;
-            
-            if (confirm('Bạn có chắc muốn xóa nhật ký này không? Hành động này không thể hoàn tác!')) {
+            if (confirm('Bạn có chắc muốn xóa nhật ký này không?')) {
                 db.collection('diaryEntries').doc(docId).delete()
                     .then(() => {
-                        console.log("Đã xóa nhật ký thành công!");
                         e.target.closest('.entry').remove();
                     })
                     .catch(error => {
@@ -147,6 +134,60 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
             }
         }
+        
+        // --- CHỨC NĂNG SỬA (CODE MỚI) ---
+        if (e.target.classList.contains('edit-button')) {
+            // Lấy ID và nội dung cũ từ nút
+            currentEditingDocId = e.target.dataset.id;
+            const content = unescape(e.target.dataset.content);
+            
+            // Đổ nội dung cũ vào hộp thoại
+            editEntryTextarea.value = content;
+            
+            // Hiện hộp thoại
+            editModal.style.display = 'flex';
+        }
+    });
+    
+    // --- 8. BỘ NÃO CHO NÚT "HỦY BỎ" (TRONG MODAL) ---
+    cancelEditButton.addEventListener('click', () => {
+        // Ẩn hộp thoại
+        editModal.style.display = 'none';
+        currentEditingDocId = null; // Xóa ID đang sửa
+        editEntryTextarea.value = ""; // Xóa text
+    });
+    
+    // --- 9. BỘ NÃO CHO NÚT "LƯU THAY ĐỔI" (TRONG MODAL) ---
+    saveEditButton.addEventListener('click', () => {
+        const newContent = editEntryTextarea.value;
+        
+        if (!currentEditingDocId || newContent.trim() === "") {
+            return;
+        }
+        
+        saveEditButton.textContent = "Đang lưu..."; // Báo đang lưu
+        
+        // Gọi Firestore để CẬP NHẬT (update)
+        db.collection('diaryEntries').doc(currentEditingDocId).update({
+            content: newContent
+            // (Không cần cập nhật createdAt, giữ ngày gốc)
+        })
+        .then(() => {
+            console.log("Cập nhật thành công!");
+            // Ẩn hộp thoại
+            editModal.style.display = 'none';
+            currentEditingDocId = null;
+            editEntryTextarea.value = "";
+            saveEditButton.textContent = "Lưu Thay Đổi"; // Trả lại text cũ
+            
+            // Tải lại toàn bộ nhật ký để thấy thay đổi
+            loadDiaryEntries(currentUserId);
+        })
+        .catch(error => {
+            console.error("Lỗi khi cập nhật:", error);
+            saveEditButton.textContent = "Lưu Thay Đổi";
+            alert("Lỗi, không thể lưu thay đổi.");
+        });
     });
 
 });

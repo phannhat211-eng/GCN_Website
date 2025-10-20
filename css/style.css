@@ -457,3 +457,84 @@ body.dark-mode {
     }
 }
 /* --- KẾT THÚC NÂNG CẤP DARK MODE --- */
+/* --- BẮT ĐẦU NÂNG CẤP EDIT MODAL (NHẬT KÝ) --- */
+
+/* Lớp phủ mờ toàn màn hình */
+.modal-overlay {
+    position: fixed; /* Nằm cố định trên màn hình */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Nền đen mờ 60% */
+    display: flex; /* Dùng flex để căn giữa */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Nằm trên mọi thứ khác */
+}
+
+/* Hộp thoại nội dung */
+.modal-content {
+    background-color: var(--navbar-bg); /* Dùng biến màu nền menu */
+    color: var(--text-color); /* Dùng biến màu chữ */
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    width: 90%; /* Rộng 90% màn hình */
+    max-width: 500px; /* Nhưng không quá 500px */
+}
+
+.modal-content h2 {
+    text-align: left;
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+/* Ô text area để chỉnh sửa */
+.modal-content textarea {
+    width: calc(100% - 22px); /* 100% trừ padding */
+    height: 200px; /* Cho cao hơn ô viết mới */
+    padding: 11px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    resize: vertical;
+}
+
+/* Khu vực chứa 2 nút Lưu / Hủy */
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end; /* Đẩy 2 nút về bên phải */
+    margin-top: 20px;
+}
+
+.modal-buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+/* Nút Lưu (màu xanh lá) */
+#save-edit-button {
+    background-color: #28a745;
+    color: white;
+}
+#save-edit-button:hover {
+    background-color: #218838;
+}
+
+/* Nút Hủy (màu xám) */
+#cancel-edit-button {
+    background-color: #6c757d;
+    color: white;
+}
+#cancel-edit-button:hover {
+    background-color: #5a6268;
+}
+
+/* --- KẾT THÚC NÂNG CẤP EDIT MODAL --- */
