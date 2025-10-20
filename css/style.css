@@ -419,6 +419,32 @@ p {
     /* Làm cho nút cuối cùng không bị dư khoảng cách */
     .link-box:last-child {
         margin-bottom: 0;
+        /* ... code cũ của .link-box:last-child ... */
+
+/* DÁN CODE MỚI BẮT ĐẦU TỪ ĐÂY */
+
+/* 4. Sửa trang Game (XO) */
+.game-board {
+    /* Bảng 3x3, mỗi ô 80px (thay vì 100px) */
+    grid-template-columns: repeat(3, 80px); 
+}
+
+.cell {
+    width: 80px;
+    height: 80px;
+    font-size: 40px; /* Giảm cỡ chữ X/O cho vừa ô */
+}
+
+/* 5. Sửa trang Nhật ký */
+.entry .delete-button {
+    float: none; /* Bỏ float: right */
+    width: 100%; /* Cho nút Xóa rộng 100% */
+    margin-top: 15px; /* Thêm khoảng cách với nội dung */
+    text-align: center; /* Căn giữa chữ */
+}
+
+/* ĐÂY LÀ DẤU ĐÓNG NGOẶC } CUỐI CÙNG CỦA @media (max-width: 600px) */
+}
     }
     
 } /* --- KẾT THÚC PHẦN NÂNG CẤP RESPONSIVE --- */
