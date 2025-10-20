@@ -647,3 +647,40 @@ body.dark-mode {
     border-radius: 50%;
 }
 /* --- KẾT THÚC NÂNG CẤP ĐĨA NHẠC QUAY --- */
+/* --- BẮT ĐẦU NÂNG CẤP GAME RẮN SĂN MỒI --- */
+
+.snake-game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Căn giữa game */
+    margin-top: 30px; /* Khoảng cách với đường kẻ */
+    width: 100%;
+}
+
+.snake-game-container h2 {
+    text-align: center;
+}
+
+#snake-score {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+/* --- KẾT THÚC NÂNG CẤP GAME RẮN SĂN MỒI --- */
+
+/* --- CSS CHO GIAO DIỆN CHỌN GAME (Làm lại nếu bạn đã xóa) --- */
+.game-selection {
+    margin-bottom: 30px;
+}
+.game-select-button {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+}
+.game-wrapper {
+    width: 100%;
+}
+/* --- KẾT THÚC CSS CHỌN GAME --- */

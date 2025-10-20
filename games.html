@@ -28,14 +28,35 @@
     </nav>
 
     <main class="container">
-        <h1>Xả Stress Nào! 🎮</h1>
-        <p>Thử sức với bàn cờ Caro 15x15!</p>
+        <h1>Chọn Game Nào! 🎮</h1>
+        <p>Nhấp vào game bạn muốn chơi.</p>
 
-        <div class="game-container">
-            <h2 id="game-status">Lượt của X</h2>
-            <div id="caro-board" class="caro-board">
-                </div>
-            <button class="game-restart-button" id="restartButton">Chơi lại</button>
+        <div class="game-selection quick-links">
+            <button class="game-select-button link-box" data-game="caro">
+                <span style="font-size: 40px;">🏁</span> <span>Caro 15x15</span>
+            </button>
+            <button class="game-select-button link-box" data-game="snake">
+                <span style="font-size: 40px;">🐍</span> <span>Rắn Săn Mồi</span>
+            </button>
+        </div>
+
+        <div id="caro-game-wrapper" class="game-wrapper" style="display: none;">
+            <hr>
+            <div class="game-container">
+                <h2 id="game-status">Lượt của X</h2>
+                <div id="caro-board" class="caro-board"></div>
+                <button class="game-restart-button" id="restartButton">Chơi lại</button>
+            </div>
+        </div>
+
+        <div id="snake-game-wrapper" class="game-wrapper" style="display: none;">
+            <hr>
+            <div class="snake-game-container">
+                 <h2>Rắn Săn Mồi! 🐍</h2>
+                 <p>Dùng phím mũi tên (← ↑ → ↓) để điều khiển.</p>
+                 <canvas id="snakeCanvas" width="400" height="400" style="border: 1px solid var(--text-color); background-color: #2c3e50; display: block; margin: 10px auto;"></canvas>
+                 <p id="snake-score">Điểm: 0</p>
+            </div>
         </div>
         </main>
 
@@ -44,5 +65,5 @@
     </footer>
 
     <script src="js/main.js"></script> <script src="//code.tidio.co/wjsaedeuupbhm3mfljz5y1pwni7hcjso.js" async></script>
-    <script src="js/theme.js"></script> </body>
+    <script src="js/theme.js"></script> <script src="js/snake-game.js"></script> <script src="js/games-page.js"></script> </body>
 </html>
