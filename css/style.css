@@ -6,7 +6,7 @@ body {
     --navbar-bg: #ffffff;           /* Nền menu trắng */
     --text-color: #333;             /* Màu chữ chính (xám đậm) */
     --primary-color: #0056b3;        /* Màu logo, tiêu đề */
-    
+
     /* Gán biến vào thuộc tính */
     background-color: var(--bg-color);
     color: var(--text-color);
@@ -61,8 +61,6 @@ body {
     background-color: var(--container-bg);
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    
-    /* Thêm hiệu ứng chuyển màu mượt */
     transition: background-color 0.3s;
 }
 h1 {
@@ -85,7 +83,6 @@ p {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
     width: 200px;
     height: 150px;
     background-color: var(--navbar-bg);
@@ -94,7 +91,6 @@ p {
     color: var(--text-color);
     font-size: 24px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    
     transition: transform 0.3s, box-shadow 0.3s;
 }
 .link-box:hover {
@@ -115,7 +111,7 @@ p {
     font-weight: 700;
 }
 
-/* --- CSS VIDEO/PLAYLIST --- */
+/* --- CSS VIDEO/PLAYLIST NHÚNG --- */
 .video-container {
     position: relative;
     padding-bottom: 56.25%;
@@ -134,64 +130,45 @@ p {
     height: 100%;
 }
 
-/* --- CSS CHO GAME CARO 15x15 (CODE MỚI) --- */
+/* --- CSS CHO GAME CARO 15x15 --- */
 .game-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* Thêm vào để bảng cờ cuộn được trên điện thoại */
     width: 100%;
-    overflow-x: auto; /* Cho phép cuộn ngang nếu bảng quá to */
+    overflow-x: auto;
 }
-
 .caro-board {
     display: grid;
-    /* Định nghĩa bảng 15 cột, mỗi cột 30px */
     grid-template-columns: repeat(15, 30px);
-    
-    /* Tạo viền ngoài cho bảng cờ */
     border: 2px solid var(--text-color);
     margin-top: 20px;
-    background-color: var(--navbar-bg); /* Nền cho bảng cờ */
+    background-color: var(--navbar-bg);
 }
-
 .caro-cell {
     width: 30px;
     height: 30px;
-    /* Tạo đường lưới mỏng bên trong */
-    border: 1px solid #ccc; 
-    
+    border: 1px solid #ccc;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 20px; /* Cỡ chữ X, O */
+    font-size: 20px;
     font-weight: bold;
     cursor: pointer;
-    
-    /* Xóa viền ngoài trùng lặp (để viền 2px bên ngoài) */
-    box-sizing: border-box; /* Quan trọng */
+    box-sizing: border-box;
 }
-
 .caro-cell:hover {
-    background-color: var(--bg-color); /* Tô màu ô khi rê chuột */
+    background-color: var(--bg-color);
 }
-
-/* Định dạng cho X */
 .caro-cell.x {
     color: var(--primary-color);
 }
-
-/* Định dạng cho O */
 .caro-cell.o {
-    color: #d9534f; /* Giữ màu đỏ cam */
+    color: #d9534f;
 }
-
-/* Ô chiến thắng (sẽ dùng ở bước sau) */
 .caro-cell.win {
-    background-color: #ffc107; /* Tô màu vàng cho 5 ô thắng */
+    background-color: #ffc107;
 }
-
-/* Nút Chơi Lại (không đổi nhiều) */
 .game-restart-button {
     margin-top: 20px;
     padding: 10px 20px;
@@ -208,8 +185,6 @@ p {
 .game-restart-button:hover {
     background-color: #003d82;
 }
-/* --- KẾT THÚC CSS GAME CARO --- */
-
 
 /* --- CSS CHO TRANG ĐĂNG NHẬP (AUTH) --- */
 .auth-form-container {
@@ -224,7 +199,7 @@ p {
     margin-top: 0;
 }
 .auth-form-container input {
-    width: calc(100% - 22px); 
+    width: calc(100% - 22px);
     padding: 11px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
@@ -342,6 +317,7 @@ p {
     border-radius: 8px;
     margin-bottom: 15px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    overflow: auto; /* Dọn dẹp float */
 }
 #entries-container .entry-date {
     font-size: 14px;
@@ -370,14 +346,28 @@ p {
 .entry .delete-button:hover {
     background-color: #c82333;
 }
-.entry {
-    overflow: auto;
+/* Thêm nút Sửa */
+.entry .edit-button {
+    background-color: #6c757d; /* Màu xám */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 15px;
+    float: right;
+    margin-left: 5px; /* Khoảng cách với nút Xóa */
+    transition: background-color 0.3s;
+}
+.entry .edit-button:hover {
+    background-color: #5a6268;
 }
 
-/* --- BẮT ĐẦU PHẦN NÂNG CẤP RESPONSIVE --- */
-/* (Đã sửa lỗi cú pháp và xóa code game 3x3) */
-@media (max-width: 600px) {
 
+/* --- BẮT ĐẦU PHẦN NÂNG CẤP RESPONSIVE --- */
+@media (max-width: 600px) {
     /* 1. Sửa Menu (Navbar) */
     .navbar {
         flex-direction: column;
@@ -395,16 +385,14 @@ p {
         margin-left: 8px;
         margin-right: 8px;
     }
-
     /* 2. Sửa Khung nội dung chính */
     .container {
-        margin: 20px 10px; 
+        margin: 20px 10px;
         padding: 20px;
     }
     h1 {
         font-size: 28px;
     }
-
     /* 3. Sửa 3 Nút "Góc" */
     .quick-links {
         flex-direction: column;
@@ -418,18 +406,19 @@ p {
     .link-box:last-child {
         margin-bottom: 0;
     }
-
-    /* 4. (ĐÃ XÓA CODE GAME 3x3 CŨ) */
-    /* Code .game-container mới đã tự xử lý cuộn ngang */
-
-    /* 5. Sửa trang Nhật ký */
-    .entry .delete-button {
+    /* 5. Sửa trang Nhật ký (Nút Xóa/Sửa) */
+    .entry .delete-button,
+    .entry .edit-button {
         float: none;
         width: 100%;
-        margin-top: 15px;
+        margin-top: 10px;
+        margin-left: 0; /* Xóa margin trái của nút Sửa */
         text-align: center;
     }
-    
+    /* Đảo thứ tự nút trên mobile nếu muốn (Sửa trước, Xóa sau) */
+    .entry .edit-button {
+        margin-top: 15px; /* Giữ lại margin top cho nút đầu */
+    }
 } /* --- KẾT THÚC PHẦN NÂNG CẤP RESPONSIVE --- */
 
 
@@ -459,7 +448,7 @@ body.dark-mode {
 }
 @media (max-width: 600px) {
     .theme-toggle {
-        position: absolute; 
+        position: absolute;
         top: 15px;
         right: 15px;
         margin-left: 0;
@@ -533,58 +522,48 @@ body.dark-mode {
     background-color: #5a6268;
 }
 /* --- KẾT THÚC NÂNG CẤP EDIT MODAL --- */
-/* --- BẮT ĐẦU NÂNG CẤP MUSIC PLAYER --- */
 
+/* --- BẮT ĐẦU NÂNG CẤP MUSIC PLAYER --- */
 .music-player-container {
     display: flex;
-    flex-direction: column; /* Xếp các phần tử theo chiều dọc */
-    align-items: center; /* Căn giữa theo chiều ngang */
+    flex-direction: column;
+    align-items: center;
     padding: 20px;
-    background-color: var(--navbar-bg); /* Dùng màu nền menu */
+    background-color: var(--navbar-bg);
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
-
-/* Ảnh bìa */
 .music-cover {
     width: 250px;
     height: 250px;
     margin-bottom: 20px;
 }
-
 .music-cover img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Đảm bảo ảnh vừa vặn */
-    border-radius: 10px;
+    object-fit: cover;
+    border-radius: 10px; /* Đổi thành 50% nếu muốn tròn hẳn */
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
-
-/* Thông tin nhạc */
 .music-info {
     text-align: center;
     margin-bottom: 20px;
 }
-
 .music-info h2 {
     font-size: 24px;
     color: var(--primary-color);
     margin: 0 0 5px 0;
 }
-
 .music-info p {
     font-size: 16px;
     color: var(--text-color);
     margin: 0;
 }
-
-/* Nút điều khiển */
 .music-controls {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
 .control-button {
     background-color: transparent;
     border: none;
@@ -595,12 +574,9 @@ body.dark-mode {
     padding: 10px;
     transition: color 0.3s;
 }
-
 .control-button:hover {
     color: var(--primary-color);
 }
-
-/* Nút Play/Pause (nút lớn ở giữa) */
 .control-button.play {
     width: 60px;
     height: 60px;
@@ -612,10 +588,62 @@ body.dark-mode {
     justify-content: center;
     align-items: center;
 }
-
 .control-button.play:hover {
-    background-color: #003d82; /* Màu đậm hơn khi hover */
+    background-color: #003d82;
     color: var(--navbar-bg);
 }
-
 /* --- KẾT THÚC NÂNG CẤP MUSIC PLAYER --- */
+
+/* --- BẮT ĐẦU NÂNG CẤP PLAYLIST --- */
+.playlist-container {
+    margin-top: 30px;
+    width: 100%;
+}
+.playlist-container h2 {
+    text-align: left;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+#playlist-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+#playlist-items li {
+    padding: 12px 15px;
+    background-color: var(--container-bg);
+    border-bottom: 1px solid var(--bg-color);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: 600;
+    color: var(--text-color);
+}
+#playlist-items li:last-child {
+    border-bottom: none;
+}
+#playlist-items li:hover {
+    background-color: var(--bg-color);
+}
+#playlist-items li.playing {
+    background-color: var(--primary-color);
+    color: var(--navbar-bg);
+    font-weight: bold;
+}
+/* --- KẾT THÚC NÂNG CẤP PLAYLIST --- */
+
+/* --- BẮT ĐẦU NÂNG CẤP ĐĨA NHẠC QUAY --- */
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+.music-cover.rotating img {
+    animation: rotate 10s linear infinite;
+    border-radius: 50%; /* Bắt buộc tròn để quay đẹp */
+}
+/* Thêm bo tròn cả khi không quay */
+.music-cover img {
+    border-radius: 50%;
+}
+/* --- KẾT THÚC NÂNG CẤP ĐĨA NHẠC QUAY --- */
