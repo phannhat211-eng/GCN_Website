@@ -249,3 +249,146 @@ hr { border: none; border-top: 2px dashed var(--text-color); margin: 40px 0; } /
     background-color: #95a5a6; /* Màu con trượt khi hover */
   }
 }
+/* ========================================= */
+/* === BƯỚC 1: LÀM MƯỢT CHUYỂN ĐỘNG      === */
+/* ========================================= */
+
+/* 1. Làm mượt hiệu ứng cho các bài hát */
+#playlist-items li {
+  /* Dòng này báo trình duyệt:
+    "Khi màu nền, màu chữ, hoặc kích thước (transform) thay đổi,
+    hãy thay đổi một cách mượt mà trong 0.3 giây."
+  */
+  transition: background-color 0.3s ease, 
+              color 0.3s ease, 
+              transform 0.3s ease;
+}
+
+/* 2. Làm mượt hiệu ứng cho ô tìm kiếm */
+/* (Từ ảnh của bạn, mình đoán ô tìm kiếm nằm trong 
+   class "search-container". Nếu không đúng, bạn báo mình) */
+.search-container input {
+  /* Làm mượt khi màu viền hoặc bóng (shadow) thay đổi */
+  transition: border-color 0.3s ease, 
+              box-shadow 0.3s ease;
+}
+/* ========================================= */
+/* === BƯỚC 2: HIỆU ỨNG HOVER & FOCUS    === */
+/* ========================================= */
+
+/* --- Mã màu nhấn (bạn có thể đổi màu này) --- */
+:root {
+  --mau-nhan: #1DB954; /* Thử màu xanh Spotify */
+  /* --mau-nhan: #9147FF; */ /* Hoặc màu tím */
+  /* --mau-nhan: #FFB800; */ /* Hoặc màu vàng */
+}
+
+
+/* 1. Hiệu ứng khi di chuột vào bài hát */
+#playlist-items li:hover {
+  /* Nền sẽ sáng lên một chút (màu trắng mờ) */
+  background-color: rgba(255, 255, 255, 0.1);
+  
+  /* Bài hát sẽ "nhích" nhẹ sang phải và to ra */
+  transform: scale(1.02) translateX(5px);
+  
+  /* Con trỏ chuột biến thành hình bàn tay */
+  cursor: pointer; 
+}
+
+/* 2. Hiệu ứng khi nhấp (focus) vào ô tìm kiếm */
+.search-container input:focus {
+  /* Từ ảnh của bạn, ô tìm kiếm có viền xám mờ.
+    Khi focus, chúng ta sẽ đổi viền sang "Màu Nhấn" 
+  */
+  border-color: var(--mau-nhan); /* Dùng màu nhấn */
+  
+  /* Thêm hiệu ứng toả sáng mờ (cùng màu nhấn) */
+  box-shadow: 0 0 8px rgba(29, 185, 84, 0.5); /* 29,185,84 là RGB của #1DB954 */
+  
+  /* Cần thêm dòng này để trình duyệt bỏ viền mặc định (vd: viền xanh của Chrome) */
+  outline: none; 
+}
+/* ========================================= */
+/* === BƯỚC 3: HIỆU ỨNG KÍNH MỜ (GLASS)  === */
+/* ========================================= */
+
+/* --- 1. Thiết lập cho BODY (BẮT BUỘC) --- */
+body {
+  /* BẠN CẦN THÊM ẢNH NỀN VÀO ĐÂY.
+    Nếu chưa có, hãy tạm dùng link ảnh này để TEST:
+    background-image: url('https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1740');
+  */
+  
+  /* Các thuộc tính này giúp ảnh nền đẹp hơn */
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed; /* Giữ nền cố định khi cuộn */
+}
+
+/* --- 2. Áp dụng hiệu ứng cho HỘP CHÍNH --- */
+/* (Từ ảnh của bạn, mình thấy hộp chính có class là "main-container") */
+
+.main-container {
+  /* 1. Đổi màu nền ĐẶC thành TRONG SUỐT (ví dụ 75% độ mờ) */
+  /* Thay "52, 73, 94" bằng mã RGB của màu nền cũ của bạn */
+  background-color: rgba(52, 73, 94, 0.75); 
+  
+  /* 2. Hiệu ứng "KÍNH MỜ" (đây là phép thuật) */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* Hỗ trợ Safari */
+  
+  /* 3. Thêm viền mờ để nổi khối */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  
+  /* 4. Bo góc nhiều hơn cho "mềm mại" */
+  border-radius: 16px; /* Bạn có thể tăng/giảm số này */
+  
+  /* 5. Thêm bóng đổ nhẹ để tách khỏi nền */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+/* ========================================= */
+/* ========================================= */
+/* ========================================= */
+/* === BƯỚC 4 (Sửa lần 2): Dùng class .dark-mode === */
+/* ========================================= */
+
+/* --- 1. MÀU MẶC ĐỊNH (Cho Light Mode) --- */
+
+.playlist-container h2 {
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #333333; /* Màu xám đậm cho nền sáng */
+  transition: color 0.3s ease; /* Thêm transition cho mượt */
+}
+
+.search-container input::placeholder {
+  color: #888888; /* Màu xám vừa cho nền sáng */
+  opacity: 1;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+/* --- 2. MÀU KHI Ở DARK MODE --- */
+/* (Code này sẽ chạy khi thẻ <body> có class="dark-mode") */
+
+body.dark-mode .playlist-container h2 {
+  color: #FFFFFF; /* Đổi tiêu đề về màu TRẮNG */
+}
+
+body.dark-mode .search-container input::placeholder {
+  color: #aebccb; /* Đổi placeholder về màu SÁNG MỜ */
+  opacity: 0.7;
+}
+
+/* LƯU Ý: Nếu bạn có code cho .song-title và .song-artist,
+bạn cũng cần sửa chúng theo logic 2 màu tương tự:
+1. Mặc định (light): màu tối (ví dụ: color: #333;)
+2. Dark mode: (ví dụ: body.dark-mode .song-title { color: #FFF; })
+*/
+
+
+/* 2. Làm mờ chữ placeholder của ô tìm kiếm */
+.search-container input::placeholder {
+  color: #aebccb; /* Dùng màu xám mờ (giống màu ca sĩ) */
+  opacity: 0.7;    /* Làm mờ nó đi 1 chút */
+}
