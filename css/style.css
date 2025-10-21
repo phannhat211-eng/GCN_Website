@@ -399,3 +399,55 @@ body.dark-mode {
     width: 100%;
 }
 /* --- KẾT THÚC CSS CHỌN GAME --- */
+/* --- BẮT ĐẦU NÂNG CẤP GAME XẾP GẠCH --- */
+
+.tetris-game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.tetris-game-container h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+ .tetris-game-container p:nth-of-type(1) { /* Hướng dẫn */
+    color: var(--secondary-text-color);
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+
+#tetrisCanvas {
+    border: 3px solid var(--primary-color);
+    border-radius: 5px;
+     background-color: var(--container-bg); /* Nền sáng/tối theo theme */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+ #tetris-score {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: var(--accent-color);
+    text-align: center;
+    margin-top: 15px;
+}
+
+/* --- KẾT THÚC NÂNG CẤP GAME XẾP GẠCH --- */
+
+/* Sửa lại CSS nút chọn game để vừa 3 nút trên mobile */
+@media (max-width: 600px) {
+    /* ... code responsive cũ ... */
+
+    /* Sửa lại .link-box cho vừa 3 game */
+    .link-box { /* Áp dụng cho cả game-select-button */
+       width: 90%;
+       height: 100px; /* Giảm chiều cao chút */
+       margin-bottom: 10px;
+    }
+
+    /* ... code responsive game rắn và nhật ký ... */
+}

@@ -33,10 +33,16 @@
 
         <div class="game-selection quick-links">
             <button class="game-select-button link-box" data-game="caro">
-                <span style="font-size: 40px;">🏁</span> <span>Caro 15x15</span>
+                <span style="font-size: 40px;">🏁</span>
+                <span>Caro 15x15</span>
             </button>
             <button class="game-select-button link-box" data-game="snake">
-                <span style="font-size: 40px;">🐍</span> <span>Rắn Săn Mồi</span>
+                <span style="font-size: 40px;">🐍</span>
+                <span>Rắn Săn Mồi</span>
+            </button>
+            <button class="game-select-button link-box" data-game="tetris">
+                <span style="font-size: 40px;">🧱</span>
+                <span>Xếp Gạch</span>
             </button>
         </div>
 
@@ -57,22 +63,27 @@
                  <canvas id="snakeCanvas" width="400" height="400" style="border: 1px solid var(--text-color); background-color: #2c3e50; display: block; margin: 10px auto;"></canvas>
                  <p id="snake-score">Điểm: 0</p>
 
-             <div class="snake-controls-mobile">
-                 <button id="snake-up">▲</button>
-                 <div> <button id="snake-left">◀</button>
-                     <button id="snake-right">▶</button>
+                 <div class="snake-controls-mobile">
+                     <button id="snake-up">▲</button>
+                     <div>
+                         <button id="snake-left">◀</button>
+                         <button id="snake-right">▶</button>
+                     </div>
+                     <button id="snake-down">▼</button>
                  </div>
-                 <button id="snake-down">▼</button>
-             </div>
-             </div> </div> ```
+            </div> </div> <div id="tetris-game-wrapper" class="game-wrapper" style="display: none;">
+            <hr>
+            <div class="tetris-game-container">
+                 <h2>Xếp Gạch! 🧱</h2>
+                 <p>Dùng ← → để di chuyển, ↑ để xoay, ↓ để rơi nhanh.</p>
+                 <canvas id="tetrisCanvas" width="240" height="400" style="border: 1px solid var(--text-color); background-color: #2c3e50; display: block; margin: 10px auto;"></canvas>
+                 <p id="tetris-score">Điểm: 0</p>
+                 <button class="game-restart-button" id="tetrisRestartButton" style="display: none; margin: 10px auto; background-color: #ffc107;">Chơi lại</button>
             </div>
-        </div>
-        </main>
-
-    <footer class="footer">
+        </div> </main> <footer class="footer">
         <p>© 2025 - Làm bằng cả trái tim bởi Nhật.</p>
     </footer>
 
     <script src="js/main.js"></script> <script src="//code.tidio.co/wjsaedeuupbhm3mfljz5y1pwni7hcjso.js" async></script>
-    <script src="js/theme.js"></script> <script src="js/snake-game.js"></script> <script src="js/games-page.js"></script> </body>
+    <script src="js/theme.js"></script> <script src="js/snake-game.js"></script> <script src="js/games-page.js"></script> <script src="js/tetris-game.js"></script> </body>
 </html>
