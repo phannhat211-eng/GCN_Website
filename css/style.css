@@ -196,3 +196,56 @@ hr { border: none; border-top: 2px dashed var(--text-color); margin: 40px 0; } /
 }
 
 /* --- KẾT THÚC NÂNG CẤP TÌM KIẾM PLAYLIST --- */
+/* ========================================= */
+/* ===  1. STYLE THANH CUỘN (LIGHT MODE) === */
+/* ========================================= */
+
+/* --- Cho Firefox (Light Mode) --- */
+#playlist-items {
+  scrollbar-width: thin;
+  scrollbar-color: #a8a8a8 #f1f1f1; /* (con trượt) (rãnh) */
+}
+
+/* --- Cho Chrome, Edge, Safari (Light Mode) --- */
+#playlist-items::-webkit-scrollbar {
+  width: 8px;
+}
+
+#playlist-items::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Màu rãnh nhạt */
+  border-radius: 10px;
+}
+
+#playlist-items::-webkit-scrollbar-thumb {
+  background-color: #c1c1c1; /* Màu con trượt xám nhạt */
+  border-radius: 10px;
+}
+
+#playlist-items::-webkit-scrollbar-thumb:hover {
+  background-color: #a8a8a8;
+}
+
+/* ========================================= */
+/* ===  2. STYLE THANH CUỘN (DARK MODE)  === */
+/* ========================================= */
+
+@media (prefers-color-scheme: dark) {
+
+  /* --- Cho Firefox (Dark Mode) --- */
+  #playlist-items {
+    scrollbar-color: #7f8c8d #34495e; /* (con trượt) (rãnh) */
+  }
+
+  /* --- Cho Chrome, Edge, Safari (Dark Mode) --- */
+  #playlist-items::-webkit-scrollbar-track {
+    background: #34495e; /* Màu rãnh tối (giống nền của bạn) */
+  }
+
+  #playlist-items::-webkit-scrollbar-thumb {
+    background-color: #7f8c8d; /* Màu con trượt xám */
+  }
+
+  #playlist-items::-webkit-scrollbar-thumb:hover {
+    background-color: #95a5a6; /* Màu con trượt khi hover */
+  }
+}
