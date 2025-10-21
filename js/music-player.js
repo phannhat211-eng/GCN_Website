@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const progressBar = document.getElementById('progress-bar');
     const currentTimeEl = document.getElementById('current-time');
     const durationEl = document.getElementById('duration');
+    const searchInput = document.getElementById('search-input'); // <-- THÊM DÒNG NÀY
 
     // Kiểm tra các phần tử quan trọng
     if (!audio || !playPauseButton || !progressContainer || !progressBar || !playlistItemsContainer || !currentTimeEl || !durationEl) {
@@ -39,43 +40,83 @@ document.addEventListener('DOMContentLoaded', () => {
     let isPlaying = false;
 
     // --- HÀM: Vẽ danh sách nhạc ---
-    function renderPlaylist() {
-        // Kiểm tra songs có hợp lệ không
-        if (!Array.isArray(songs) || songs.length === 0) {
-            console.error("renderPlaylist: Danh sách 'songs' không hợp lệ hoặc trống.");
-            if (playlistItemsContainer) playlistItemsContainer.innerHTML = '<li>Không có bài hát nào.</li>';
-            return;
-        }
-        playlistItemsContainer.innerHTML = '';
-        songs.forEach((song, index) => {
-            const listItem = document.createElement('li');
-            listItem.textContent = `${index + 1}. ${song.title || 'Không tên'} - ${song.artist || 'Không rõ'}`; // Thêm fallback
-            listItem.dataset.index = index;
-            listItem.addEventListener('click', () => {
-                const clickedIndex = parseInt(listItem.dataset.index, 10); // Đảm bảo index là số
-                if (currentSongIndex !== clickedIndex) {
-                    currentSongIndex = clickedIndex;
-                    loadSong(songs[currentSongIndex]);
-                    // Chỉ play nếu audio sẵn sàng
-                    if (audio.readyState >= 1) playSong();
-                    else audio.addEventListener('canplay', playSong, { once: true });
-                } else {
-                    togglePlayPause();
-                }
-            });
-            playlistItemsContainer.appendChild(listItem);
-        });
-        console.log("Playlist rendered.");
+    // --- HÀM: Vẽ danh sách nhạc ra HTML (ĐÃ SỬA ĐỂ LỌC) ---
+function renderPlaylist(songsToRender = songs) { // Cho phép nhận danh sách lọc, mặc định là songs gốc
+    if (!playlistItemsContainer) {
+        console.error("renderPlaylist: playlistItemsContainer not found.");
+        return;
+    }
+    playlistItemsContainer.innerHTML = ''; // Xóa list cũ
+
+    // Kiểm tra danh sách có bài hát không
+    if (!Array.isArray(songsToRender) || songsToRender.length === 0) {
+        const listItem = document.createElement('li');
+        listItem.textContent = (searchInput && searchInput.value) ? 'Không tìm thấy kết quả.' : 'Không có bài hát nào.'; // Thông báo khác nhau
+        listItem.style.cursor = 'default';
+        playlistItemsContainer.appendChild(listItem);
+        // console.log("renderPlaylist: No songs to display."); // Bỏ log này đi cũng được
+        return;
     }
 
-    // --- HÀM: Cập nhật highlight ---
-    function updatePlaylistHighlight() {
-        if (!playlistItemsContainer) return;
-        const listItems = playlistItemsContainer.querySelectorAll('li');
-        listItems.forEach((item, index) => {
-            item.classList.toggle('playing', index === currentSongIndex);
+    // Vẽ các bài hát từ danh sách được truyền vào
+    songsToRender.forEach((song) => { // Không cần index ở đây nữa
+        // **QUAN TRỌNG:** Tìm index gốc của bài hát trong mảng 'songs' đầy đủ
+        const originalIndex = songs.findIndex(originalSong => originalSong.src === song.src);
+        // Bỏ qua nếu không tìm thấy index gốc (phòng lỗi hiếm gặp)
+        if (originalIndex === -1) {
+             console.warn("renderPlaylist: Could not find original index for song:", song.title);
+             return; // Bỏ qua bài hát này
+        }
+
+        const listItem = document.createElement('li');
+        // Hiển thị số thứ tự gốc + 1
+        listItem.textContent = `${originalIndex + 1}. ${song.title || 'N/A'} - ${song.artist || 'N/A'}`;
+        listItem.dataset.index = originalIndex; // **LUÔN LƯU INDEX GỐC**
+
+        listItem.addEventListener('click', () => {
+            const clickedIndex = parseInt(listItem.dataset.index, 10);
+            if (!isNaN(clickedIndex) && clickedIndex >= 0 && clickedIndex < songs.length) {
+                if (currentSongIndex !== clickedIndex || !isPlaying) {
+                    console.log("Playlist item clicked - loading original song index:", clickedIndex);
+                    currentSongIndex = clickedIndex; // Cập nhật index hiện tại
+                    loadSong(songs[currentSongIndex]); // Load bài hát từ mảng gốc
+                    // Chờ audio sẵn sàng rồi mới play
+                    if(audio.readyState >= 1) playSong();
+                    else audio.addEventListener('canplay', playSong, { once: true });
+                } else {
+                    togglePlayPause(); // Click bài đang chạy -> Play/Pause
+                }
+            } else {
+                console.error("Invalid index on playlist item click:", listItem.dataset.index);
+            }
         });
-    }
+
+        // Highlight nếu bài hát này đang được chọn (so sánh với currentSongIndex)
+        if (originalIndex === currentSongIndex) {
+             listItem.classList.add('playing');
+        }
+
+        playlistItemsContainer.appendChild(listItem);
+    });
+    console.log("Playlist rendered/filtered with", songsToRender.length, "songs.");
+    // Không cần gọi updatePlaylistHighlight ở đây nữa vì đã xử lý highlight trong vòng lặp
+}
+
+    // --- HÀM: Cập nhật highlight (ĐÃ SỬA ĐỂ DÙNG dataset.index) ---
+function updatePlaylistHighlight() {
+    if (!playlistItemsContainer) return;
+    const listItems = playlistItemsContainer.querySelectorAll('li');
+    listItems.forEach(item => { // Không cần index ở đây
+        // Lấy index gốc từ data-* attribute
+        const itemIndex = parseInt(item.dataset.index, 10);
+        // Kiểm tra itemIndex có hợp lệ không trước khi so sánh
+         if (!isNaN(itemIndex)) {
+            // Dùng classList.toggle cho gọn: thêm 'playing' nếu đúng, xóa nếu sai
+            item.classList.toggle('playing', itemIndex === currentSongIndex);
+         }
+    });
+    // console.log("Playlist highlight updated for currentSongIndex:", currentSongIndex); // Log nếu cần
+}
 
      // --- HÀM: Cập nhật icon nút Play/Pause và đĩa quay ---
      function updatePlayPauseUI() {
@@ -293,7 +334,40 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (progressContainer) progressContainer.addEventListener('click', setProgress);
 
+// ... (Code gán sự kiện cho audio và progressContainer) ...
+    // --- KẾT THÚC BỔ SUNG SỰ KIỆN ---
 
+
+    // --- DÁN CODE SỰ KIỆN TÌM KIẾM VÀO ĐÂY ---
+    if (searchInput) { // Kiểm tra xem ô tìm kiếm có tồn tại không
+        searchInput.addEventListener('input', () => {
+            const searchTerm = searchInput.value.toLowerCase().trim(); // Lấy từ khóa, chuẩn hóa
+            console.log("Search term:", searchTerm); // Log để debug
+
+            // Lọc mảng 'songs' gốc dựa trên từ khóa
+            const filteredSongs = songs.filter(song => {
+                // Kiểm tra an toàn trước khi gọi toLowerCase() và includes()
+                const titleMatch = song.title && song.title.toLowerCase().includes(searchTerm);
+                const artistMatch = song.artist && song.artist.toLowerCase().includes(searchTerm);
+                // Trả về true nếu tên bài hát HOẶC tên ca sĩ khớp
+                return titleMatch || artistMatch;
+            });
+            console.log("Filtered songs found:", filteredSongs.length); // Log số lượng kết quả
+
+            // Vẽ lại playlist CHỈ với các bài hát đã lọc
+            renderPlaylist(filteredSongs);
+        });
+        console.log("Search input listener added successfully.");
+    } else {
+        // Báo lỗi nếu không tìm thấy ô search trong HTML
+        console.warn("Search input element (#search-input) not found.");
+    }
+    // --- KẾT THÚC SỰ KIỆN TÌM KIẾM ---
+
+
+    // --- KHỞI ĐỘNG KHI TẢI TRANG ---
+    console.log("Initializing player...");
+    // ... (code khởi động như cũ) ...
     // --- KHỞI ĐỘNG ---
     // Kiểm tra songs trước khi dùng
     if (Array.isArray(songs) && songs.length > 0) {
