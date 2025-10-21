@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { title: 'Cảm nắng', artist: 'Suni Hạ Linh', src: 'music/cam_nang.mp3', cover: 'images/cover-placeholder-8.png' },
         { title: 'Thật quá đáng để yêu', artist: 'AMEE NICKY', src: 'music/qua_dang.mp3', cover: 'images/cover-placeholder-7.png' },
         { title: 'Lặng', artist: 'Rhymastic', src: 'music/lang.mp3', cover: 'images/cover-placeholder-9.png' },
+        { title: 'Dù cho tận thế', artist: 'Erik', src: 'music/dctt.mp3', cover: 'images/cover-placeholder-10.png' },
         { title: 'Giá Như', artist: 'Chilly Cover', src: 'music/gia_nhu.mp3', cover: 'images/cover-placeholder-6.png' }
     ];
     // --- KẾT THÚC DANH SÁCH BÀI HÁT ---
