@@ -533,3 +533,212 @@ body.dark-mode .nav-card:hover {
     background: rgba(255, 255, 255, 0.2);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
+/* ========================================= */
+/* === BƯỚC 1 (ĐÃ SỬA LỖI): CĂN GIỮA NAV-MENU === */
+/* ========================================= */
+
+/* --- 1. Style MẶC ĐỊNH (Cho Di động) --- */
+.navbar {
+    position: relative; /* Vẫn cần cho nút theme */
+    
+    /* Cho phép logo, menu, nút xuống dòng */
+    flex-wrap: wrap; 
+    /* Căn giữa các item theo chiều ngang */
+    justify-content: center; 
+    padding-top: 10px; 
+    padding-bottom: 10px;
+}
+
+.nav-menu {
+    /* Reset về mặc định, không "bay" nữa */
+    position: static; 
+    transform: none;
+    
+    /* Chiếm 100% chiều rộng để thành 1 hàng riêng */
+    width: 100%;
+    /* Căn giữa các link bên trong menu (Trang chủ...) */
+    justify-content: center; 
+    margin-top: 10px; /* Khoảng cách với logo */
+}
+
+.nav-logo {
+    width: 100%; /* Cho logo ra 1 hàng */
+    text-align: center; /* Căn giữa logo */
+}
+
+/* Nút theme trên di động: đặt ở góc phải */
+.theme-toggle {
+    position: absolute;
+    top: 50%; /* Căn giữa theo chiều dọc của navbar (khi chưa bung) */
+    transform: translateY(-50%);
+    right: 20px; /* Cách lề phải 20px */
+}
+
+/* --- 2. Style cho MÁY TÍNH (từ 769px trở lên) --- */
+@media (min-width: 769px) {
+    
+    /* Trả lại layout cũ cho navbar trên máy tính */
+    .navbar {
+        flex-wrap: nowrap; /* Không xuống dòng */
+        /* Logo bên trái, nút bên phải */
+        justify-content: space-between; 
+    }
+
+    /* Trả lại logo về 1 góc */
+    .nav-logo {
+        width: auto; /* Rộng tự động */
+        text-align: left; /* Căn trái */
+    }
+    
+    /* Áp dụng code "bay" (căn giữa) CHỈ cho máy tính */
+    .nav-menu {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        margin: 0; /* Xoá margin top */
+        width: auto; /* Rộng tự động */
+    }
+
+    /* Trả lại nút theme về vị trí tĩnh */
+    .theme-toggle {
+        position: static;
+        transform: none;
+        right: auto;
+    }
+}
+/* ========================================= */
+/* === BƯỚC 2: STYLE CHO NAVBAR           === */
+/* ========================================= */
+
+/* --- 1. Style chung cho NAVBAR (Kính mờ) --- */
+.navbar {
+    /* (Giữ lại các thuộc tính layout đã sửa ở Bước 1) */
+    
+    /* Hiệu ứng Kính Mờ (Glassmorphism) */
+    /* Mặc định (Light Mode): Nền đen mờ */
+    background: rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    
+    color: #1a1a1a; /* Chữ mặc định (Light Mode) */
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Khi Dark Mode bật, đổi sang nền trắng mờ và chữ trắng */
+body.dark-mode .navbar {
+    background: rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    color: #FFFFFF;
+}
+
+/* --- 2. Style cho LOGO --- */
+.nav-logo {
+    font-weight: 700; /* Đậm hơn */
+    font-size: 1.5rem; /* To hơn */
+    color: inherit; /* Kế thừa màu từ navbar */
+    text-decoration: none;
+    padding: 10px 20px; /* Thêm padding để dễ bấm */
+    transition: color 0.3s ease;
+}
+
+/* --- 3. Style cho các LINKS trong MENU --- */
+.nav-menu li a {
+    color: inherit; /* Kế thừa màu từ navbar */
+    text-decoration: none;
+    font-weight: 500; /* Nét chữ vừa phải */
+    padding: 10px 15px; /* Thêm padding để dễ bấm và có khoảng cách */
+    border-radius: 8px; /* Bo góc nhẹ */
+    transition: all 0.3s ease;
+}
+
+/* Hiệu ứng khi di chuột vào link */
+.nav-menu li a:hover {
+    /* Nền đen mờ khi hover (Light Mode) */
+    background-color: rgba(0, 0, 0, 0.08); 
+    transform: translateY(-2px); /* Nhấc nhẹ lên */
+}
+
+/* Khi Dark Mode bật, đổi màu hover thành trắng mờ */
+body.dark-mode .nav-menu li a:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* --- 4. Style cho NÚT CHUYỂN THEME --- */
+.theme-toggle {
+    background: rgba(255, 255, 255, 0.2); /* Nền mờ */
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%; /* Hình tròn */
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+/* ========================================= */
+/* === SỬA LỖI FONT CHO NAVBAR (Inter)    === */
+/* ========================================= */
+
+/* --- 1. Áp dụng font 'Inter' cho toàn trang --- */
+/* (Tìm code 'body' cũ của bạn và thay thế 'Nunito') */
+body {
+    font-family: 'Inter', sans-serif; /* Sử dụng font Inter mới */
+}
+
+
+/* --- 2. Tăng độ nét cho LOGO (Ghi đè) --- */
+.nav-logo {
+    font-weight: 700; /* Đậm nhất (Bold) */
+    
+    /* Viền mờ cho Light Mode (chữ đen) */
+    text-shadow: 0 0 3px rgba(255, 255, 255, 0.7);
+    
+    /* Ghi đè transition */
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Thêm viền mờ cho Dark Mode (chữ trắng) */
+body.dark-mode .nav-logo {
+    /* Viền mờ đen */
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+}
+
+
+/* --- 3. Tăng độ nét cho MENU (Ghi đè) --- */
+.nav-menu li a {
+    font-weight: 600; /* Đậm (Semi-bold) - nét hơn 500 */
+    
+    /* Viền mờ cho Light Mode (chữ đen) */
+    text-shadow: 0 0 3px rgba(255, 255, 255, 0.7);
+    
+    /* Ghi đè transition */
+    transition: all 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Thêm viền mờ cho Dark Mode (chữ trắng) */
+body.dark-mode .nav-menu li a {
+    /* Viền mờ đen */
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+}
+
+/* Giữ độ nét khi hover (Dark Mode) */
+body.dark-mode .nav-menu li a:hover {
+    text-shadow: none; /* Bỏ shadow khi hover để nền background nổi bật */
+}
+/* Giữ độ nét khi hover (Light Mode) */
+.nav-menu li a:hover {
+    text-shadow: none; /* Bỏ shadow khi hover */
+}
