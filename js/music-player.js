@@ -36,6 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
             artist: 'MAYDAY ft Minh Tốc',
             src: 'music/phep_mau.mp3',
             cover: 'images/cover-placeholder-3.png'
+        },
+        {
+            title: 'Giá Như',
+            artist: 'Chilly Cover',
+            src: 'music/gia_nhu.mp3',
+            cover: 'images/cover-placeholder-6.png'
         }
     ];
 
