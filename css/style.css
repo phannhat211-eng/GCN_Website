@@ -534,79 +534,7 @@ body.dark-mode .nav-card:hover {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 /* ========================================= */
-/* === BƯỚC 1 (ĐÃ SỬA LỖI): CĂN GIỮA NAV-MENU === */
-/* ========================================= */
 
-/* --- 1. Style MẶC ĐỊNH (Cho Di động) --- */
-.navbar {
-    position: relative; /* Vẫn cần cho nút theme */
-    
-    /* Cho phép logo, menu, nút xuống dòng */
-    flex-wrap: wrap; 
-    /* Căn giữa các item theo chiều ngang */
-    justify-content: center; 
-    padding-top: 10px; 
-    padding-bottom: 10px;
-}
-
-.nav-menu {
-    /* Reset về mặc định, không "bay" nữa */
-    position: static; 
-    transform: none;
-    
-    /* Chiếm 100% chiều rộng để thành 1 hàng riêng */
-    width: 100%;
-    /* Căn giữa các link bên trong menu (Trang chủ...) */
-    justify-content: center; 
-    margin-top: 10px; /* Khoảng cách với logo */
-}
-
-.nav-logo {
-    width: 100%; /* Cho logo ra 1 hàng */
-    text-align: center; /* Căn giữa logo */
-}
-
-/* Nút theme trên di động: đặt ở góc phải */
-.theme-toggle {
-    position: absolute;
-    top: 50%; /* Căn giữa theo chiều dọc của navbar (khi chưa bung) */
-    transform: translateY(-50%);
-    right: 20px; /* Cách lề phải 20px */
-}
-
-/* --- 2. Style cho MÁY TÍNH (từ 769px trở lên) --- */
-@media (min-width: 769px) {
-    
-    /* Trả lại layout cũ cho navbar trên máy tính */
-    .navbar {
-        flex-wrap: nowrap; /* Không xuống dòng */
-        /* Logo bên trái, nút bên phải */
-        justify-content: space-between; 
-    }
-
-    /* Trả lại logo về 1 góc */
-    .nav-logo {
-        width: auto; /* Rộng tự động */
-        text-align: left; /* Căn trái */
-    }
-    
-    /* Áp dụng code "bay" (căn giữa) CHỈ cho máy tính */
-    .nav-menu {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        margin: 0; /* Xoá margin top */
-        width: auto; /* Rộng tự động */
-    }
-
-    /* Trả lại nút theme về vị trí tĩnh */
-    .theme-toggle {
-        position: static;
-        transform: none;
-        right: auto;
-    }
-}
 /* ========================================= */
 /* === BƯỚC 2: STYLE CHO NAVBAR           === */
 /* ========================================= */
@@ -741,4 +669,186 @@ body.dark-mode .nav-menu li a:hover {
 /* Giữ độ nét khi hover (Light Mode) */
 .nav-menu li a:hover {
     text-shadow: none; /* Bỏ shadow khi hover */
+}
+/* ========================================= */
+
+
+/* --- 2. Style cho MÁY TÍNH (từ 769px trở lên) --- */
+/* (Code này y hệt code cũ, để ghi đè lại) */
+
+@media (min-width: 769px) {
+    
+    .navbar {
+        justify-content: space-between; 
+        flex-wrap: nowrap; /* Không bọc nữa */
+        padding: 10px 20px;
+    }
+
+    /* 1. Logo (trái) */
+    .nav-logo {
+        order: 1;
+        width: auto; 
+        text-align: left; 
+    }
+    
+    /* 2. Menu (giữa, "bay") */
+    .nav-menu {
+        order: 2; /* Quay về vị trí 2 */
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: auto; 
+        margin-top: 0;
+    }
+
+    /* 3. Nút (phải) */
+    .theme-toggle {
+        order: 3; /* Quay về vị trí 3 */
+        position: static;
+        transform: none;
+    }
+}
+/* ========================================= */
+/* ===    LAYOUT NAVBAR (HOÀN CHỈNH)     === */
+/* ========================================= */
+
+/* --- 1. Style MẶC ĐỊNH (Cho Di động) --- */
+/* (Thiết lập cho Logo, Menu, Nút 🌙 xếp chồng) */
+
+.navbar {
+    display: flex;
+    flex-direction: column; /* Xếp chồng theo chiều dọc */
+    align-items: center; /* Căn giữa theo chiều ngang */
+    padding: 15px 20px;
+    position: relative; /* Giữ lại để căn nút 🌙 */
+}
+
+.nav-logo {
+    order: 1; /* Hàng 1 */
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px; /* Khoảng cách với menu */
+}
+
+.nav-menu {
+    order: 2; /* Hàng 2 */
+    display: flex;
+    justify-content: center; /* Căn giữa các mục menu */
+    flex-wrap: wrap; /* Tự động xuống hàng (Nhật ký) */
+    width: 100%;
+    
+    /* Ghi đè code máy tính */
+    position: static;
+    transform: none;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.theme-toggle {
+    order: 3; /* Hàng 3 (nhưng chúng ta sẽ di chuyển nó) */
+    
+    /* Đặt nút 🌙 ở góc trên bên phải */
+    position: absolute;
+    top: 20px; /* Điều chỉnh khoảng cách từ trên */
+    right: 20px; /* Điều chỉnh khoảng cách từ phải */
+    
+    /* Ghi đè code máy tính (nếu có) */
+    transform: none;
+}
+
+/* --- 2. Style cho MÁY TÍNH (từ 769px trở lên) --- */
+@media (min-width: 769px) {
+    
+    /* Trả lại layout ngang */
+    .navbar {
+        flex-direction: row; /* Xếp ngang */
+        justify-content: space-between; /* 3 cụm ở 3 góc */
+        align-items: center;
+        padding: 10px 20px;
+    }
+
+    /* 1. Logo (trái) */
+    .nav-logo {
+        order: 1;
+        width: auto;
+        text-align: left;
+        margin-bottom: 0; /* Bỏ margin bottom */
+    }
+    
+    /* 2. Menu (giữa, "bay") */
+    .nav-menu {
+        order: 2; /* Quay về vị trí 2 */
+        position: absolute; /* Bắt đầu "bay" */
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%); /* Căn giữa tuyệt đối */
+        width: auto; /* Bỏ width 100% */
+    }
+
+    /* 3. Nút 🌙 (phải) */
+    .theme-toggle {
+        order: 3; /* Quay về vị trí 3 */
+        position: static; /* Bỏ absolute */
+        top: auto;
+        right: auto;
+    }
+}
+/* ========================================= */
+/* ===    FIX MENU DI ĐỘNG (1 HÀNG)      === */
+/* ========================================= */
+
+/* Code này chỉ áp dụng cho màn hình di động 
+  (ngược lại với @media (min-width: 769px)) 
+*/
+@media (max-width: 768px) {
+    
+    /* Ghi đè lại .nav-menu */
+    .nav-menu {
+        display: flex;
+        width: 100%;
+        
+        /* 1. ÉP menu NẰM TRÊN 1 HÀNG */
+        flex-wrap: nowrap; 
+        
+        /* 2. Căn đều các mục ra cho đẹp */
+        justify-content: space-around; 
+        
+        /* 3. Thêm cuộn ngang (nếu vẫn chật) */
+        overflow-x: auto; 
+        overflow-y: hidden;
+        
+        /* Ghi đè các giá trị cũ (để chắc chắn) */
+        position: static;
+        transform: none;
+        order: 2;
+        margin-top: 15px;
+        padding-left: 0;
+        list-style: none;
+    }
+
+    /* 4. THU NHỎ CHỮ VÀ PADDING CỦA CÁC MỤC MENU */
+    .nav-menu li a {
+        /* Giảm cỡ chữ (1rem là 16px, 0.85rem ~ 13.6px) */
+        font-size: 0.85rem; 
+        font-weight: 600; /* Vẫn giữ đậm */
+        
+        /* Giảm padding 2 bên để tiết kiệm không gian */
+        padding-left: 8px;
+        padding-right: 8px;
+        
+        /* Giảm padding trên/dưới */
+        padding-top: 5px;
+        padding-bottom: 5px;
+        
+        /* Bỏ transform (nếu có) */
+        transform: none;
+    }
+    
+    /* Tắt hiệu ứng hover trên di động (không cần thiết) */
+    .nav-menu li a:hover {
+        background-color: transparent;
+        transform: none;
+    }
 }
