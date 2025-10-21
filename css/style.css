@@ -203,3 +203,33 @@ body.dark-mode { --bg-color: #2c3e50; --container-bg: #34495e; --navbar-bg: #415
     .tetris-controls-mobile { display: flex; } /* Hiện nút Tetris */
 
 } /* --- KẾT THÚC PHẦN NÂNG CẤP RESPONSIVE --- */
+/* --- BẮT ĐẦU NÂNG CẤP THANH TIẾN TRÌNH --- */
+
+.progress-container {
+    background-color: var(--container-bg); /* Màu nền giống khung */
+    border-radius: 5px;
+    cursor: pointer; /* Cho biết có thể nhấp vào */
+    margin: 20px 0; /* Khoảng cách trên dưới */
+    height: 8px; /* Chiều cao của thanh nền */
+    width: 100%; /* Rộng 100% */
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.2); /* Tạo hiệu ứng lõm nhẹ */
+}
+
+.progress-bar {
+    background-color: var(--primary-color); /* Màu xanh dương (hoặc xanh pastel) */
+    border-radius: 5px;
+    height: 100%; /* Cao bằng thanh nền */
+    width: 0%; /* Ban đầu là 0%, sẽ được cập nhật bằng JS */
+    transition: width 0.1s linear; /* Hiệu ứng chuyển động mượt */
+}
+
+/* Tùy chọn: CSS cho hiển thị thời gian */
+.time-display {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: var(--secondary-text-color);
+    margin-top: 5px; /* Khoảng cách với thanh tiến trình */
+}
+
+/* --- KẾT THÚC NÂNG CẤP THANH TIẾN TRÌNH --- */

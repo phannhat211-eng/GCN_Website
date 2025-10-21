@@ -7,9 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const playPauseButton = document.getElementById('play-pause-button');
     const prevButton = document.getElementById('prev-button');
     const nextButton = document.getElementById('next-button');
-    const playPauseIcon = playPauseButton.querySelector('i'); // Lấy icon bên trong nút
-    const playlistItemsContainer = document.getElementById('playlist-items'); // Lấy container playlist
-    const musicCoverContainer = document.querySelector('.music-cover'); // Lấy container ảnh bìa (ĐÃ THÊM)
+    const playPauseIcon = playPauseButton.querySelector('i');
+    const playlistItemsContainer = document.getElementById('playlist-items');
+    const musicCoverContainer = document.querySelector('.music-cover');
+    // **ĐÃ BỔ SUNG LẤY THANH TIẾN TRÌNH**
+    const progressContainer = document.getElementById('progress-container');
+    const progressBar = document.getElementById('progress-bar');
+    // --- KẾT THÚC LẤY THANH TIẾN TRÌNH ---
 
     // --- 2. Định nghĩa Danh sách Bài hát ---
     const songs = [
@@ -41,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Giá Như',
             artist: 'Chilly Cover',
             src: 'music/gia_nhu.mp3',
-            cover: 'images/cover-placeholder-6.png'
+            cover: 'images/cover-placeholder-6.png' // Sửa lại placeholder đúng
         }
     ];
 
@@ -80,16 +84,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- HÀM: Tải một Bài hát ---
     function loadSong(song) {
-        // THÊM 3 DÒNG NÀY VÀO ĐẦU HÀM (Đĩa quay):
-        musicCoverContainer.style.animation = 'none'; // Tắt animation tạm thời
-        musicCoverContainer.offsetHeight; // Ép trình duyệt vẽ lại để reset
-        musicCoverContainer.style.animation = null; // Bật lại animation
+        // Reset đĩa quay
+        musicCoverContainer.style.animation = 'none';
+        musicCoverContainer.offsetHeight; // Force repaint
+        musicCoverContainer.style.animation = null;
 
         songTitle.textContent = song.title;
         songArtist.textContent = song.artist;
         audio.src = song.src;
         coverArt.src = song.cover;
         updatePlaylistHighlight(); // Cập nhật highlight
+        // Reset thanh tiến trình khi load bài mới (quan trọng)
+        progressBar.style.width = '0%';
     }
 
     // --- HÀM: Phát nhạc ---
@@ -100,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
         playPauseIcon.classList.add('fa-pause');
         console.log("Đang cố phát:", audio.src);
         audio.play().catch(error => console.error("Lỗi khi phát nhạc:", error));
-        musicCoverContainer.classList.add('rotating'); // <-- THÊM DÒNG NÀY (Đĩa quay)
+        musicCoverContainer.classList.add('rotating'); // Bắt đầu quay
     }
 
     // --- HÀM: Tạm dừng nhạc ---
@@ -110,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
         playPauseIcon.classList.remove('fa-pause');
         playPauseIcon.classList.add('fa-play');
         audio.pause();
-        musicCoverContainer.classList.remove('rotating'); // <-- THÊM DÒNG NÀY (Đĩa quay)
+        musicCoverContainer.classList.remove('rotating'); // Dừng quay
     }
 
     // --- HÀM: Chuyển bài trước ---
@@ -133,7 +139,33 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isPlaying) playSong();
     }
 
-    // --- GÁN SỰ KIỆN CHO CÁC NÚT ---
+    // --- HÀM MỚI: Cập nhật thanh tiến trình ---
+    function updateProgress(e) {
+        // Dùng destructuring để lấy duration và currentTime
+        const { duration, currentTime } = e.srcElement;
+        // Kiểm tra duration có hợp lệ không (tránh chia cho 0 hoặc NaN)
+        if (duration) {
+            const progressPercent = (currentTime / duration) * 100;
+            progressBar.style.width = `${progressPercent}%`;
+        }
+         // Optional: Cập nhật hiển thị thời gian (sẽ làm ở bước sau)
+        // updateTimerDisplay(currentTime, duration);
+    }
+
+    // --- HÀM MỚI: Xử lý khi nhấp vào thanh tiến trình để tua ---
+    function setProgress(e) {
+        const width = this.clientWidth; // Chiều rộng của progressContainer
+        const clickX = e.offsetX; // Vị trí nhấp chuột bên trong container
+        const duration = audio.duration; // Tổng thời gian bài hát
+
+        // Chỉ tua nếu duration hợp lệ
+        if (duration) {
+            audio.currentTime = (clickX / width) * duration;
+        }
+    }
+    // --- KẾT THÚC CÁC HÀM MỚI ---
+
+    // --- GÁN SỰ KIỆN CHO CÁC NÚT VÀ AUDIO ---
     playPauseButton.addEventListener('click', () => {
         if (isPlaying) {
             pauseSong();
@@ -147,6 +179,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Tự động chuyển bài tiếp theo khi bài hiện tại kết thúc
     audio.addEventListener('ended', nextSong);
+
+    // **ĐÃ BỔ SUNG SỰ KIỆN CHO THANH TIẾN TRÌNH**
+    // Sự kiện khi thời gian nhạc thay đổi -> cập nhật thanh tiến trình
+    audio.addEventListener('timeupdate', updateProgress);
+    // Sự kiện khi nhấp vào thanh container -> tua nhạc
+    if (progressContainer) { // Kiểm tra xem progressContainer có tồn tại không
+        progressContainer.addEventListener('click', setProgress);
+    }
+    // --- KẾT THÚC BỔ SUNG SỰ KIỆN ---
+
 
     // --- KHỞI ĐỘNG KHI TẢI TRANG ---
     renderPlaylist(); // Vẽ playlist lần đầu
