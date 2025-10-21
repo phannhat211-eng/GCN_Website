@@ -22,171 +22,41 @@ body {
 }
 
 /* --- 2. Thanh điều hướng (Menu) --- */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--navbar-bg);
-    padding: 15px 30px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-.nav-logo {
-    font-size: 24px;
-    font-weight: 700;
-    text-decoration: none;
-    color: var(--primary-color);
-}
-.nav-menu {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
-.nav-menu li {
-    margin-left: 20px;
-}
-.nav-menu a {
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: 700;
-    transition: color 0.3s;
-}
-.nav-menu a:hover {
-    color: var(--bg-color);
-}
+.navbar { display: flex; justify-content: space-between; align-items: center; background-color: var(--navbar-bg); padding: 15px 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+.nav-logo { font-size: 24px; font-weight: 700; text-decoration: none; color: var(--primary-color); }
+.nav-menu { list-style: none; display: flex; margin: 0; padding: 0; }
+.nav-menu li { margin-left: 20px; }
+.nav-menu a { text-decoration: none; color: var(--text-color); font-weight: 700; transition: color 0.3s; }
+.nav-menu a:hover { color: var(--bg-color); }
 
 /* --- 3. Khung nội dung chính --- */
-.container {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 30px;
-    background-color: var(--container-bg);
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    transition: background-color 0.3s;
-}
-h1 {
-    color: var(--primary-color);
-    text-align: center;
-}
-p {
-    text-align: center;
-    font-size: 18px;
-}
+.container { max-width: 900px; margin: 40px auto; padding: 30px; background-color: var(--container-bg); border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: background-color 0.3s; }
+h1 { color: var(--primary-color); text-align: center; }
+p { text-align: center; font-size: 18px; }
 
 /* --- 4. Các nút truy cập nhanh --- */
-.quick-links {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 30px;
-}
-.link-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 200px;
-    height: 150px;
-    background-color: var(--navbar-bg);
-    border-radius: 10px;
-    text-decoration: none;
-    color: var(--text-color);
-    font-size: 24px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-.link-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-}
-.link-box span {
-    font-size: 18px;
-    font-weight: 700;
-    margin-top: 10px;
-}
+.quick-links { display: flex; justify-content: space-around; margin-top: 30px; }
+.link-box { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 200px; height: 150px; background-color: var(--navbar-bg); border-radius: 10px; text-decoration: none; color: var(--text-color); font-size: 24px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s; }
+.link-box:hover { transform: translateY(-5px); box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
+.link-box span { font-size: 18px; font-weight: 700; margin-top: 10px; }
 
 /* --- 5. Chân trang (Footer) --- */
-.footer {
-    text-align: center;
-    margin-top: 40px;
-    color: var(--container-bg);
-    font-weight: 700;
-}
+.footer { text-align: center; margin-top: 40px; color: var(--container-bg); font-weight: 700; }
 
 /* --- CSS VIDEO/PLAYLIST NHÚNG --- */
-.video-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-    max-width: 100%;
-    background: #000;
-    border-radius: 10px;
-    margin-top: 20px;
-}
-.video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
+.video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000; border-radius: 10px; margin-top: 20px; }
+.video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
 /* --- CSS CHO GAME CARO 15x15 --- */
-.game-container { /* Dùng chung cho Caro */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    overflow-x: auto;
-}
-.caro-board {
-    display: grid;
-    grid-template-columns: repeat(15, 30px);
-    border: 2px solid var(--text-color);
-    margin-top: 20px;
-    background-color: var(--navbar-bg);
-}
-.caro-cell {
-    width: 30px;
-    height: 30px;
-    border: 1px solid #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    box-sizing: border-box;
-}
-.caro-cell:hover {
-    background-color: var(--bg-color);
-}
-.caro-cell.x {
-    color: var(--primary-color);
-}
-.caro-cell.o {
-    color: #d9534f;
-}
-.caro-cell.win {
-    background-color: #ffc107;
-}
-.game-restart-button { /* Dùng chung cho Caro */
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: 700;
-    font-family: 'Nunito', sans-serif;
-    border: none;
-    border-radius: 5px;
-    background-color: var(--primary-color);
-    color: var(--navbar-bg);
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-.game-restart-button:hover {
-    background-color: #003d82;
-}
+.game-container { display: flex; flex-direction: column; align-items: center; width: 100%; overflow-x: auto; }
+.caro-board { display: grid; grid-template-columns: repeat(15, 30px); border: 2px solid var(--text-color); margin-top: 20px; background-color: var(--navbar-bg); }
+.caro-cell { width: 30px; height: 30px; border: 1px solid #ccc; display: flex; justify-content: center; align-items: center; font-size: 20px; font-weight: bold; cursor: pointer; box-sizing: border-box; }
+.caro-cell:hover { background-color: var(--bg-color); }
+.caro-cell.x { color: var(--primary-color); }
+.caro-cell.o { color: #d9534f; }
+.caro-cell.win { background-color: #ffc107; }
+.game-restart-button { margin-top: 20px; padding: 10px 20px; font-size: 16px; font-weight: 700; font-family: 'Nunito', sans-serif; border: none; border-radius: 5px; background-color: var(--primary-color); color: var(--navbar-bg); cursor: pointer; transition: background-color 0.3s; }
+.game-restart-button:hover { background-color: #003d82; }
 
 /* --- CSS CHO TRANG ĐĂNG NHẬP (AUTH) --- */
 /* ... (Code Auth không đổi) ... */
@@ -202,7 +72,6 @@ p {
 .diary-link-button { display: block; width: calc(100% - 24px); padding: 12px; font-size: 16px; font-weight: 700; font-family: 'Nunito', sans-serif; border-radius: 5px; background-color: #ffc107; color: #333; text-align: center; text-decoration: none; margin-bottom: 15px; transition: background-color 0.3s; }
 .diary-link-button:hover { background-color: #e0a800; }
 #auth-error { color: #dc3545; font-weight: bold; text-align: center; margin-top: 15px; }
-
 
 /* --- CSS CHO TRANG NHẬT KÝ (DIARY) --- */
 /* ... (Code Diary không đổi) ... */
@@ -222,79 +91,10 @@ p {
 .entry .edit-button { background-color: #6c757d; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 14px; font-weight: 700; margin-top: 15px; float: right; margin-left: 5px; transition: background-color 0.3s; }
 .entry .edit-button:hover { background-color: #5a6268; }
 
-
-/* --- BẮT ĐẦU PHẦN NÂNG CẤP RESPONSIVE --- */
-@media (max-width: 600px) {
-    /* 1. Sửa Menu (Navbar) */
-    .navbar { flex-direction: column; padding: 15px; position: relative; }
-    .nav-logo { margin-bottom: 10px; }
-    .nav-menu { width: 100%; justify-content: center; }
-    .nav-menu li { margin-left: 8px; margin-right: 8px; }
-    /* 2. Sửa Khung nội dung chính */
-    .container { margin: 20px 10px; padding: 20px; }
-    h1 { font-size: 28px; }
-    /* 3. Sửa Nút "Góc" (và nút chọn game) */
-    .quick-links { flex-direction: column; align-items: center; }
-    .link-box { width: 90%; margin-bottom: 15px; height: 120px; }
-    .link-box:last-child { margin-bottom: 0; }
-    /* 5. Sửa trang Nhật ký (Nút Xóa/Sửa) */
-    .entry .delete-button,
-    .entry .edit-button { float: none; width: 100%; margin-top: 10px; margin-left: 0; text-align: center; }
-    .entry .edit-button { margin-top: 15px; }
-
-    /* 6. Sửa trang Game Rắn (Snake) - Canvas (ĐÃ SỬA LẠI) */
-    .snake-game-container {
-        padding: 0; /* Bỏ padding cũ để canvas căn giữa */
-        align-items: center; /* Đảm bảo căn giữa */
-    }
-    #snakeCanvas {
-        width: 100%; /* Rộng 100% container */
-        height: auto; /* Chiều cao tự động */
-        aspect-ratio: 1 / 1; /* Giữ tỉ lệ vuông */
-        max-width: 400px; /* Vẫn giữ giới hạn max */
-        max-height: 400px;
-        margin: 15px 0; /* Căn giữa theo chiều dọc, bỏ auto ngang */
-    }
-    /* --- KẾT THÚC SỬA RESPONSIVE GAME RẮN --- */
-
-} /* --- KẾT THÚC PHẦN NÂNG CẤP RESPONSIVE --- */
-
-
 /* --- BẮT ĐẦU NÂNG CẤP DARK MODE --- */
-body.dark-mode {
-    --bg-color: #2c3e50;
-    --container-bg: #34495e;
-    --navbar-bg: #415a75;
-    --text-color: #ecf0f1;
-    --primary-color: #A7C7E7;
-    --secondary-text-color: #bdc3c7;
-    --accent-color: #e55039;
-}
-.theme-toggle {
-    background-color: var(--container-bg);
-    color: var(--primary-color);
-    border: 2px solid var(--primary-color);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
-    cursor: pointer;
-    margin-left: 20px;
-    transition: background-color 0.3s, color 0.3s;
-}
-.theme-toggle:hover {
-    background-color: var(--primary-color);
-    color: var(--container-bg);
-}
-@media (max-width: 600px) {
-    .theme-toggle {
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        margin-left: 0;
-    }
-}
-/* --- KẾT THÚC NÂNG CẤP DARK MODE --- */
+body.dark-mode { --bg-color: #2c3e50; --container-bg: #34495e; --navbar-bg: #415a75; --text-color: #ecf0f1; --primary-color: #A7C7E7; --secondary-text-color: #bdc3c7; --accent-color: #e55039; }
+.theme-toggle { background-color: var(--container-bg); color: var(--primary-color); border: 2px solid var(--primary-color); border-radius: 50%; width: 40px; height: 40px; font-size: 20px; cursor: pointer; margin-left: 20px; transition: background-color 0.3s, color 0.3s; }
+.theme-toggle:hover { background-color: var(--primary-color); color: var(--container-bg); }
 
 /* --- BẮT ĐẦU NÂNG CẤP EDIT MODAL (NHẬT KÝ) --- */
 /* ... (Code Modal không đổi) ... */
@@ -308,7 +108,6 @@ body.dark-mode {
 #save-edit-button:hover { background-color: #218838; }
 #cancel-edit-button { background-color: #6c757d; color: white; }
 #cancel-edit-button:hover { background-color: #5a6268; }
-
 
 /* --- BẮT ĐẦU NÂNG CẤP MUSIC PLAYER --- */
 /* ... (Code Music Player không đổi) ... */
@@ -324,7 +123,6 @@ body.dark-mode {
 .control-button.play { width: 60px; height: 60px; border-radius: 50%; background-color: var(--primary-color); color: var(--navbar-bg); font-size: 24px; display: flex; justify-content: center; align-items: center; }
 .control-button.play:hover { background-color: #003d82; color: var(--navbar-bg); }
 
-
 /* --- BẮT ĐẦU NÂNG CẤP PLAYLIST --- */
 /* ... (Code Playlist không đổi) ... */
 .playlist-container { margin-top: 30px; width: 100%; }
@@ -335,13 +133,11 @@ body.dark-mode {
 #playlist-items li:hover { background-color: var(--bg-color); }
 #playlist-items li.playing { background-color: var(--primary-color); color: var(--navbar-bg); font-weight: bold; }
 
-
 /* --- BẮT ĐẦU NÂNG CẤP ĐĨA NHẠC QUAY --- */
 /* ... (Code Đĩa quay không đổi) ... */
 @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 .music-cover.rotating img { animation: rotate 10s linear infinite; }
 .music-cover img { border-radius: 50%; }
-
 
 /* --- BẮT ĐẦU NÂNG CẤP GAME RẮN SĂN MỒI (Giao diện 2.0) --- */
 /* ... (Code Game Rắn không đổi) ... */
@@ -351,103 +147,59 @@ body.dark-mode {
 #snakeCanvas { display: block; margin: 15px auto; border: 2px solid var(--primary-color); border-radius: 15px; background-color: var(--bg-color); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); }
 #snake-score { font-size: 1.4em; font-weight: bold; color: var(--accent-color); text-align: center; margin-top: 20px; }
 
-
-/* --- BẮT ĐẦU CSS NÚT ĐIỀU KHIỂN RẮN (MOBILE) (ĐÃ SỬA MARGIN) --- */
-.snake-controls-mobile {
-    display: none; /* Ẩn trên desktop */
-    flex-direction: column;
-    align-items: center;
-    margin-top: 10px; /* Cho nút gần canvas hơn */
-}
-.snake-controls-mobile button {
-    background-color: var(--primary-color);
-    color: var(--navbar-bg);
-    border: none;
-    border-radius: 8px;
-    width: 60px;
-    height: 60px;
-    font-size: 24px;
-    font-weight: bold;
-    cursor: pointer;
-    margin: 5px;
-    -webkit-tap-highlight-color: transparent;
-    user-select: none;
-}
-.snake-controls-mobile div {
-    display: flex;
-    justify-content: center;
-}
-@media (max-width: 600px) {
-    .snake-controls-mobile {
-        display: flex; /* Hiện trên mobile */
-    }
-    /* Code responsive canvas rắn đã được chuyển vào khối @media chính */
-}
-/* --- KẾT THÚC CSS NÚT ĐIỀU KHIỂN RẮN (MOBILE) --- */
+/* --- BẮT ĐẦU CSS NÚT ĐIỀU KHIỂN RẮN (MOBILE) --- */
+.snake-controls-mobile { display: none; flex-direction: column; align-items: center; margin-top: 10px; }
+.snake-controls-mobile button { background-color: var(--primary-color); color: var(--navbar-bg); border: none; border-radius: 8px; width: 60px; height: 60px; font-size: 24px; font-weight: bold; cursor: pointer; margin: 5px; -webkit-tap-highlight-color: transparent; user-select: none; }
+.snake-controls-mobile div { display: flex; justify-content: center; }
 
 /* --- CSS CHO GIAO DIỆN CHỌN GAME --- */
-.game-selection {
-    margin-bottom: 30px;
-}
-.game-select-button {
-    border: none;
-    background: none;
-    padding: 0;
-    cursor: pointer;
-}
-.game-wrapper {
-    width: 100%;
-}
-/* --- KẾT THÚC CSS CHỌN GAME --- */
-/* --- BẮT ĐẦU NÂNG CẤP GAME XẾP GẠCH --- */
+.game-selection { margin-bottom: 30px; }
+.game-select-button { border: none; background: none; padding: 0; cursor: pointer; }
+.game-wrapper { width: 100%; }
 
-.tetris-game-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 30px;
-    width: 100%;
-}
+/* --- BẮT ĐẦU NÂNG CẤP GAME XẾP GẠCH (ĐÃ THÊM) --- */
+.tetris-game-container { display: flex; flex-direction: column; align-items: center; margin-top: 30px; width: 100%; padding: 0 10px; box-sizing: border-box; }
+.tetris-game-container h2 { text-align: center; color: var(--primary-color); margin-bottom: 10px; }
+.tetris-game-container p:nth-of-type(1) { color: var(--secondary-text-color); font-size: 0.9em; margin-bottom: 15px; text-align: center; }
+#tetrisCanvas { display: block; margin: 15px auto; border: 3px solid var(--primary-color); border-radius: 5px; background-color: var(--container-bg); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); }
+#tetris-score { font-size: 1.3em; font-weight: bold; color: var(--accent-color); text-align: center; margin-top: 15px; }
 
-.tetris-game-container h2 {
-    text-align: center;
-    color: var(--primary-color);
-    margin-bottom: 10px;
-}
+/* --- BẮT ĐẦU CSS NÚT ĐIỀU KHIỂN TETRIS (MOBILE) (ĐÃ THÊM) --- */
+.tetris-controls-mobile { display: none; flex-direction: column; align-items: center; margin-top: 15px; }
+.tetris-controls-mobile button { background-color: var(--primary-color); color: var(--navbar-bg); border: none; border-radius: 8px; width: 60px; height: 60px; font-size: 24px; font-weight: bold; cursor: pointer; margin: 5px; -webkit-tap-highlight-color: transparent; user-select: none; }
+.tetris-controls-mobile div { display: flex; justify-content: center; }
 
- .tetris-game-container p:nth-of-type(1) { /* Hướng dẫn */
-    color: var(--secondary-text-color);
-    font-size: 0.9em;
-    margin-bottom: 15px;
-}
-
-#tetrisCanvas {
-    border: 3px solid var(--primary-color);
-    border-radius: 5px;
-     background-color: var(--container-bg); /* Nền sáng/tối theo theme */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
- #tetris-score {
-    font-size: 1.3em;
-    font-weight: bold;
-    color: var(--accent-color);
-    text-align: center;
-    margin-top: 15px;
-}
-
-/* --- KẾT THÚC NÂNG CẤP GAME XẾP GẠCH --- */
-
-/* Sửa lại CSS nút chọn game để vừa 3 nút trên mobile */
+/* --- BẮT ĐẦU PHẦN RESPONSIVE CUỐI CÙNG (ĐÃ GỘP VÀ SỬA) --- */
 @media (max-width: 600px) {
-    /* ... code responsive cũ ... */
+    /* 1. Sửa Menu (Navbar) */
+    .navbar { flex-direction: column; padding: 15px; position: relative; }
+    .nav-logo { margin-bottom: 10px; }
+    .nav-menu { width: 100%; justify-content: center; }
+    .nav-menu li { margin-left: 8px; margin-right: 8px; }
+    .theme-toggle { position: absolute; top: 15px; right: 15px; margin-left: 0; } /* Nút dark mode */
 
-    /* Sửa lại .link-box cho vừa 3 game */
-    .link-box { /* Áp dụng cho cả game-select-button */
-       width: 90%;
-       height: 100px; /* Giảm chiều cao chút */
-       margin-bottom: 10px;
-    }
+    /* 2. Sửa Khung nội dung chính */
+    .container { margin: 20px 10px; padding: 20px; }
+    h1 { font-size: 28px; }
 
-    /* ... code responsive game rắn và nhật ký ... */
-}
+    /* 3. Sửa Nút "Góc" (và nút chọn game) */
+    .quick-links { flex-direction: column; align-items: center; }
+    .link-box { width: 90%; height: 100px; margin-bottom: 10px; } /* Giảm chiều cao nút */
+    .link-box:last-child { margin-bottom: 0; }
+
+    /* 5. Sửa trang Nhật ký (Nút Xóa/Sửa) */
+    .entry .delete-button,
+    .entry .edit-button { float: none; width: 100%; margin-top: 10px; margin-left: 0; text-align: center; }
+    .entry .edit-button { margin-top: 15px; }
+
+    /* 6. Sửa trang Game Rắn (Snake) */
+    .snake-game-container { padding: 0; align-items: center; }
+    #snakeCanvas { width: 100%; height: auto; aspect-ratio: 1 / 1; max-width: 400px; max-height: 400px; margin: 15px 0; }
+    .snake-controls-mobile { display: flex; } /* Hiện nút rắn */
+
+    /* 7. Sửa trang Game Xếp Gạch (Tetris) */
+    .tetris-game-container { padding: 0; }
+    #tetrisCanvas { width: calc(100vw - 40px); max-width: 200px; height: auto; aspect-ratio: 1 / 2; margin: 15px auto; }
+    .tetris-controls-mobile { display: flex; } /* Hiện nút Tetris */
+
+} /* --- KẾT THÚC PHẦN NÂNG CẤP RESPONSIVE --- */
