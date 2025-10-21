@@ -27,6 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
         { title: 'Kỵ Sĩ Và Ánh Sao', artist: 'Đông Nhi', src: 'music/ky_si_va_anh_sao.mp3', cover: 'images/cover-placeholder-4.png' },
         { title: 'Lộc Hải Vi Đường', artist: 'Đồng Nhân', src: 'music/loc_hai_2.mp3', cover: 'images/cover-placeholder-5.png' },
         { title: 'Phép Màu', artist: 'MAYDAY ft Minh Tốc', src: 'music/phep_mau.mp3', cover: 'images/cover-placeholder-3.png' },
+        { title: 'Cảm nắng', artist: 'Suni Hạ Linh', src: 'music/cam-nang.mp3', cover: 'images/cover-placeholder-8.png' },
+        { title: 'Thật quá đáng để yêu', artist: 'AMEE NICKY', src: 'music/qua-dang.mp3', cover: 'images/cover-placeholder-7.png' },
         { title: 'Giá Như', artist: 'Chilly Cover', src: 'music/gia_nhu.mp3', cover: 'images/cover-placeholder-6.png' }
     ];
     // --- KẾT THÚC DANH SÁCH BÀI HÁT ---
