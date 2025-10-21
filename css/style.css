@@ -357,3 +357,179 @@ bạn cũng cần sửa chúng theo logic 2 màu tương tự:
   color: #aebccb; /* Dùng màu xám mờ (giống màu ca sĩ) */
   opacity: 0.7;    /* Làm mờ nó đi 1 chút */
 }
+/* ========================================= */
+/* === BƯỚC 3: STYLE CHO DASHBOARD MỚI   === */
+/* ========================================= */
+
+/* --- 0. BẮT BUỘC: THIẾT LẬP ẢNH NỀN --- */
+/* (Hiệu ứng kính mờ CẦN ảnh nền) */
+body {
+    /* Hãy thay link ảnh này bằng ảnh nền của BẠN.
+      Nếu chưa có, hãy tạm dùng link này để TEST:
+    */
+    background-image: url('https://images.unsplash.com/photo-1487088678257-3a541e6e3922?auto=format&fit=crop&w=1740');
+    
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed; /* Giữ nền cố định khi cuộn */
+}
+
+
+/* --- 1. BỐ CỤC DASHBOARD TỔNG THỂ --- */
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Căn giữa mọi thứ */
+    justify-content: center;
+    
+    /* Chiều cao tối thiểu (trừ đi chiều cao của nav và footer) */
+    min-height: calc(100vh - 120px); 
+    
+    padding: 40px 20px; /* Khoảng đệm trên/dưới và trái/phải */
+    text-align: center;
+    
+    /* Mặc định là Light Mode: Chữ màu tối */
+    color: #1a1a1a;
+    /* Thêm bóng đổ nhẹ cho chữ (để nổi trên nền sáng) */
+    text-shadow: 
+        -1px -1px 3px rgba(255, 255, 255, 0.9),
+        1px -1px 3px rgba(255, 255, 255, 0.9),
+        -1px 1px 3px rgba(255, 255, 255, 0.9),
+        1px 1px 3px rgba(255, 255, 255, 0.9);
+    
+    /* Thêm transition để đổi màu mượt */
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Khi bật Dark Mode, đổi chữ thành TRẮNG */
+body.dark-mode .dashboard-container {
+    color: #FFFFFF;
+    /* Đổi bóng đổ thành màu tối (để nổi trên nền tối) */
+    text-shadow: -1px -1px 3px rgba(0, 0, 0, 0.8),
+        1px -1px 3px rgba(0, 0, 0, 0.8),
+        -1px 1px 3px rgba(0, 0, 0, 0.8),
+        1px 1px 3px rgba(0, 0, 0, 0.8),
+        0 0 10px rgba(0, 0, 0, 0.7); /* Thêm 1 bóng mờ lan tỏa */
+}
+
+
+/* --- 2. STYLE ĐỒNG HỒ --- */
+.clock-widget {
+    font-size: 6.5rem;  /* 80px - Rất to */
+    font-weight: 700; /* Nét chữ Mảnh (rất trendy) */
+    letter-spacing: 2px;
+}
+/* Làm cho số "giây" nhỏ hơn và mờ đi */
+.clock-widget .clock-seconds {
+    font-size: 0.5em; /* Bằng 1 nửa */
+    opacity: 0.7;
+    margin-left: 5px;
+}
+/* Trên di động, thu nhỏ đồng hồ */
+@media (max-width: 768px) {
+    .clock-widget {
+        font-size: 3.5rem; /* 56px */
+    }
+}
+
+
+/* --- 3. STYLE LỜI CHÀO --- */
+.greeting-widget {
+    font-size: 3.5rem; /* 40px */
+    font-weight: 700; /* Nét vừa (Medium) */
+    margin-top: 10px;
+}
+@media (max-width: 768px) {
+    .greeting-widget {
+        font-size: 2rem; /* 32px */
+    }
+}
+
+
+/* --- 4. STYLE CÂU QUOTE --- */
+.quote-widget {
+    margin-top: 25px;
+    max-width: 650px; /* Giới hạn độ rộng */
+    font-size: 1.4rem; /* 17.6px */
+    font-style: italic;
+    font-weight: 600;
+    opacity: 1;
+}
+.quote-widget blockquote {
+    margin: 0;
+}
+.quote-widget cite {
+    display: block;
+    margin-top: 10px;
+    font-style: normal;
+    font-weight: 600;
+}
+
+
+/* --- 5. STYLE 3 HỘP CHỨC NĂNG (GLASSMORPHISM) --- */
+.nav-cards-container {
+    display: flex;
+    flex-wrap: wrap; /* Cho phép xuống hàng trên di động */
+    justify-content: center;
+    gap: 25px; /* Khoảng cách giữa các hộp */
+    margin-top: 50px;
+    width: 100%;
+}
+
+.nav-card {
+    /* Kích thước */
+    width: 220px;
+    height: 180px;
+    padding: 20px;
+    
+    /* Bố cục bên trong (cho icon và chữ) */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    /* Chữ và Link */
+    color: #1a1a1a; /* Mặc định (Light Mode) */
+    text-decoration: none;
+    font-size: 3rem; /* Làm cho ICON (emoji) to ra */
+    
+    /* Hiệu ứng Kính Mờ (Glassmorphism) */
+    /* Nền Mặc định (Light Mode): Đen mờ */
+    background: rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 16px; /* Bo góc mềm mại */
+    
+    /* Hiệu ứng chuyển động (Microinteraction) */
+    transition: all 0.3s ease;
+}
+
+/* Style cho chữ (h3) bên trong hộp */
+.nav-card h3 {
+    font-size: 1.1rem; /* Reset chữ về kích thước bt */
+    margin-top: 20px;
+    margin-bottom: 0; /* Xóa margin mặc định */
+}
+
+/* Hiệu ứng khi di chuột vào hộp */
+.nav-card:hover {
+    transform: translateY(-8px); /* Nhấc hộp lên */
+    /* Sáng/tối hơn 1 chút khi hover */
+    background: rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* --- 6. STYLE 3 HỘP KHI Ở DARK MODE --- */
+
+body.dark-mode .nav-card {
+    /* Nền Dark Mode: Trắng mờ */
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #FFFFFF; /* Chữ màu trắng */
+}
+
+body.dark-mode .nav-card:hover {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}

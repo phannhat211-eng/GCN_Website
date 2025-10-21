@@ -26,35 +26,48 @@
         <button id="theme-toggle-button" class="theme-toggle">🌙</button>
     </nav>
 
-    <main class="container">
-        <h1>Chào mừng đến với GCN!</h1>
-        <p>Hôm nay của Nhật thế nào? Hãy chọn một góc để thư giãn nhé.</p>
-        
-        <div class="quick-links">
+    <main class="dashboard-container">
+
+        <div class="clock-widget" id="realtime-clock">
+            </div>
+
+        <h1 class="greeting-widget" id="dynamic-greeting">
+            </h1>
+
+        <div class="quote-widget">
+            <blockquote id="quote-text">
+                </blockquote>
+            <cite id="quote-author">
+                </cite>
+        </div>
+
+        <div class="nav-cards-container">
             
-            <a href="music.html" class="link-box">
+            <a href="music.html" class="nav-card">
                 🎵
-                <span>Góc Âm Nhạc</span>
+                <h3>Góc Âm Nhạc</h3>
             </a>
             
-            <a href="games.html" class="link-box">
+            <a href="games.html" class="nav-card">
                 🎮
-                <span>Góc Giải Trí</span>
+                <h3>Góc Giải Trí</h3>
             </a>
-            
-            <a href="login.html" class="link-box"> 📓
-    <span>Góc Nhật Ký</span>
-</a>
+
+            <a href="login.html" class="nav-card">
+                📓
+                <h3>Góc Nhật Ký</h3>
+            </a>
+
         </div>
     </main>
-
     <footer class="footer">
         <p>© 2025 - Làm bằng cả trái tim bởi Nhật.</p>
     </footer>
+
 <script src="//code.tidio.co/wjsaedeuupbhm3mfljz5y1pwni7hcjso.js" async></script>
+
+<script src="js/dashboard.js"></script> 
 <script src="js/theme.js"></script>
 
-</body>
-</html>
 </body>
 </html>
