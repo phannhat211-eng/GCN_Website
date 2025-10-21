@@ -852,3 +852,67 @@ body.dark-mode .nav-menu li a:hover {
         transform: none;
     }
 }
+/* ========================================= */
+/* ========================================= */
+/* ===  NÂNG CẤP CONTAINER (ÉP BUỘC)     === */
+/* ========================================= */
+
+/* --- 1. STYLE MẶC ĐỊNH (Light Mode) --- */
+main.container {
+    /* Nền kính trắng mờ */
+    background: rgba(255, 255, 255, 0.65) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important; 
+    
+    color: #1a1a1a !important; /* Chữ đen */
+    
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 16px !important; 
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1) !important; 
+    
+    /* Ghi đè code cũ (nếu có) */
+    background-color: rgba(255, 255, 255, 0.65) !important;
+    
+    transition: all 0.3s ease;
+}
+
+/* --- 2. STYLE KHI Ở DARK MODE --- */
+body.dark-mode main.container {
+    /* Nền kính tối mờ (giống trang chủ) */
+    background: rgba(52, 73, 94, 0.75) !important; 
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    
+    color: #FFFFFF !important; /* Chữ trắng */
+    
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3) !important;
+    
+    /* Ghi đè code cũ (nếu có) */
+    background-color: rgba(52, 73, 94, 0.75) !important;
+}
+
+/* --- 3. FIX MÀU CHỮ BÊN TRONG (Đồng bộ) --- */
+/* (Phần này cũng cần !important để ghi đè màu chữ cũ) */
+
+main.container h1,
+main.container h2,
+main.container h3 {
+    color: #1a1a1a !important;
+    transition: color 0.3s ease;
+}
+body.dark-mode main.container h1,
+body.dark-mode main.container h2,
+body.dark-mode main.container h3 {
+    color: #FFFFFF !important;
+}
+
+main.container p,
+main.container span {
+    color: #333333 !important;
+    transition: color 0.3s ease;
+}
+body.dark-mode main.container p,
+body.dark-mode main.container span {
+    color: #aebccb !important; /* Xám nhạt */
+}
