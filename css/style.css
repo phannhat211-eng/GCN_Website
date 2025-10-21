@@ -9,15 +9,11 @@ body {
     --secondary-text-color: #555;   /* Màu chữ phụ (xám) */
     --accent-color: #e55039;        /* Màu nhấn (đỏ cam - mồi rắn) */
 
-    /* Gán biến vào thuộc tính */
     background-color: var(--bg-color);
     color: var(--text-color);
-
     font-family: 'Nunito', sans-serif;
     margin: 0;
     padding: 0;
-
-    /* Thêm hiệu ứng chuyển màu mượt */
     transition: background-color 0.3s, color 0.3s;
 }
 
@@ -59,37 +55,10 @@ p { text-align: center; font-size: 18px; }
 .game-restart-button:hover { background-color: #003d82; }
 
 /* --- CSS CHO TRANG ĐĂNG NHẬP (AUTH) --- */
-/* ... (Code Auth không đổi) ... */
-.auth-form-container { background-color: var(--navbar-bg); padding: 25px; border-radius: 8px; margin-top: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-.auth-form-container h2 { text-align: left; margin-top: 0; }
-.auth-form-container input { width: calc(100% - 22px); padding: 11px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; font-family: 'Nunito', sans-serif; font-size: 16px; }
-.auth-form-container button { width: 100%; padding: 12px; font-size: 16px; font-weight: 700; font-family: 'Nunito', sans-serif; border: none; border-radius: 5px; background-color: var(--primary-color); color: var(--navbar-bg); cursor: pointer; transition: background-color 0.3s; }
-.auth-form-container button:hover { background-color: #003d82; }
-#register-button { background-color: #28a745; }
-#register-button:hover { background-color: #218838; }
-#logout-button { background-color: #dc3545; margin-top: 15px; }
-#logout-button:hover { background-color: #c82333; }
-.diary-link-button { display: block; width: calc(100% - 24px); padding: 12px; font-size: 16px; font-weight: 700; font-family: 'Nunito', sans-serif; border-radius: 5px; background-color: #ffc107; color: #333; text-align: center; text-decoration: none; margin-bottom: 15px; transition: background-color 0.3s; }
-.diary-link-button:hover { background-color: #e0a800; }
-#auth-error { color: #dc3545; font-weight: bold; text-align: center; margin-top: 15px; }
+.auth-form-container { background-color: var(--navbar-bg); padding: 25px; border-radius: 8px; margin-top: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); } .auth-form-container h2 { text-align: left; margin-top: 0; } .auth-form-container input { width: calc(100% - 22px); padding: 11px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; font-family: 'Nunito', sans-serif; font-size: 16px; } .auth-form-container button { width: 100%; padding: 12px; font-size: 16px; font-weight: 700; font-family: 'Nunito', sans-serif; border: none; border-radius: 5px; background-color: var(--primary-color); color: var(--navbar-bg); cursor: pointer; transition: background-color 0.3s; } .auth-form-container button:hover { background-color: #003d82; } #register-button { background-color: #28a745; } #register-button:hover { background-color: #218838; } #logout-button { background-color: #dc3545; margin-top: 15px; } #logout-button:hover { background-color: #c82333; } .diary-link-button { display: block; width: calc(100% - 24px); padding: 12px; font-size: 16px; font-weight: 700; font-family: 'Nunito', sans-serif; border-radius: 5px; background-color: #ffc107; color: #333; text-align: center; text-decoration: none; margin-bottom: 15px; transition: background-color 0.3s; } .diary-link-button:hover { background-color: #e0a800; } #auth-error { color: #dc3545; font-weight: bold; text-align: center; margin-top: 15px; }
 
 /* --- CSS CHO TRANG NHẬT KÝ (DIARY) --- */
-/* ... (Code Diary không đổi) ... */
-.diary-editor { background-color: var(--navbar-bg); padding: 25px; border-radius: 8px; margin-top: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-.diary-editor h1, .diary-editor p { text-align: left; margin-top: 0; }
-.diary-editor textarea { width: calc(100% - 22px); height: 150px; padding: 11px; border: 1px solid #ccc; border-radius: 5px; font-family: 'Nunito', sans-serif; font-size: 16px; resize: vertical; }
-.diary-editor button { width: 100%; padding: 12px; margin-top: 15px; font-size: 16px; font-weight: 700; border: none; border-radius: 5px; background-color: #28a745; color: white; cursor: pointer; transition: background-color 0.3s; }
-.diary-editor button:hover { background-color: #218838; }
-#diary-status { font-weight: bold; color: var(--primary-color); margin-top: 10px; text-align: center; }
-.diary-archive { margin-top: 30px; }
-.diary-archive h2 { text-align: left; }
-#entries-container .entry { background-color: var(--navbar-bg); padding: 20px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); overflow: auto; }
-#entries-container .entry-date { font-size: 14px; font-weight: 700; color: #555; margin-bottom: 10px; }
-#entries-container .entry-content { font-size: 16px; line-height: 1.6; white-space: pre-wrap; }
-.entry .delete-button { background-color: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 14px; font-weight: 700; margin-top: 15px; float: right; transition: background-color 0.3s; }
-.entry .delete-button:hover { background-color: #c82333; }
-.entry .edit-button { background-color: #6c757d; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 14px; font-weight: 700; margin-top: 15px; float: right; margin-left: 5px; transition: background-color 0.3s; }
-.entry .edit-button:hover { background-color: #5a6268; }
+.diary-editor { background-color: var(--navbar-bg); padding: 25px; border-radius: 8px; margin-top: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); } .diary-editor h1, .diary-editor p { text-align: left; margin-top: 0; } .diary-editor textarea { width: calc(100% - 22px); height: 150px; padding: 11px; border: 1px solid #ccc; border-radius: 5px; font-family: 'Nunito', sans-serif; font-size: 16px; resize: vertical; } .diary-editor button { width: 100%; padding: 12px; margin-top: 15px; font-size: 16px; font-weight: 700; border: none; border-radius: 5px; background-color: #28a745; color: white; cursor: pointer; transition: background-color 0.3s; } .diary-editor button:hover { background-color: #218838; } #diary-status { font-weight: bold; color: var(--primary-color); margin-top: 10px; text-align: center; } .diary-archive { margin-top: 30px; } .diary-archive h2 { text-align: left; } #entries-container .entry { background-color: var(--navbar-bg); padding: 20px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); overflow: auto; } #entries-container .entry-date { font-size: 14px; font-weight: 700; color: #555; margin-bottom: 10px; } #entries-container .entry-content { font-size: 16px; line-height: 1.6; white-space: pre-wrap; } .entry .delete-button { background-color: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 14px; font-weight: 700; margin-top: 15px; float: right; transition: background-color 0.3s; } .entry .delete-button:hover { background-color: #c82333; } .entry .edit-button { background-color: #6c757d; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 14px; font-weight: 700; margin-top: 15px; float: right; margin-left: 5px; transition: background-color 0.3s; } .entry .edit-button:hover { background-color: #5a6268; }
 
 /* --- BẮT ĐẦU NÂNG CẤP DARK MODE --- */
 body.dark-mode { --bg-color: #2c3e50; --container-bg: #34495e; --navbar-bg: #415a75; --text-color: #ecf0f1; --primary-color: #A7C7E7; --secondary-text-color: #bdc3c7; --accent-color: #e55039; }
@@ -97,20 +66,9 @@ body.dark-mode { --bg-color: #2c3e50; --container-bg: #34495e; --navbar-bg: #415
 .theme-toggle:hover { background-color: var(--primary-color); color: var(--container-bg); }
 
 /* --- BẮT ĐẦU NÂNG CẤP EDIT MODAL (NHẬT KÝ) --- */
-/* ... (Code Modal không đổi) ... */
-.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); display: flex; justify-content: center; align-items: center; z-index: 1000; }
-.modal-content { background-color: var(--navbar-bg); color: var(--text-color); padding: 25px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); width: 90%; max-width: 500px; }
-.modal-content h2 { text-align: left; margin-top: 0; color: var(--primary-color); }
-.modal-content textarea { width: calc(100% - 22px); height: 200px; padding: 11px; border: 1px solid #ccc; border-radius: 5px; font-family: 'Nunito', sans-serif; font-size: 16px; resize: vertical; }
-.modal-buttons { display: flex; justify-content: flex-end; margin-top: 20px; }
-.modal-buttons button { padding: 10px 20px; font-size: 16px; font-weight: 700; border: none; border-radius: 5px; cursor: pointer; margin-left: 10px; }
-#save-edit-button { background-color: #28a745; color: white; }
-#save-edit-button:hover { background-color: #218838; }
-#cancel-edit-button { background-color: #6c757d; color: white; }
-#cancel-edit-button:hover { background-color: #5a6268; }
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); display: flex; justify-content: center; align-items: center; z-index: 1000; } .modal-content { background-color: var(--navbar-bg); color: var(--text-color); padding: 25px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); width: 90%; max-width: 500px; } .modal-content h2 { text-align: left; margin-top: 0; color: var(--primary-color); } .modal-content textarea { width: calc(100% - 22px); height: 200px; padding: 11px; border: 1px solid #ccc; border-radius: 5px; font-family: 'Nunito', sans-serif; font-size: 16px; resize: vertical; } .modal-buttons { display: flex; justify-content: flex-end; margin-top: 20px; } .modal-buttons button { padding: 10px 20px; font-size: 16px; font-weight: 700; border: none; border-radius: 5px; cursor: pointer; margin-left: 10px; } #save-edit-button { background-color: #28a745; color: white; } #save-edit-button:hover { background-color: #218838; } #cancel-edit-button { background-color: #6c757d; color: white; } #cancel-edit-button:hover { background-color: #5a6268; }
 
 /* --- BẮT ĐẦU NÂNG CẤP MUSIC PLAYER --- */
-/* ... (Code Music Player không đổi) ... */
 .music-player-container { display: flex; flex-direction: column; align-items: center; padding: 20px; background-color: var(--navbar-bg); border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 .music-cover { width: 250px; height: 250px; margin-bottom: 20px; }
 .music-cover img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
@@ -124,7 +82,6 @@ body.dark-mode { --bg-color: #2c3e50; --container-bg: #34495e; --navbar-bg: #415
 .control-button.play:hover { background-color: #003d82; color: var(--navbar-bg); }
 
 /* --- BẮT ĐẦU NÂNG CẤP PLAYLIST --- */
-/* ... (Code Playlist không đổi) ... */
 .playlist-container { margin-top: 30px; width: 100%; }
 .playlist-container h2 { text-align: left; margin-bottom: 15px; color: var(--primary-color); }
 #playlist-items { list-style: none; padding: 0; margin: 0; max-height: 300px; overflow-y: auto; }
@@ -134,13 +91,11 @@ body.dark-mode { --bg-color: #2c3e50; --container-bg: #34495e; --navbar-bg: #415
 #playlist-items li.playing { background-color: var(--primary-color); color: var(--navbar-bg); font-weight: bold; }
 
 /* --- BẮT ĐẦU NÂNG CẤP ĐĨA NHẠC QUAY --- */
-/* ... (Code Đĩa quay không đổi) ... */
 @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 .music-cover.rotating img { animation: rotate 10s linear infinite; }
-.music-cover img { border-radius: 50%; }
+.music-cover img { border-radius: 50%; } /* Đảm bảo luôn tròn */
 
 /* --- BẮT ĐẦU NÂNG CẤP GAME RẮN SĂN MỒI (Giao diện 2.0) --- */
-/* ... (Code Game Rắn không đổi) ... */
 .snake-game-container { display: flex; flex-direction: column; align-items: center; margin-top: 30px; width: 100%; }
 .snake-game-container h2 { text-align: center; color: var(--primary-color); margin-bottom: 10px; }
 .snake-game-container p:nth-of-type(1) { color: var(--secondary-text-color); font-size: 0.9em; margin-bottom: 20px; }
@@ -157,26 +112,32 @@ body.dark-mode { --bg-color: #2c3e50; --container-bg: #34495e; --navbar-bg: #415
 .game-select-button { border: none; background: none; padding: 0; cursor: pointer; }
 .game-wrapper { width: 100%; }
 
-/* --- BẮT ĐẦU NÂNG CẤP GAME XẾP GẠCH (ĐÃ THÊM) --- */
+/* --- BẮT ĐẦU NÂNG CẤP GAME XẾP GẠCH --- */
 .tetris-game-container { display: flex; flex-direction: column; align-items: center; margin-top: 30px; width: 100%; padding: 0 10px; box-sizing: border-box; }
 .tetris-game-container h2 { text-align: center; color: var(--primary-color); margin-bottom: 10px; }
 .tetris-game-container p:nth-of-type(1) { color: var(--secondary-text-color); font-size: 0.9em; margin-bottom: 15px; text-align: center; }
 #tetrisCanvas { display: block; margin: 15px auto; border: 3px solid var(--primary-color); border-radius: 5px; background-color: var(--container-bg); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); }
 #tetris-score { font-size: 1.3em; font-weight: bold; color: var(--accent-color); text-align: center; margin-top: 15px; }
 
-/* --- BẮT ĐẦU CSS NÚT ĐIỀU KHIỂN TETRIS (MOBILE) (ĐÃ THÊM) --- */
+/* --- BẮT ĐẦU CSS NÚT ĐIỀU KHIỂN TETRIS (MOBILE) --- */
 .tetris-controls-mobile { display: none; flex-direction: column; align-items: center; margin-top: 15px; }
 .tetris-controls-mobile button { background-color: var(--primary-color); color: var(--navbar-bg); border: none; border-radius: 8px; width: 60px; height: 60px; font-size: 24px; font-weight: bold; cursor: pointer; margin: 5px; -webkit-tap-highlight-color: transparent; user-select: none; }
 .tetris-controls-mobile div { display: flex; justify-content: center; }
 
-/* --- BẮT ĐẦU PHẦN RESPONSIVE CUỐI CÙNG (ĐÃ GỘP VÀ SỬA) --- */
+/* --- BẮT ĐẦU NÂNG CẤP THANH TIẾN TRÌNH (MUSIC PLAYER) --- */
+.progress-container { background-color: var(--container-bg); border-radius: 5px; cursor: pointer; margin: 20px 0; height: 8px; width: 100%; box-shadow: inset 0 1px 3px rgba(0,0,0,0.2); }
+.progress-bar { background-color: var(--primary-color); border-radius: 5px; height: 100%; width: 0%; transition: width 0.1s linear; }
+.time-display { display: flex; justify-content: space-between; font-size: 14px; color: var(--secondary-text-color); margin-top: 5px; padding: 0 5px; }
+
+
+/* --- PHẦN RESPONSIVE CUỐI CÙNG (ĐÃ GỘP VÀ SỬA) --- */
 @media (max-width: 600px) {
     /* 1. Sửa Menu (Navbar) */
     .navbar { flex-direction: column; padding: 15px; position: relative; }
     .nav-logo { margin-bottom: 10px; }
     .nav-menu { width: 100%; justify-content: center; }
     .nav-menu li { margin-left: 8px; margin-right: 8px; }
-    .theme-toggle { position: absolute; top: 15px; right: 15px; margin-left: 0; } /* Nút dark mode */
+    .theme-toggle { position: absolute; top: 15px; right: 15px; margin-left: 0; }
 
     /* 2. Sửa Khung nội dung chính */
     .container { margin: 20px 10px; padding: 20px; }
@@ -184,7 +145,7 @@ body.dark-mode { --bg-color: #2c3e50; --container-bg: #34495e; --navbar-bg: #415
 
     /* 3. Sửa Nút "Góc" (và nút chọn game) */
     .quick-links { flex-direction: column; align-items: center; }
-    .link-box { width: 90%; height: 100px; margin-bottom: 10px; } /* Giảm chiều cao nút */
+    .link-box { width: 90%; height: 100px; margin-bottom: 10px; }
     .link-box:last-child { margin-bottom: 0; }
 
     /* 5. Sửa trang Nhật ký (Nút Xóa/Sửa) */
@@ -203,33 +164,3 @@ body.dark-mode { --bg-color: #2c3e50; --container-bg: #34495e; --navbar-bg: #415
     .tetris-controls-mobile { display: flex; } /* Hiện nút Tetris */
 
 } /* --- KẾT THÚC PHẦN NÂNG CẤP RESPONSIVE --- */
-/* --- BẮT ĐẦU NÂNG CẤP THANH TIẾN TRÌNH --- */
-
-.progress-container {
-    background-color: var(--container-bg); /* Màu nền giống khung */
-    border-radius: 5px;
-    cursor: pointer; /* Cho biết có thể nhấp vào */
-    margin: 20px 0; /* Khoảng cách trên dưới */
-    height: 8px; /* Chiều cao của thanh nền */
-    width: 100%; /* Rộng 100% */
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.2); /* Tạo hiệu ứng lõm nhẹ */
-}
-
-.progress-bar {
-    background-color: var(--primary-color); /* Màu xanh dương (hoặc xanh pastel) */
-    border-radius: 5px;
-    height: 100%; /* Cao bằng thanh nền */
-    width: 0%; /* Ban đầu là 0%, sẽ được cập nhật bằng JS */
-    transition: width 0.1s linear; /* Hiệu ứng chuyển động mượt */
-}
-
-/* Tùy chọn: CSS cho hiển thị thời gian */
-.time-display {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-    color: var(--secondary-text-color);
-    margin-top: 5px; /* Khoảng cách với thanh tiến trình */
-}
-
-/* --- KẾT THÚC NÂNG CẤP THANH TIẾN TRÌNH --- */

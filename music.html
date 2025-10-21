@@ -3,22 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Góc Của Nhật (GCN)</title>
-
     <link rel="stylesheet" href="css/style.css">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
 
     <nav class="navbar">
         <a href="index.html" class="nav-logo">Góc Của Nhật (GCN)</a>
-
         <ul class="nav-menu">
             <li><a href="index.html">Trang chủ</a></li>
             <li><a href="music.html">Âm nhạc</a></li>
@@ -33,18 +28,23 @@
         <p>Một vài giai điệu yêu thích của tôi.</p>
 
         <div class="music-player-container">
-            <audio id="audio-source" src=""></audio>
-            <div class="music-cover">
+            <audio id="audio-source" src=""></audio> <div class="music-cover">
                 <img id="cover-art" src="images/cover-placeholder.png" alt="Album Art">
             </div>
             <div class="music-info">
-                <h2 id="song-title">Chọn một bài hát</h2>
-                <p id="song-artist">Để bắt đầu</p>
+                <h2 id="song-title">Đang tải...</h2>
+                <p id="song-artist">-</p>
             </div>
 
             <div class="progress-container" id="progress-container">
                 <div class="progress-bar" id="progress-bar"></div>
-                 </div>
+            </div>
+
+            <div class="time-display">
+                 <span id="current-time">0:00</span>
+                 <span id="duration">0:00</span>
+            </div>
+
             <div class="music-controls">
                 <button id="prev-button" class="control-button">
                     <i class="fas fa-backward"></i>
@@ -62,7 +62,9 @@
                 </ul>
         </div>
 
-    </main> <footer class="footer">
+    </main>
+
+    <footer class="footer">
         <p>© 2025 - Làm bằng cả trái tim bởi Nhật.</p>
     </footer>
 
