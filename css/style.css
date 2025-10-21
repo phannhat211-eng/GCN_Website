@@ -129,7 +129,7 @@ hr { border: none; border-top: 2px dashed var(--text-color); margin: 40px 0; } /
 /* --- BẮT ĐẦU NÂNG CẤP THANH TIẾN TRÌNH (MUSIC PLAYER) --- */
 .progress-container { background-color: var(--container-bg); border-radius: 5px; cursor: pointer; margin: 20px 0; height: 8px; width: 100%; box-shadow: inset 0 1px 3px rgba(0,0,0,0.2); }
 .progress-bar { background-color: var(--primary-color); border-radius: 5px; height: 100%; width: 0%; transition: width 0.1s linear; }
-.time-display { display: flex; justify-content: space-between; font-size: 14px; color: var(--secondary-text-color); margin-top: 5px; padding: 0 5px; }
+.time-display { display: flex; justify-content: space-between; font-size: 14px; color: var(--secondary-text-color); margin-top: 5px; padding: 0 5px; width: 100%; }
 
 
 /* --- PHẦN RESPONSIVE CUỐI CÙNG (ĐÃ GỘP VÀ SỬA) --- */
