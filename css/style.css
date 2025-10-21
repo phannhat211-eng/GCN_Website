@@ -197,57 +197,40 @@ hr { border: none; border-top: 2px dashed var(--text-color); margin: 40px 0; } /
 
 /* --- KẾT THÚC NÂNG CẤP TÌM KIẾM PLAYLIST --- */
 /* ========================================= */
-/* ===  1. STYLE THANH CUỘN (LIGHT MODE) === */
+/* ========================================= */
+/* ===    THANH CUỘN (ĐÃ SỬA LỖI)         === */
 /* ========================================= */
 
-/* --- Cho Firefox (Light Mode) --- */
+/* --- 1. MẶC ĐỊNH (Light Mode) --- */
 #playlist-items {
   scrollbar-width: thin;
-  scrollbar-color: #a8a8a8 #f1f1f1; /* (con trượt) (rãnh) */
+  scrollbar-color: #a8a8a8 #f1f1f1; 
 }
-
-/* --- Cho Chrome, Edge, Safari (Light Mode) --- */
-#playlist-items::-webkit-scrollbar {
-  width: 8px;
-}
-
+#playlist-items::-webkit-scrollbar { width: 8px; }
 #playlist-items::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Màu rãnh nhạt */
+  background: #f1f1f1; 
   border-radius: 10px;
 }
-
 #playlist-items::-webkit-scrollbar-thumb {
-  background-color: #c1c1c1; /* Màu con trượt xám nhạt */
+  background-color: #c1c1c1; 
   border-radius: 10px;
 }
-
 #playlist-items::-webkit-scrollbar-thumb:hover {
   background-color: #a8a8a8;
 }
 
-/* ========================================= */
-/* ===  2. STYLE THANH CUỘN (DARK MODE)  === */
-/* ========================================= */
-
-@media (prefers-color-scheme: dark) {
-
-  /* --- Cho Firefox (Dark Mode) --- */
-  #playlist-items {
-    scrollbar-color: #7f8c8d #34495e; /* (con trượt) (rãnh) */
-  }
-
-  /* --- Cho Chrome, Edge, Safari (Dark Mode) --- */
-  #playlist-items::-webkit-scrollbar-track {
-    background: #34495e; /* Màu rãnh tối (giống nền của bạn) */
-  }
-
-  #playlist-items::-webkit-scrollbar-thumb {
-    background-color: #7f8c8d; /* Màu con trượt xám */
-  }
-
-  #playlist-items::-webkit-scrollbar-thumb:hover {
-    background-color: #95a5a6; /* Màu con trượt khi hover */
-  }
+/* --- 2. KHI Ở DARK MODE --- */
+body.dark-mode #playlist-items {
+  scrollbar-color: #7f8c8d #34495e;
+}
+body.dark-mode #playlist-items::-webkit-scrollbar-track {
+  background: #34495e; 
+}
+body.dark-mode #playlist-items::-webkit-scrollbar-thumb {
+  background-color: #7f8c8d; 
+}
+body.dark-mode #playlist-items::-webkit-scrollbar-thumb:hover {
+  background-color: #95a5a6; 
 }
 /* ========================================= */
 /* === BƯỚC 1: LÀM MƯỢT CHUYỂN ĐỘNG      === */
@@ -273,82 +256,64 @@ hr { border: none; border-top: 2px dashed var(--text-color); margin: 40px 0; } /
               box-shadow 0.3s ease;
 }
 /* ========================================= */
-/* === BƯỚC 2: HIỆU ỨNG HOVER & FOCUS    === */
+/* ========================================= */
+/* ===   BƯỚC 2 (ĐÃ SỬA LỖI HOVER)       === */
 /* ========================================= */
 
-/* --- Mã màu nhấn (bạn có thể đổi màu này) --- */
+/* (Giữ nguyên phần :root và .search-container) */
 :root {
-  --mau-nhan: #1DB954; /* Thử màu xanh Spotify */
-  /* --mau-nhan: #9147FF; */ /* Hoặc màu tím */
-  /* --mau-nhan: #FFB800; */ /* Hoặc màu vàng */
+  --mau-nhan: #1DB954; 
+}
+.search-container input:focus {
+  border-color: var(--mau-nhan); 
+  box-shadow: 0 0 8px rgba(29, 185, 84, 0.5); 
+  outline: none; 
 }
 
-
-/* 1. Hiệu ứng khi di chuột vào bài hát */
+/* --- 1. HIỆU ỨNG HOVER (Light Mode) --- */
 #playlist-items li:hover {
-  /* Nền sẽ sáng lên một chút (màu trắng mờ) */
-  background-color: rgba(255, 255, 255, 0.1);
-  
-  /* Bài hát sẽ "nhích" nhẹ sang phải và to ra */
+  background-color: rgba(0, 0, 0, 0.05); /* Dùng màu ĐEN mờ (5%) */
   transform: scale(1.02) translateX(5px);
-  
-  /* Con trỏ chuột biến thành hình bàn tay */
   cursor: pointer; 
 }
 
-/* 2. Hiệu ứng khi nhấp (focus) vào ô tìm kiếm */
-.search-container input:focus {
-  /* Từ ảnh của bạn, ô tìm kiếm có viền xám mờ.
-    Khi focus, chúng ta sẽ đổi viền sang "Màu Nhấn" 
-  */
-  border-color: var(--mau-nhan); /* Dùng màu nhấn */
-  
-  /* Thêm hiệu ứng toả sáng mờ (cùng màu nhấn) */
-  box-shadow: 0 0 8px rgba(29, 185, 84, 0.5); /* 29,185,84 là RGB của #1DB954 */
-  
-  /* Cần thêm dòng này để trình duyệt bỏ viền mặc định (vd: viền xanh của Chrome) */
-  outline: none; 
+/* --- 2. HIỆU ỨNG HOVER (Dark Mode) --- */
+body.dark-mode #playlist-items li:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Dùng màu TRẮNG mờ (10%) */
+  /* (Không cần transform nữa vì đã có ở trên) */
 }
 /* ========================================= */
-/* === BƯỚC 3: HIỆU ỨNG KÍNH MỜ (GLASS)  === */
+/* ========================================= */
+/* === BƯỚC 3 (ĐÃ SỬA LỖI GLASSMORPHISM) === */
 /* ========================================= */
 
-/* --- 1. Thiết lập cho BODY (BẮT BUỘC) --- */
+/* (Giữ nguyên phần body) */
 body {
-  /* BẠN CẦN THÊM ẢNH NỀN VÀO ĐÂY.
-    Nếu chưa có, hãy tạm dùng link ảnh này để TEST:
-    background-image: url('https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1740');
-  */
-  
-  /* Các thuộc tính này giúp ảnh nền đẹp hơn */
   background-size: cover;
   background-position: center center;
-  background-attachment: fixed; /* Giữ nền cố định khi cuộn */
+  background-attachment: fixed;
+  /* Nhớ set background-image ở đây */
 }
 
-/* --- 2. Áp dụng hiệu ứng cho HỘP CHÍNH --- */
-/* (Từ ảnh của bạn, mình thấy hộp chính có class là "main-container") */
-
+/* --- 1. GLASSMORPHISM (Light Mode) --- */
 .main-container {
-  /* 1. Đổi màu nền ĐẶC thành TRONG SUỐT (ví dụ 75% độ mờ) */
-  /* Thay "52, 73, 94" bằng mã RGB của màu nền cũ của bạn */
-  background-color: rgba(52, 73, 94, 0.75); 
-  
-  /* 2. Hiệu ứng "KÍNH MỜ" (đây là phép thuật) */
+  /* Dùng nền TRẮNG mờ (để thấy ảnh nền) */
+  background-color: rgba(255, 255, 255, 0.6); 
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px); /* Hỗ trợ Safari */
-  
-  /* 3. Thêm viền mờ để nổi khối */
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  
-  /* 4. Bo góc nhiều hơn cho "mềm mại" */
-  border-radius: 16px; /* Bạn có thể tăng/giảm số này */
-  
-  /* 5. Thêm bóng đổ nhẹ để tách khỏi nền */
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  -webkit-backdrop-filter: blur(12px); 
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px; 
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1); /* Bóng mờ nhạt */
+  transition: background-color 0.3s ease; /* Thêm transition */
 }
-/* ========================================= */
-/* ========================================= */
+
+/* --- 2. GLASSMORPHISM (Dark Mode) --- */
+body.dark-mode .main-container {
+  /* Dùng nền TỐI mờ (code cũ của bạn) */
+  background-color: rgba(52, 73, 94, 0.75); 
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3); /* Bóng mờ đậm */
+}
 /* ========================================= */
 /* === BƯỚC 4 (Sửa lần 2): Dùng class .dark-mode === */
 /* ========================================= */
