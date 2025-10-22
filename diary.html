@@ -27,75 +27,27 @@
     </nav>
 
     <main class="container">
-    <p id="diary-loading-status">Đang kiểm tra đăng nhập, vui lòng chờ...</p>
+        <p id="diary-loading-status">Đang kiểm tra đăng nhập, vui lòng chờ...</p>
 
-<div id="diary-wrapper" style="display: none;">
+        <div id="diary-wrapper" style="display: none;">
 
-    <div class="diary-editor">
-        <h1>Nhật Ký Của Tôi 📓</h1>
-        <p>Hôm nay bạn cảm thấy thế nào?</p>
-        <textarea id="diary-entry" placeholder="Viết suy nghĩ của bạn ở đây..."></textarea>
-        <button id="save-entry-button">Lưu lại</button>
-        <p id="diary-status"></p>
-    </div>
-
-    <div class="diary-archive">
-        <h2>Những ngày đã qua:</h2>
-        <div id="entries-container">
-            <p>Đang tải nhật ký cũ...</p>
-        </div>
-    </div>
-    
-</div>
-
-<div class="diary-archive">
-    <h2>Những ngày đã qua:</h2>
-    <div id="entries-container">
-        <p>Đang tải nhật ký cũ...</p>
-    </div>
-</div>
-</main>
-<div class="chatbot-container">
-
-    <div class="chat-window" id="gcn-chat-window">
-        <div class="chat-header">
-            <h3>GCN-Bot (Hài hước)</h3>
-            <button class="chat-close-btn" id="chat-close-btn">&times;</button>
-        </div>
-        
-        <div class="chat-messages" id="chat-messages">
-            <div class="message bot-message">
-                Chào bạn! Tui là GCN-Bot, trợ lý "cà khịa" của Nhật. Bạn cần gì hông? 😉
+            <div class="diary-editor">
+                <h1>Nhật Ký Của Tôi 📓</h1>
+                <p>Hôm nay bạn cảm thấy thế nào?</p>
+                <textarea id="diary-entry" placeholder="Viết suy nghĩ của bạn ở đây..."></textarea>
+                <button id="save-entry-button">Lưu lại</button>
+                <p id="diary-status"></p>
             </div>
+
+            <div class="diary-archive">
+                <h2>Những ngày đã qua:</h2>
+                <div id="entries-container">
+                    <p>Đang tải nhật ký cũ...</p>
+                </div>
+            </div>
+            
         </div>
-        
-        <div class="chat-input-area">
-            <input type="text" id="chat-input" placeholder="Hỏi gì đi...">
-            <button id="chat-send-btn">Gửi</button>
-        </div>
-    </div>
-
-    <button class="chat-bubble" id="chat-bubble">
-        🤖
-    </button>
-</div>
-    <footer class="footer">
-        <p>© 2025 - Làm bằng cả trái tim bởi Nhật.</p>
-    </footer>
-</footer>
-
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
-
-<script src="js/diary.js"></script>
-</body>
-</html>
-<script src="js/theme.js"></script>
-
-</body>
-</html>
-<script src="js/theme.js"></script>
+        </main>
 
     <div id="edit-modal" class="modal-overlay" style="display: none;">
         <div class="modal-content">
@@ -107,9 +59,40 @@
             </div>
         </div>
     </div>
+
+    <div class="chatbot-container">
+        <div class="chat-window" id="gcn-chat-window">
+            <div class="chat-header">
+                <h3>GCN-Bot (Hài hước)</h3>
+                <button class="chat-close-btn" id="chat-close-btn">&times;</button>
+            </div>
+            
+            <div class="chat-messages" id="chat-messages">
+                <div class="message bot-message">
+                    Chào bạn! Tui là GCN-Bot, trợ lý "cà khịa" của Nhật. Bạn cần gì hông? 😉
+                </div>
+            </div>
+            
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Hỏi gì đi...">
+                <button id="chat-send-btn">Gửi</button>
+            </div>
+        </div>
+        <button class="chat-bubble" id="chat-bubble">
+            🤖
+        </button>
+    </div>
+
+    <footer class="footer">
+        <p>© 2025 - Làm bằng cả trái tim bởi Nhật.</p>
+    </footer>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+
+    <script src="js/diary.js"></script>
+    
     <script src="js/theme.js"></script>
     <script src="js/chatbot.js"></script> 
-    </body>
-    </html>
- 
 
+</body> </html> ```

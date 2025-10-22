@@ -58,64 +58,74 @@
         <div id="snake-game-wrapper" class="game-wrapper" style="display: none;">
             <hr>
             <div class="snake-game-container">
-                 <h2>Rắn Săn Mồi! 🐍</h2>
-                 <p>Dùng phím mũi tên (← ↑ → ↓) để điều khiển.</p>
-                 <canvas id="snakeCanvas" width="400" height="400" style="border: 1px solid var(--text-color); background-color: #2c3e50; display: block; margin: 10px auto;"></canvas>
-                 <p id="snake-score">Điểm: 0</p>
-                 <div class="snake-controls-mobile">
-                     <button id="snake-up">▲</button>
-                     <div>
-                         <button id="snake-left">◀</button>
-                         <button id="snake-right">▶</button>
-                     </div>
-                     <button id="snake-down">▼</button>
-                 </div>
-            </div> </div> <div id="tetris-game-wrapper" class="game-wrapper" style="display: none;">
+                <h2>Rắn Săn Mồi! 🐍</h2>
+                <p>Dùng phím mũi tên (← ↑ → ↓) để điều khiển.</p>
+                <canvas id="snakeCanvas" width="400" height="400" style="border: 1px solid var(--text-color); background-color: #2c3e50; display: block; margin: 10px auto;"></canvas>
+                <p id="snake-score">Điểm: 0</p>
+                <div class="snake-controls-mobile">
+                    <button id="snake-up">▲</button>
+                    <div>
+                        <button id="snake-left">◀</button>
+                        <button id="snake-right">▶</button>
+                    </div>
+                    <button id="snake-down">▼</button>
+                </div>
+            </div> 
+        </div> 
+        
+        <div id="tetris-game-wrapper" class="game-wrapper" style="display: none;">
             <hr>
             <div class="tetris-game-container">
-                 <h2>Xếp Gạch! 🧱</h2>
-                 <p>Dùng ← → để di chuyển, ↑ để xoay, ↓ để rơi nhanh.</p>
-                 <canvas id="tetrisCanvas" width="240" height="400" style="border: 1px solid var(--text-color); background-color: #2c3e50; display: block; margin: 10px auto;"></canvas>
-                 <p id="tetris-score">Điểm: 0</p>
-                 <div class="tetris-controls-mobile"> <button id="tetris-rotate">▲</button>
-                     <div>
-                         <button id="tetris-left">◀</button>
-                         <button id="tetris-down">▼</button>
-                         <button id="tetris-right">▶</button>
-                     </div>
-                 </div>
-                 <button class="game-restart-button" id="tetrisRestartButton" style="display: none; margin: 10px auto; background-color: #ffc107;">Chơi lại</button>
-            </div> </div> </main> <footer class="footer">
+                <h2>Xếp Gạch! 🧱</h2>
+                <p>Dùng ← → để di chuyển, ↑ để xoay, ↓ để rơi nhanh.</p>
+                <canvas id="tetrisCanvas" width="240" height="400" style="border: 1px solid var(--text-color); background-color: #2c3e50; display: block; margin: 10px auto;"></canvas>
+                <p id="tetris-score">Điểm: 0</p>
+                <div class="tetris-controls-mobile"> <button id="tetris-rotate">▲</button>
+                    <div>
+                        <button id="tetris-left">◀</button>
+                        <button id="tetris-down">▼</button>
+                        <button id="tetris-right">▶</button>
+                    </div>
+                </div>
+                <button class="game-restart-button" id="tetrisRestartButton" style="display: none; margin: 10px auto; background-color: #ffc107;">Chơi lại</button>
+            </div> 
+        </div> 
+    </main> 
+    
+    <footer class="footer">
         <p>© 2025 - Làm bằng cả trái tim bởi Nhật.</p>
     </footer>
 
-    <script src="js/main.js"></script> </script>
-    <script src="js/theme.js"></script> <script src="js/snake-game.js"></script> <script src="js/games-page.js"></script> <script src="js/tetris-game.js"></script>
-<div class="chatbot-container">
-
-    <div class="chat-window" id="gcn-chat-window">
-        <div class="chat-header">
-            <h3>GCN-Bot (Hài hước)</h3>
-            <button class="chat-close-btn" id="chat-close-btn">&times;</button>
-        </div>
-        
-        <div class="chat-messages" id="chat-messages">
-            <div class="message bot-message">
-                Chào bạn! Tui là GCN-Bot, trợ lý "cà khịa" của Nhật. Bạn cần gì hông? 😉
+    <div class="chatbot-container">
+        <div class="chat-window" id="gcn-chat-window">
+            <div class="chat-header">
+                <h3>GCN-Bot (Hài hước)</h3>
+                <button class="chat-close-btn" id="chat-close-btn">&times;</button>
+            </div>
+            
+            <div class="chat-messages" id="chat-messages">
+                <div class="message bot-message">
+                    Chào bạn! Tui là GCN-Bot, trợ lý "cà khịa" của Nhật. Bạn cần gì hông? 😉
+                </div>
+            </div>
+            
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Hỏi gì đi...">
+                <button id="chat-send-btn">Gửi</button>
             </div>
         </div>
-        
-        <div class="chat-input-area">
-            <input type="text" id="chat-input" placeholder="Hỏi gì đi...">
-            <button id="chat-send-btn">Gửi</button>
-        </div>
+        <button class="chat-bubble" id="chat-bubble">
+            🤖
+        </button>
     </div>
 
-    <button class="chat-bubble" id="chat-bubble">
-        🤖
-    </button>
-</div>
-<script src="js/theme.js"></script>
-<script src="js/chatbot.js"></script> 
+    <script src="js/main.js"></script>
+    <script src="js/snake-game.js"></script>
+    <script src="js/games-page.js"></script>
+    <script src="js/tetris-game.js"></script>
+
+    <script src="js/theme.js"></script>   
+    <script src="js/chatbot.js"></script> 
+
 </body>
 </html>

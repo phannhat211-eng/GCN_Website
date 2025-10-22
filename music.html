@@ -28,7 +28,8 @@
         <p>Một vài giai điệu yêu thích của tôi.</p>
 
         <div class="music-player-container">
-            <audio id="audio-source" src=""></audio> <div class="music-cover">
+            <audio id="audio-source" src=""></audio> 
+            <div class="music-cover">
                 <img id="cover-art" src="images/cover-placeholder.png" alt="Album Art">
             </div>
             <div class="music-info">
@@ -41,8 +42,8 @@
             </div>
 
             <div class="time-display">
-                 <span id="current-time">0:00</span>
-                 <span id="duration">0:00</span>
+                <span id="current-time">0:00</span>
+                <span id="duration">0:00</span>
             </div>
 
             <div class="music-controls">
@@ -56,50 +57,50 @@
                     <i class="fas fa-forward"></i>
                 </button>
             </div>
-        </div> <div class="playlist-container">
+        </div> 
+        
+        <div class="playlist-container">
             <h2>Danh sách phát</h2>
-        <div class="search-container">
-            <input type="text" id="search-input" placeholder="Tìm kiếm tên bài hát, ca sĩ...">
-        </div>
-        <ul id="playlist-items">
-            </ul>
-    </div>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Tìm kiếm tên bài hát, ca sĩ...">
+            </div>
             <ul id="playlist-items">
-                </ul>
-        </div>
-
-    </main>
-<div class="chatbot-container">
-
-    <div class="chat-window" id="gcn-chat-window">
-        <div class="chat-header">
-            <h3>GCN-Bot (Hài hước)</h3>
-            <button class="chat-close-btn" id="chat-close-btn">&times;</button>
+            </ul>
         </div>
         
-        <div class="chat-messages" id="chat-messages">
-            <div class="message bot-message">
-                Chào bạn! Tui là GCN-Bot, trợ lý "cà khịa" của Nhật. Bạn cần gì hông? 😉
+        </main>
+
+    <div class="chatbot-container">
+        <div class="chat-window" id="gcn-chat-window">
+            <div class="chat-header">
+                <h3>GCN-Bot (Hài hước)</h3>
+                <button class="chat-close-btn" id="chat-close-btn">&times;</button>
+            </div>
+            
+            <div class="chat-messages" id="chat-messages">
+                <div class="message bot-message">
+                    Chào bạn! Tui là GCN-Bot, trợ lý "cà khịa" của Nhật. Bạn cần gì hông? 😉
+                </div>
+            </div>
+            
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Hỏi gì đi...">
+                <button id="chat-send-btn">Gửi</button>
             </div>
         </div>
-        
-        <div class="chat-input-area">
-            <input type="text" id="chat-input" placeholder="Hỏi gì đi...">
-            <button id="chat-send-btn">Gửi</button>
-        </div>
+        <button class="chat-bubble" id="chat-bubble">
+            🤖
+        </button>
     </div>
-
-    <button class="chat-bubble" id="chat-bubble">
-        🤖
-    </button>
-</div>
+    
     <footer class="footer">
         <p>© 2025 - Làm bằng cả trái tim bởi Nhật.</p>
     </footer>
 
-    <script src="js/theme.js"></script>
     <script src="js/music-player.js"></script>
-<script src="js/theme.js"></script>
-<script src="js/chatbot.js"></script> 
+
+    <script src="js/theme.js"></script> 
+    <script src="js/chatbot.js"></script> 
+
 </body>
 </html>
