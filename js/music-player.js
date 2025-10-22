@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { title: 'Phép Màu', artist: 'MAYDAY ft Minh Tốc', src: 'music/phep_mau.mp3', cover: 'images/cover-placeholder-3.png' },
         { title: 'Cảm nắng', artist: 'Suni Hạ Linh', src: 'music/cam_nang.mp3', cover: 'images/cover-placeholder-8.png' },
         { title: 'Thật quá đáng để yêu', artist: 'AMEE NICKY', src: 'music/qua_dang.mp3', cover: 'images/cover-placeholder-7.png' },
-        { title: 'Lặng', artist: 'Rhymastic', src: 'music/lang.mp3', cover: 'images/cover-placeholder-9.png' },
+        { title: 'Lặng', artist: 'Jsol', src: 'music/lang.mp3', cover: 'images/cover-placeholder-9.png' },
         { title: 'Dù cho tận thế', artist: 'Erik', src: 'music/dctt.mp3', cover: 'images/cover-placeholder-10.png' },
         { title: 'Giá Như', artist: 'Chilly Cover', src: 'music/gia_nhu.mp3', cover: 'images/cover-placeholder-6.png' }
     ];
