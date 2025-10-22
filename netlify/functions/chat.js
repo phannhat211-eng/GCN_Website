@@ -1,4 +1,4 @@
-// File: netlify/functions/chat.js
+// File: netlify/functions/chat.js (Bản Dứt Điểm - Không có systemInstruction)
 
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
