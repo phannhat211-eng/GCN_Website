@@ -1,0 +1,14 @@
+{
+  "name": "gcn-chatbot-backend",
+  "version": "1.0.0",
+  "description": "Backend cho GCN-Bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nhat",
+  "license": "ISC",
+  "dependencies": {
+    "@google/generative-ai": "^0.11.3"
+  }
+}
