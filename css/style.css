@@ -916,3 +916,180 @@ body.dark-mode main.container p,
 body.dark-mode main.container span {
     color: #aebccb !important; /* Xám nhạt */
 }
+/* ========================================= */
+/* ===    STYLE CHO CHATBOT AI (GCN)     === */
+/* ========================================= */
+
+/* --- 1. Container Tổng (Để định vị) --- */
+.chatbot-container {
+    position: fixed; /* Giữ cố định trên màn hình */
+    bottom: 25px;
+    right: 25px;
+    z-index: 1000; /* Nổi lên trên mọi thứ */
+}
+
+/* --- 2. Bong Bóng Chat (Nút 🤖) --- */
+.chat-bubble {
+    width: 60px;
+    height: 60px;
+    background-color: var(--mau-nhan, #1DB954); /* Dùng màu nhấn */
+    color: white;
+    font-size: 2rem; /* Icon to */
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+.chat-bubble:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* --- 3. Cửa Sổ Chat (Bị ẩn ban đầu) --- */
+.chat-window {
+    /* Kích thước */
+    width: 350px;
+    height: 450px;
+    max-height: 80vh; /* Không cao quá 80% màn hình */
+    
+    /* Giao diện (Kính mờ Light Mode) */
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    
+    /* Bố cục */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Giấu các phần bị tràn */
+    
+    /* Ẩn ban đầu (JavaScript sẽ bật/tắt) */
+    display: none; 
+    
+    /* Hiệu ứng */
+    transition: all 0.3s ease;
+}
+
+/* Style Cửa Sổ Chat (Khi ở Dark Mode) */
+body.dark-mode .chat-window {
+    /* Nền kính tối mờ */
+    background: rgba(44, 62, 80, 0.8); /* Màu tối mờ */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #FFFFFF;
+}
+
+/* --- 4. Tiêu Đề Cửa Sổ Chat --- */
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    /* Nền đậm hơn 1 chút */
+    background: rgba(0, 0, 0, 0.05); 
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+body.dark-mode .chat-header {
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.chat-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+.chat-close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #888;
+}
+body.dark-mode .chat-close-btn {
+    color: #ccc;
+}
+
+/* --- 5. Khung Tin Nhắn --- */
+.chat-messages {
+    flex-grow: 1; /* Lấp đầy không gian còn lại */
+    overflow-y: auto; /* Tự động cuộn */
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Khoảng cách giữa các tin nhắn */
+}
+
+.message {
+    padding: 10px 15px;
+    border-radius: 18px;
+    max-width: 80%;
+    line-height: 1.4;
+    font-size: 0.95rem;
+}
+/* Tin nhắn của Bot */
+.bot-message {
+    background-color: #e9ecef; /* Màu xám nhạt */
+    color: #1a1a1a;
+    border-bottom-left-radius: 4px; /* Vuông góc 1 bên */
+    align-self: flex-start; /* Nằm bên trái */
+}
+body.dark-mode .bot-message {
+    background-color: #34495e; /* Xanh tối */
+    color: #FFFFFF;
+}
+/* Tin nhắn của User */
+.user-message {
+    background-color: var(--mau-nhan, #1DB954); /* Màu nhấn */
+    color: #FFFFFF;
+    border-bottom-right-radius: 4px; /* Vuông góc 1 bên */
+    align-self: flex-end; /* Nằm bên phải */
+}
+
+/* --- 6. Ô Nhập Liệu --- */
+.chat-input-area {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+body.dark-mode .chat-input-area {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#chat-input {
+    flex-grow: 1;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+body.dark-mode #chat-input {
+    background: #333;
+    border-color: #555;
+    color: #FFF;
+}
+#chat-input:focus {
+    border-color: var(--mau-nhan, #1DB954);
+}
+
+#chat-send-btn {
+    background-color: var(--mau-nhan, #1DB954);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+#chat-send-btn:hover {
+    filter: brightness(1.2);
+}

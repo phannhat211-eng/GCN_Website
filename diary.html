@@ -55,7 +55,30 @@
     </div>
 </div>
 </main>
+<div class="chatbot-container">
 
+    <div class="chat-window" id="gcn-chat-window">
+        <div class="chat-header">
+            <h3>GCN-Bot (Hài hước)</h3>
+            <button class="chat-close-btn" id="chat-close-btn">&times;</button>
+        </div>
+        
+        <div class="chat-messages" id="chat-messages">
+            <div class="message bot-message">
+                Chào bạn! Tui là GCN-Bot, trợ lý "cà khịa" của Nhật. Bạn cần gì hông? 😉
+            </div>
+        </div>
+        
+        <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Hỏi gì đi...">
+            <button id="chat-send-btn">Gửi</button>
+        </div>
+    </div>
+
+    <button class="chat-bubble" id="chat-bubble">
+        🤖
+    </button>
+</div>
     <footer class="footer">
         <p>© 2025 - Làm bằng cả trái tim bởi Nhật.</p>
     </footer>
@@ -66,7 +89,6 @@
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
 
 <script src="js/diary.js"></script>
-<script src="//code.tidio.co/wjsaedeuupbhm3mfljz5y1pwni7hcjso.js" async></script>
 </body>
 </html>
 <script src="js/theme.js"></script>
