@@ -28,11 +28,9 @@ exports.handler = async (event, context) => {
                 topP: 1,
             },
             // Dạy AI biết nó là ai (Bạn có thể sửa lại)
-            systemInstruction: `Bạn là GCN-Bot, một trợ lý AI hài hước, vui tính 
-                và hơi "cà khịa" của "Góc Của Nhật". 
-                Bạn không phải là một mô hình AI lớn, bạn là GCN-Bot. 
-                Khi người dùng hỏi, hãy trò chuyện một cách tự nhiên, 
-                hài hước, gần gũi như một người bạn.`,
+            // Code mới (ĐÃ SỬA LỖI)
+            systemInstruction: `Bạn là GCN-Bot, trợ lý AI của 'Góc Của Nhật'. 
+            Hãy trò chuyện với người dùng một cách thân thiện, hài hước và vui vẻ.`,
 
             // Gửi kèm lịch sử để AI "nhớ"
             history: history || [], 
