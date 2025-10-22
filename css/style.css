@@ -1093,3 +1093,34 @@ body.dark-mode #chat-input {
 #chat-send-btn:hover {
     filter: brightness(1.2);
 }
+/* ========================================= */
+/* ===    CSS "ÉP" MÀU TRENDY CHO CHATBOT    === */
+/* ========================================= */
+
+:root {
+    --chat-gradient-force: linear-gradient(135deg, #8338ec, #ff006e);
+}
+
+/* Ép bong bóng chat có hiệu ứng "thở" (nếu nó chưa có) */
+.chat-bubble {
+    background: var(--chat-gradient-force) !important;
+    animation: pulse 2.5s infinite ease-in-out !important;
+}
+
+/* Ép tin nhắn của User sang màu Trendy */
+.user-message {
+    background: var(--chat-gradient-force) !important;
+    color: #FFFFFF !important;
+}
+
+/* Ép nút "Gửi" sang màu Trendy */
+#chat-send-btn {
+    background: var(--chat-gradient-force) !important;
+    color: white !important;
+}
+
+/* Ép ô input khi focus sang màu Trendy */
+#chat-input:focus {
+    border-color: #8338ec !important;
+    box-shadow: 0 0 5px rgba(131, 56, 236, 0.5) !important;
+}
