@@ -1,8 +1,7 @@
 /* ========================================= */
-/* ===    "DÂY THẦN KINH" CHATBOT (JS)   === */
+/* ===    CHATBOT JS (Bản Test Ép Buộc)   === */
 /* ========================================= */
 
-// Chạy code khi toàn bộ trang đã tải xong
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- 1. Lấy các phần tử HTML ---
@@ -14,84 +13,73 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatInput = document.getElementById('chat-input');
     const chatMessages = document.getElementById('chat-messages');
 
-    // Biến lưu lịch sử (để AI "nhớ")
-    let chatHistory = [];
+    // KIỂM TRA LỖI THẦM LẶNG
+    if (!chatBubble) {
+        console.error("LỖI: Không tìm thấy bong bóng chat! ID 'chat-bubble' bị sai?");
+        return; 
+    }
+    if (!chatWindow) {
+        console.error("LỖI: Không tìm thấy cửa sổ chat! ID 'gcn-chat-window' bị sai?");
+        return;
+    }
 
-    // --- 2. Xử lý bật/tắt cửa sổ chat ---
+    // --- 2. Xử lý bật/tắt cửa sổ chat (ĐÃ SỬA) ---
 
-    // Mở chat khi nhấn bong bóng
     chatBubble.addEventListener('click', () => {
-        chatWindow.classList.add('open'); // Thêm class .open (CSS sẽ làm hiệu ứng)
+        console.log("Đã nhấp vào bong bóng!"); // Kiểm tra
+
+        // THAY VÌ DÙNG CLASS, HÃY "ÉP" NÓ HIỆN RA
+        chatWindow.style.display = 'flex'; // (flex là kiểu hiển thị của cửa sổ chat)
+        chatWindow.style.opacity = '1';
+        chatWindow.style.transform = 'translateY(-75px)';
+        chatWindow.style.visibility = 'visible';
     });
 
-    // Đóng chat khi nhấn nút X
     closeBtn.addEventListener('click', () => {
-        chatWindow.classList.remove('open'); // Xoá class .open
+        console.log("Đã nhấp nút Đóng!"); // Kiểm tra
+
+        // "ÉP" NÓ ẨN ĐI
+        chatWindow.style.display = 'none'; // Ẩn đi
+        chatWindow.style.opacity = '0';
+        chatWindow.style.transform = 'translateY(20px)';
+        chatWindow.style.visibility = 'hidden';
     });
 
-    // --- 3. Xử lý gửi tin nhắn ---
+    // --- 3. Xử lý gửi tin nhắn (Giữ nguyên) ---
     sendBtn.addEventListener('click', sendMessage);
-
-    // Gửi khi nhấn Enter
     chatInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            sendMessage();
-        }
+        if (e.key === 'Enter') sendMessage();
     });
 
     async function sendMessage() {
+        // (Code gửi tin nhắn giữ nguyên như cũ...)
         const messageText = chatInput.value.trim();
-        if (messageText === '') return; // Không gửi tin nhắn rỗng
-
-        // 1. Hiển thị tin nhắn của User lên UI
+        if (messageText === '') return;
         addMessageToUI('user', messageText);
-
-        // Xoá ô nhập liệu
         chatInput.value = '';
-
         try {
-            // 2. Gọi "Người Trung Gian" (chat.js trên Netlify)
             const response = await fetch('/.netlify/functions/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ 
-                    message: messageText,
-                    history: chatHistory // Gửi kèm lịch sử
-                }),
+                body: JSON.stringify({ message: messageText, history: chatHistory }),
             });
-
-            if (!response.ok) {
-                throw new Error('Bot không trả lời, lỗi server');
-            }
-
+            if (!response.ok) throw new Error('Bot không trả lời');
             const data = await response.json();
             const aiReply = data.reply;
-
-            // 3. Hiển thị tin nhắn của Bot lên UI
             addMessageToUI('bot', aiReply);
-
-            // 4. Cập nhật lịch sử (để AI nhớ)
             chatHistory.push({ role: "user", parts: [{ text: messageText }] });
             chatHistory.push({ role: "model", parts: [{ text: aiReply }] });
-
         } catch (error) {
-            console.error('Lỗi khi gửi tin nhắn:', error);
-            addMessageToUI('bot', 'Ui, bot bị lag mất rồi... 😥 Thử lại sau nha.');
+            addMessageToUI('bot', 'Ui, bot bị lag rồi... 😥');
         }
     }
 
-    // --- 4. Hàm trợ giúp: Thêm tin nhắn vào UI ---
+    let chatHistory = [];
     function addMessageToUI(sender, text) {
         const messageElement = document.createElement('div');
-        // Thêm class .message và .user-message (hoặc .bot-message)
         messageElement.classList.add('message', `${sender}-message`);
-
-        // Chuyển đổi text để hiển thị xuống hàng (nếu AI trả lời)
         messageElement.innerHTML = text.replace(/\n/g, '<br>');
-
         chatMessages.appendChild(messageElement);
-
-        // Tự động cuộn xuống tin nhắn mới nhất
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 });
