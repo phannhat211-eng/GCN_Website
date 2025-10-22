@@ -1,10 +1,10 @@
 /* ========================================= */
-/* ===    CHATBOT JS (Bản Test Ép Buộc)   === */
+/* ===    "DÂY THẦN KINH" CHATBOT (JS)   === */
+/* ===    (Bản Chuẩn - Dùng class)     === */
 /* ========================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- 1. Lấy các phần tử HTML ---
     const chatWindow = document.getElementById('gcn-chat-window');
     const chatBubble = document.getElementById('chat-bubble');
     const closeBtn = document.getElementById('chat-close-btn');
@@ -13,68 +13,61 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatInput = document.getElementById('chat-input');
     const chatMessages = document.getElementById('chat-messages');
 
-    // KIỂM TRA LỖI THẦM LẶNG
-    if (!chatBubble) {
-        console.error("LỖI: Không tìm thấy bong bóng chat! ID 'chat-bubble' bị sai?");
-        return; 
-    }
-    if (!chatWindow) {
-        console.error("LỖI: Không tìm thấy cửa sổ chat! ID 'gcn-chat-window' bị sai?");
+    let chatHistory = [];
+
+    // Lỗi thầm lặng (nếu ID sai)
+    if (!chatBubble || !chatWindow || !closeBtn) {
+        console.error("Lỗi: Không tìm thấy 1 trong các ID: chat-bubble, gcn-chat-window, chat-close-btn");
         return;
     }
 
-    // --- 2. Xử lý bật/tắt cửa sổ chat (ĐÃ SỬA) ---
-
+    // --- 2. Xử lý bật/tắt (Dùng class "open") ---
     chatBubble.addEventListener('click', () => {
-        console.log("Đã nhấp vào bong bóng!"); // Kiểm tra
-
-        // THAY VÌ DÙNG CLASS, HÃY "ÉP" NÓ HIỆN RA
-        chatWindow.style.display = 'flex'; // (flex là kiểu hiển thị của cửa sổ chat)
-        chatWindow.style.opacity = '1';
-        chatWindow.style.transform = 'translateY(-75px)';
-        chatWindow.style.visibility = 'visible';
+        chatWindow.classList.add('open'); 
     });
 
     closeBtn.addEventListener('click', () => {
-        console.log("Đã nhấp nút Đóng!"); // Kiểm tra
-
-        // "ÉP" NÓ ẨN ĐI
-        chatWindow.style.display = 'none'; // Ẩn đi
-        chatWindow.style.opacity = '0';
-        chatWindow.style.transform = 'translateY(20px)';
-        chatWindow.style.visibility = 'hidden';
+        chatWindow.classList.remove('open'); 
     });
 
-    // --- 3. Xử lý gửi tin nhắn (Giữ nguyên) ---
+    // --- 3. Xử lý gửi tin nhắn ---
     sendBtn.addEventListener('click', sendMessage);
     chatInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') sendMessage();
+        if (e.key === 'Enter') {
+            sendMessage();
+        }
     });
 
     async function sendMessage() {
-        // (Code gửi tin nhắn giữ nguyên như cũ...)
         const messageText = chatInput.value.trim();
-        if (messageText === '') return;
+        if (messageText === '') return; 
         addMessageToUI('user', messageText);
         chatInput.value = '';
+
         try {
             const response = await fetch('/.netlify/functions/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ message: messageText, history: chatHistory }),
+                body: JSON.stringify({ 
+                    message: messageText,
+                    history: chatHistory 
+                }),
             });
+
             if (!response.ok) throw new Error('Bot không trả lời');
             const data = await response.json();
             const aiReply = data.reply;
             addMessageToUI('bot', aiReply);
+
             chatHistory.push({ role: "user", parts: [{ text: messageText }] });
             chatHistory.push({ role: "model", parts: [{ text: aiReply }] });
+
         } catch (error) {
-            addMessageToUI('bot', 'Ui, bot bị lag rồi... 😥');
+            console.error('Lỗi khi gửi tin nhắn:', error);
+            addMessageToUI('bot', 'Ui, bot bị lag mất rồi... 😥');
         }
     }
 
-    let chatHistory = [];
     function addMessageToUI(sender, text) {
         const messageElement = document.createElement('div');
         messageElement.classList.add('message', `${sender}-message`);
